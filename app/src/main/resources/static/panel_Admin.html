@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel Admin — NexoShop</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="css/estilos.css"/>
+  <link rel="stylesheet" href="css/estilos_Admin.css"/>
+</head>
+<body id="pagina-admin">
+
+  <!-- ============================================================
+       SIDEBAR — menú lateral fijo del admin
+  ============================================================ -->
+  <aside id="sidebar-admin">
+
+    <!-- Logo -->
+    <div id="sidebar-logo">
+      <a href="index.html">NEXO<span>SHOP</span></a>
+      <p id="sidebar-rol-badge">ADMIN</p>
+    </div>
+
+    <!-- Información del admin -->
+    <div id="sidebar-perfil-admin">
+      <div id="sidebar-avatar-admin">A</div>
+      <div id="sidebar-info-admin">
+        <p id="sidebar-nombre-admin">Administrador</p>
+        <p id="sidebar-email-admin">admin@nexoshop.com</p>
+      </div>
+    </div>
+
+    <!-- Navegación del sidebar -->
+    <nav id="sidebar-nav">
+
+      <p class="sidebar-seccion-titulo">Principal</p>
+      <ul class="sidebar-lista">
+        <li>
+          <a href="#" class="sidebar-enlace activo" data-seccion="dashboard">
+            <span class="sidebar-icono">📊</span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-enlace" data-seccion="empresas">
+            <span class="sidebar-icono">🏢</span>
+            <span>Empresas</span>
+            <span class="sidebar-badge sidebar-badge-amarillo">3</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-enlace" data-seccion="usuarios">
+            <span class="sidebar-icono">👥</span>
+            <span>Usuarios</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-enlace" data-seccion="productos">
+            <span class="sidebar-icono">👟</span>
+            <span>Productos</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-enlace" data-seccion="pedidos">
+            <span class="sidebar-icono">📦</span>
+            <span>Pedidos</span>
+            <span class="sidebar-badge sidebar-badge-rojo">8</span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="sidebar-seccion-titulo">Configuración</p>
+      <ul class="sidebar-lista">
+        <li>
+          <a href="#" class="sidebar-enlace" data-seccion="reportes">
+            <span class="sidebar-icono">📈</span>
+            <span>Reportes</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-enlace" data-seccion="configuracion">
+            <span class="sidebar-icono">⚙️</span>
+            <span>Configuración</span>
+          </a>
+        </li>
+      </ul>
+
+    </nav>
+
+    <!-- Botón salir -->
+    <div id="sidebar-footer">
+      <a href="index.html" id="boton-ver-marketplace">🌐 Ver marketplace</a>
+      <button id="boton-cerrar-sesion-admin">↩ Cerrar sesión</button>
+    </div>
+
+  </aside>
+
+
+  <!-- ============================================================
+       CONTENIDO PRINCIPAL
+  ============================================================ -->
+  <main id="contenido-admin">
+
+    <!-- Barra superior del panel -->
+    <div id="topbar-admin">
+      <div id="topbar-titulo">
+        <h1 id="titulo-seccion-actual">Dashboard</h1>
+        <p id="subtitulo-seccion-actual">Resumen general del marketplace</p>
+      </div>
+      <div id="topbar-acciones">
+        <div id="topbar-fecha">📅 Lunes, 16 Marzo 2026</div>
+        <button id="boton-notificaciones">
+          🔔
+          <span id="badge-notificaciones">5</span>
+        </button>
+      </div>
+    </div>
+
+
+    <!-- ============================================================
+         SECCION: DASHBOARD (vista por defecto)
+    ============================================================ -->
+    <div id="seccion-dashboard" class="seccion-panel activa">
+
+      <!-- Tarjetas de métricas -->
+      <div id="grilla-metricas">
+
+        <div class="tarjeta-metrica">
+          <div class="metrica-icono" style="background:rgba(200,69,45,0.15);color:var(--color-rojo)">💰</div>
+          <div class="metrica-info">
+            <p class="metrica-valor">$48.250.000</p>
+            <p class="metrica-nombre">Ventas del mes</p>
+            <p class="metrica-variacion positiva">↑ 12% vs mes anterior</p>
+          </div>
+        </div>
+
+        <div class="tarjeta-metrica">
+          <div class="metrica-icono" style="background:rgba(232,168,56,0.15);color:var(--color-amarillo)">📦</div>
+          <div class="metrica-info">
+            <p class="metrica-valor">324</p>
+            <p class="metrica-nombre">Pedidos del mes</p>
+            <p class="metrica-variacion positiva">↑ 8% vs mes anterior</p>
+          </div>
+        </div>
+
+        <div class="tarjeta-metrica">
+          <div class="metrica-icono" style="background:rgba(45,110,45,0.15);color:#2d6e2d">👥</div>
+          <div class="metrica-info">
+            <p class="metrica-valor">1.248</p>
+            <p class="metrica-nombre">Compradores activos</p>
+            <p class="metrica-variacion positiva">↑ 22% vs mes anterior</p>
+          </div>
+        </div>
+
+        <div class="tarjeta-metrica">
+          <div class="metrica-icono" style="background:rgba(26,58,110,0.3);color:#5b8fd4">🏢</div>
+          <div class="metrica-info">
+            <p class="metrica-valor">42</p>
+            <p class="metrica-nombre">Empresas activas</p>
+            <p class="metrica-variacion positiva">↑ 3 nuevas este mes</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Fila: Empresas pendientes + Pedidos recientes -->
+      <div id="grilla-dashboard-inferior">
+
+        <!-- Empresas pendientes de aprobación -->
+        <div class="panel-card">
+          <div class="panel-card-header">
+            <h3 class="panel-card-titulo">Empresas pendientes</h3>
+            <span class="badge-pendientes">3 pendientes</span>
+          </div>
+
+          <div class="lista-empresas-pendientes">
+
+            <div class="fila-empresa-pendiente">
+              <div class="empresa-pendiente-logo" style="background:#2d6e2d">KS</div>
+              <div class="empresa-pendiente-info">
+                <p class="empresa-pendiente-nombre">KicksStore SAS</p>
+                <p class="empresa-pendiente-detalle">NIT: 901.234.567 · Bogotá · Hace 2 horas</p>
+              </div>
+              <div class="empresa-pendiente-acciones">
+                <button class="boton-aprobar" data-id="1">✓ Aprobar</button>
+                <button class="boton-rechazar" data-id="1">✕ Rechazar</button>
+              </div>
+            </div>
+
+            <div class="fila-empresa-pendiente">
+              <div class="empresa-pendiente-logo" style="background:#1a3a6e">SS</div>
+              <div class="empresa-pendiente-info">
+                <p class="empresa-pendiente-nombre">StepStyle Ltda</p>
+                <p class="empresa-pendiente-detalle">NIT: 900.876.543 · Medellín · Hace 5 horas</p>
+              </div>
+              <div class="empresa-pendiente-acciones">
+                <button class="boton-aprobar" data-id="2">✓ Aprobar</button>
+                <button class="boton-rechazar" data-id="2">✕ Rechazar</button>
+              </div>
+            </div>
+
+            <div class="fila-empresa-pendiente">
+              <div class="empresa-pendiente-logo" style="background:#7c5a3c">FW</div>
+              <div class="empresa-pendiente-info">
+                <p class="empresa-pendiente-nombre">FeetWalk Colombia</p>
+                <p class="empresa-pendiente-detalle">NIT: 800.123.456 · Cali · Hace 1 día</p>
+              </div>
+              <div class="empresa-pendiente-acciones">
+                <button class="boton-aprobar" data-id="3">✓ Aprobar</button>
+                <button class="boton-rechazar" data-id="3">✕ Rechazar</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Pedidos recientes -->
+        <div class="panel-card">
+          <div class="panel-card-header">
+            <h3 class="panel-card-titulo">Pedidos recientes</h3>
+            <a href="#" class="panel-card-enlace" data-ir-a="pedidos">Ver todos →</a>
+          </div>
+
+          <table class="tabla-admin">
+            <thead>
+              <tr>
+                <th>Pedido</th>
+                <th>Comprador</th>
+                <th>Total</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="celda-id">#4521</td>
+                <td>Carlos A.</td>
+                <td>$389.900</td>
+                <td><span class="badge-estado badge-entregado">Entregado</span></td>
+              </tr>
+              <tr>
+                <td class="celda-id">#4520</td>
+                <td>María L.</td>
+                <td>$935.000</td>
+                <td><span class="badge-estado badge-enviado">Enviado</span></td>
+              </tr>
+              <tr>
+                <td class="celda-id">#4519</td>
+                <td>Juan R.</td>
+                <td>$278.500</td>
+                <td><span class="badge-estado badge-procesando">Procesando</span></td>
+              </tr>
+              <tr>
+                <td class="celda-id">#4518</td>
+                <td>Ana M.</td>
+                <td>$620.000</td>
+                <td><span class="badge-estado badge-procesando">Procesando</span></td>
+              </tr>
+              <tr>
+                <td class="celda-id">#4517</td>
+                <td>Luis P.</td>
+                <td>$195.000</td>
+                <td><span class="badge-estado badge-cancelado">Cancelado</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ============================================================
+         SECCION: GESTIÓN DE EMPRESAS
+    ============================================================ -->
+    <div id="seccion-empresas" class="seccion-panel">
+
+      <div class="seccion-panel-header">
+        <div>
+          <h2 class="seccion-panel-titulo">Gestión de Empresas</h2>
+          <p class="seccion-panel-subtitulo">Aprueba, rechaza y gestiona las empresas vendedoras</p>
+        </div>
+        <div class="seccion-panel-acciones">
+          <select class="selector-filtro-admin" id="filtro-estado-empresas">
+            <option value="todas">Todas</option>
+            <option value="pendiente">Pendientes</option>
+            <option value="aprobada">Aprobadas</option>
+            <option value="rechazada">Rechazadas</option>
+          </select>
+          <input type="text" class="input-busqueda-admin" placeholder="Buscar empresa..." id="buscar-empresa"/>
+        </div>
+      </div>
+
+      <table class="tabla-admin tabla-completa">
+        <thead>
+          <tr>
+            <th>Empresa</th>
+            <th>NIT</th>
+            <th>Ciudad</th>
+            <th>Vendedor</th>
+            <th>Productos</th>
+            <th>Fecha registro</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-cuerpo-empresas">
+          <tr>
+            <td>
+              <div class="celda-empresa">
+                <div class="empresa-tabla-logo">ZS</div>
+                <span>ZapatoStyle</span>
+              </div>
+            </td>
+            <td class="celda-gris">900.123.456</td>
+            <td>Bogotá</td>
+            <td class="celda-gris">vendedor1@email.com</td>
+            <td>142</td>
+            <td class="celda-gris">01/01/2025</td>
+            <td><span class="badge-estado badge-entregado">Aprobada</span></td>
+            <td>
+              <div class="acciones-tabla">
+                <button class="boton-accion-tabla boton-ver-tabla" title="Ver detalle">👁</button>
+                <button class="boton-accion-tabla boton-suspender-tabla" title="Suspender">⏸</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="celda-empresa">
+                <div class="empresa-tabla-logo" style="background:var(--color-amarillo);color:var(--color-negro)">SM</div>
+                <span>SoleModa</span>
+              </div>
+            </td>
+            <td class="celda-gris">900.456.789</td>
+            <td>Medellín</td>
+            <td class="celda-gris">vendedor2@email.com</td>
+            <td>98</td>
+            <td class="celda-gris">15/02/2025</td>
+            <td><span class="badge-estado badge-entregado">Aprobada</span></td>
+            <td>
+              <div class="acciones-tabla">
+                <button class="boton-accion-tabla boton-ver-tabla" title="Ver detalle">👁</button>
+                <button class="boton-accion-tabla boton-suspender-tabla" title="Suspender">⏸</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="celda-empresa">
+                <div class="empresa-tabla-logo" style="background:#2d6e2d">KS</div>
+                <span>KicksStore SAS</span>
+              </div>
+            </td>
+            <td class="celda-gris">901.234.567</td>
+            <td>Bogotá</td>
+            <td class="celda-gris">kicks@email.com</td>
+            <td>0</td>
+            <td class="celda-gris">16/03/2026</td>
+            <td><span class="badge-estado badge-pendiente">Pendiente</span></td>
+            <td>
+              <div class="acciones-tabla">
+                <button class="boton-accion-tabla boton-aprobar-tabla boton-aprobar" data-id="1" title="Aprobar">✓</button>
+                <button class="boton-accion-tabla boton-rechazar-tabla boton-rechazar" data-id="1" title="Rechazar">✕</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="celda-empresa">
+                <div class="empresa-tabla-logo" style="background:#1a3a6e">SS</div>
+                <span>StepStyle Ltda</span>
+              </div>
+            </td>
+            <td class="celda-gris">900.876.543</td>
+            <td>Medellín</td>
+            <td class="celda-gris">step@email.com</td>
+            <td>0</td>
+            <td class="celda-gris">16/03/2026</td>
+            <td><span class="badge-estado badge-pendiente">Pendiente</span></td>
+            <td>
+              <div class="acciones-tabla">
+                <button class="boton-accion-tabla boton-aprobar-tabla boton-aprobar" data-id="2" title="Aprobar">✓</button>
+                <button class="boton-accion-tabla boton-rechazar-tabla boton-rechazar" data-id="2" title="Rechazar">✕</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+
+    <!-- ============================================================
+         SECCION: GESTIÓN DE USUARIOS
+    ============================================================ -->
+    <div id="seccion-usuarios" class="seccion-panel">
+
+      <div class="seccion-panel-header">
+        <div>
+          <h2 class="seccion-panel-titulo">Gestión de Usuarios</h2>
+          <p class="seccion-panel-subtitulo">Administra compradores y vendedores</p>
+        </div>
+        <div class="seccion-panel-acciones">
+          <select class="selector-filtro-admin" id="filtro-rol-usuarios">
+            <option value="todos">Todos los roles</option>
+            <option value="COMPRADOR">Compradores</option>
+            <option value="VENDEDOR">Vendedores</option>
+          </select>
+          <input type="text" class="input-busqueda-admin" placeholder="Buscar usuario..." id="buscar-usuario"/>
+        </div>
+      </div>
+
+      <table class="tabla-admin tabla-completa">
+        <thead>
+          <tr>
+            <th>Usuario</th>
+            <th>Email</th>
+            <th>Rol</th>
+            <th>Teléfono</th>
+            <th>Fecha registro</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="celda-usuario">
+                <div class="usuario-tabla-avatar">CA</div>
+                <span>Carlos Andrés</span>
+              </div>
+            </td>
+            <td class="celda-gris">carlos@email.com</td>
+            <td><span class="badge-rol badge-comprador">Comprador</span></td>
+            <td class="celda-gris">300 123 4567</td>
+            <td class="celda-gris">10/01/2025</td>
+            <td><span class="badge-estado badge-entregado">Activo</span></td>
+            <td>
+              <div class="acciones-tabla">
+                <button class="boton-accion-tabla boton-ver-tabla" title="Ver perfil">👁</button>
+                <button class="boton-accion-tabla boton-suspender-tabla" title="Suspender">⏸</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="celda-usuario">
+                <div class="usuario-tabla-avatar" style="background:var(--color-amarillo);color:var(--color-negro)">ML</div>
+                <span>María López</span>
+              </div>
+            </td>
+            <td class="celda-gris">maria@email.com</td>
+            <td><span class="badge-rol badge-vendedor">Vendedor</span></td>
+            <td class="celda-gris">310 987 6543</td>
+            <td class="celda-gris">15/01/2025</td>
+            <td><span class="badge-estado badge-entregado">Activo</span></td>
+            <td>
+              <div class="acciones-tabla">
+                <button class="boton-accion-tabla boton-ver-tabla" title="Ver perfil">👁</button>
+                <button class="boton-accion-tabla boton-suspender-tabla" title="Suspender">⏸</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="celda-usuario">
+                <div class="usuario-tabla-avatar" style="background:#1a3a6e">JR</div>
+                <span>Juan Rodríguez</span>
+              </div>
+            </td>
+            <td class="celda-gris">juan@email.com</td>
+            <td><span class="badge-rol badge-comprador">Comprador</span></td>
+            <td class="celda-gris">320 456 7890</td>
+            <td class="celda-gris">20/02/2025</td>
+            <td><span class="badge-estado badge-cancelado">Suspendido</span></td>
+            <td>
+              <div class="acciones-tabla">
+                <button class="boton-accion-tabla boton-ver-tabla" title="Ver perfil">👁</button>
+                <button class="boton-accion-tabla boton-activar-tabla" title="Reactivar">▶</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+
+    <!-- ============================================================
+         SECCION: GESTIÓN DE PRODUCTOS
+    ============================================================ -->
+    <div id="seccion-productos" class="seccion-panel">
+
+      <div class="seccion-panel-header">
+        <div>
+          <h2 class="seccion-panel-titulo">Gestión de Productos</h2>
+          <p class="seccion-panel-subtitulo">Todos los productos publicados en el marketplace</p>
+        </div>
+        <div class="seccion-panel-acciones">
+          <input type="text" class="input-busqueda-admin" placeholder="Buscar producto..." id="buscar-producto"/>
+        </div>
+      </div>
+
+      <table class="tabla-admin tabla-completa">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Empresa</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Ventas</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="celda-producto">
+                <span class="producto-tabla-emoji">👟</span>
+                <div>
+                  <p class="producto-tabla-nombre">Air Max 270 React</p>
+                  <p class="producto-tabla-marca">Nike</p>
+                </div>
+              </div>
+            </td>
+            <td>ZapatoStyle</td>
+            <td>$389.900</td>
+            <td>8</td>
+            <td>124</td>
+            <td><span class="badge-estado badge-entregado">Activo</span></td>
+            <td>
+              <div class="acciones-tabla">
+                <button class="boton-accion-tabla boton-ver-tabla" title="Ver">👁</button>
+                <button class="boton-accion-tabla boton-suspender-tabla" title="Ocultar">⏸</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="celda-producto">
+                <span class="producto-tabla-emoji">🥿</span>
+                <div>
+                  <p class="producto-tabla-nombre">Ultraboost 22</p>
+                  <p class="producto-tabla-marca">Adidas</p>
+                </div>
+              </div>
+            </td>
+            <td>SoleModa</td>
+            <td>$315.000</td>
+            <td>0</td>
+            <td>86</td>
+            <td><span class="badge-estado badge-cancelado">Sin stock</span></td>
+            <td>
+              <div class="acciones-tabla">
+                <button class="boton-accion-tabla boton-ver-tabla" title="Ver">👁</button>
+                <button class="boton-accion-tabla boton-suspender-tabla" title="Ocultar">⏸</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="celda-producto">
+                <span class="producto-tabla-emoji">👟</span>
+                <div>
+                  <p class="producto-tabla-nombre">Air Jordan 1 Retro</p>
+                  <p class="producto-tabla-marca">Jordan</p>
+                </div>
+              </div>
+            </td>
+            <td>ZapatoStyle</td>
+            <td>$620.000</td>
+            <td>5</td>
+            <td>201</td>
+            <td><span class="badge-estado badge-entregado">Activo</span></td>
+            <td>
+              <div class="acciones-tabla">
+                <button class="boton-accion-tabla boton-ver-tabla" title="Ver">👁</button>
+                <button class="boton-accion-tabla boton-suspender-tabla" title="Ocultar">⏸</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+
+    <!-- ============================================================
+         SECCION: GESTIÓN DE PEDIDOS
+    ============================================================ -->
+    <div id="seccion-pedidos" class="seccion-panel">
+
+      <div class="seccion-panel-header">
+        <div>
+          <h2 class="seccion-panel-titulo">Gestión de Pedidos</h2>
+          <p class="seccion-panel-subtitulo">Todos los pedidos del marketplace</p>
+        </div>
+        <div class="seccion-panel-acciones">
+          <select class="selector-filtro-admin" id="filtro-estado-pedidos">
+            <option value="todos">Todos</option>
+            <option value="procesando">Procesando</option>
+            <option value="enviado">Enviados</option>
+            <option value="entregado">Entregados</option>
+            <option value="cancelado">Cancelados</option>
+          </select>
+          <input type="text" class="input-busqueda-admin" placeholder="Buscar pedido..." id="buscar-pedido"/>
+        </div>
+      </div>
+
+      <table class="tabla-admin tabla-completa">
+        <thead>
+          <tr>
+            <th>Pedido</th>
+            <th>Comprador</th>
+            <th>Empresa</th>
+            <th>Productos</th>
+            <th>Total</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="celda-id">#4521</td>
+            <td>Carlos A.</td>
+            <td>ZapatoStyle</td>
+            <td>1 producto</td>
+            <td>$389.900</td>
+            <td class="celda-gris">15/03/2026</td>
+            <td><span class="badge-estado badge-entregado">Entregado</span></td>
+            <td><button class="boton-accion-tabla boton-ver-tabla" title="Ver detalle">👁</button></td>
+          </tr>
+          <tr>
+            <td class="celda-id">#4520</td>
+            <td>María L.</td>
+            <td>SoleModa</td>
+            <td>2 productos</td>
+            <td>$935.000</td>
+            <td class="celda-gris">15/03/2026</td>
+            <td><span class="badge-estado badge-enviado">Enviado</span></td>
+            <td><button class="boton-accion-tabla boton-ver-tabla" title="Ver detalle">👁</button></td>
+          </tr>
+          <tr>
+            <td class="celda-id">#4519</td>
+            <td>Juan R.</td>
+            <td>PasosHub</td>
+            <td>1 producto</td>
+            <td>$278.500</td>
+            <td class="celda-gris">16/03/2026</td>
+            <td><span class="badge-estado badge-procesando">Procesando</span></td>
+            <td><button class="boton-accion-tabla boton-ver-tabla" title="Ver detalle">👁</button></td>
+          </tr>
+          <tr>
+            <td class="celda-id">#4518</td>
+            <td>Ana M.</td>
+            <td>ZapatoStyle</td>
+            <td>1 producto</td>
+            <td>$620.000</td>
+            <td class="celda-gris">16/03/2026</td>
+            <td><span class="badge-estado badge-procesando">Procesando</span></td>
+            <td><button class="boton-accion-tabla boton-ver-tabla" title="Ver detalle">👁</button></td>
+          </tr>
+          <tr>
+            <td class="celda-id">#4517</td>
+            <td>Luis P.</td>
+            <td>SoleModa</td>
+            <td>1 producto</td>
+            <td>$195.000</td>
+            <td class="celda-gris">14/03/2026</td>
+            <td><span class="badge-estado badge-cancelado">Cancelado</span></td>
+            <td><button class="boton-accion-tabla boton-ver-tabla" title="Ver detalle">👁</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+
+    <!-- ============================================================
+         MODAL: Confirmar aprobación / rechazo de empresa
+    ============================================================ -->
+    <div id="modal-confirmacion" style="display:none">
+      <div id="modal-caja">
+        <h3 id="modal-titulo">Confirmar acción</h3>
+        <p id="modal-mensaje">¿Estás seguro de que deseas realizar esta acción?</p>
+        <div id="modal-botones">
+          <button id="modal-boton-cancelar">Cancelar</button>
+          <button id="modal-boton-confirmar">Confirmar</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <!-- fin contenido-admin -->
+
+
+  <script src="js/scripts.js"></script>
+  <script src="js/scripts_Admin.js"></script>
+
+</body>
+</html>

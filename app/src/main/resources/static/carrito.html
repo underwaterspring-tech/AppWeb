@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrito — NexoShop</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="css/estilos.css"/>
+  <link rel="stylesheet" href="css/estilos_Carrito.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="barra-navegacion">
+    <a href="index.html" id="logo-nexoshop">NEXO<span id="logo-shop">SHOP</span></a>
+    <ul id="menu-categorias">
+      <li><a href="#">Deportivos</a></li>
+      <li><a href="#">Casual</a></li>
+      <li><a href="#">Marcas</a></li>
+      <li><a href="#">Empresas</a></li>
+      <li><a href="#" id="menu-ofertas">Ofertas</a></li>
+    </ul>
+    <div id="contenedor-barra-busqueda">
+      <input type="text" id="input-busqueda" placeholder="Buscar zapatos, marcas, empresas..." autocomplete="off"/>
+      <button id="boton-ejecutar-busqueda">Buscar</button>
+      <div id="panel-sugerencias-busqueda" style="display:none">
+        <p class="sugerencia-label">Búsquedas populares</p>
+        <ul id="lista-sugerencias">
+          <li class="sugerencia-item">👟 Nike Air Max</li>
+          <li class="sugerencia-item">🥿 Adidas Ultraboost</li>
+          <li class="sugerencia-item">👠 Tacones mujer</li>
+          <li class="sugerencia-item">🥾 Botas cuero hombre</li>
+        </ul>
+      </div>
+    </div>
+    <div id="iconos-derecha">
+      <button class="boton-icono" id="boton-favoritos">♡</button>
+      <button class="boton-icono" id="boton-carrito">
+        🛒<span id="contador-carrito">3</span>
+      </button>
+      <button id="boton-login">Ingresar</button>
+      <button id="boton-registro-vender">Vender aquí</button>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       CABECERA
+  ============================================================ -->
+  <header id="cabecera-carrito">
+    <div id="cabecera-carrito-contenido">
+      <p id="ruta-navegacion-carrito">
+        <a href="index.html">Inicio</a>
+        <span class="separador-ruta">→</span>
+        <span>Carrito</span>
+      </p>
+      <h1 id="titulo-carrito">
+        MI <span id="titulo-carrito-rojo">CARRITO</span>
+      </h1>
+      <p id="subtitulo-carrito">
+        Tienes <strong id="cantidad-items-carrito">3</strong> productos de
+        <strong id="cantidad-empresas-carrito">2</strong> empresas
+      </p>
+    </div>
+  </header>
+
+
+  <!-- ============================================================
+       CUERPO: productos (izquierda) + resumen (derecha)
+  ============================================================ -->
+  <main id="cuerpo-carrito">
+
+    <!-- COLUMNA IZQUIERDA: lista de productos -->
+    <div id="lista-productos-carrito">
+
+      <!-- --------------------------------------------------------
+           GRUPO POR EMPRESA 1
+      -------------------------------------------------------- -->
+      <div class="grupo-empresa-carrito">
+
+        <!-- Encabezado del grupo -->
+        <div class="encabezado-grupo-empresa">
+          <div class="empresa-grupo-logo">ZS</div>
+          <div class="empresa-grupo-info">
+            <p class="empresa-grupo-nombre">ZapatoStyle</p>
+            <p class="empresa-grupo-ciudad">📍 Bogotá · ✓ Verificada</p>
+          </div>
+          <p class="empresa-grupo-envio">🚚 Envío gratis desde $200.000</p>
+        </div>
+
+        <!-- Producto 1 -->
+        <div class="item-carrito" id="item-1">
+          <div class="item-imagen">
+            <span class="item-emoji">👟</span>
+          </div>
+          <div class="item-info">
+            <p class="item-marca">Nike</p>
+            <p class="item-nombre">Air Max 270 React ENG</p>
+            <div class="item-variantes">
+              <span class="item-variante">Talla: 40</span>
+              <span class="separador-variante">·</span>
+              <span class="item-variante">Color: Negro</span>
+            </div>
+            <div class="item-acciones-movil">
+              <div class="control-cantidad-carrito">
+                <button class="boton-restar-item" data-id="1">−</button>
+                <span class="cantidad-item">1</span>
+                <button class="boton-sumar-item" data-id="1">+</button>
+              </div>
+              <button class="boton-eliminar-item" data-id="1">🗑 Eliminar</button>
+            </div>
+          </div>
+          <div class="item-controles">
+            <div class="control-cantidad-carrito">
+              <button class="boton-restar-item" data-id="1">−</button>
+              <span class="cantidad-item">1</span>
+              <button class="boton-sumar-item" data-id="1">+</button>
+            </div>
+            <div class="item-precio-contenedor">
+              <p class="item-precio-unitario">$389.900 c/u</p>
+              <p class="item-precio-total">$389.900</p>
+            </div>
+            <button class="boton-eliminar-item" data-id="1" title="Eliminar">✕</button>
+          </div>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="item-carrito" id="item-2">
+          <div class="item-imagen">
+            <span class="item-emoji">👟</span>
+          </div>
+          <div class="item-info">
+            <p class="item-marca">Jordan</p>
+            <p class="item-nombre">Air Jordan 1 Retro High OG</p>
+            <div class="item-variantes">
+              <span class="item-variante">Talla: 42</span>
+              <span class="separador-variante">·</span>
+              <span class="item-variante">Color: Rojo</span>
+            </div>
+          </div>
+          <div class="item-controles">
+            <div class="control-cantidad-carrito">
+              <button class="boton-restar-item" data-id="2">−</button>
+              <span class="cantidad-item">1</span>
+              <button class="boton-sumar-item" data-id="2">+</button>
+            </div>
+            <div class="item-precio-contenedor">
+              <p class="item-precio-unitario">$620.000 c/u</p>
+              <p class="item-precio-total">$620.000</p>
+            </div>
+            <button class="boton-eliminar-item" data-id="2" title="Eliminar">✕</button>
+          </div>
+        </div>
+
+      </div>
+      <!-- fin grupo empresa 1 -->
+
+
+      <!-- --------------------------------------------------------
+           GRUPO POR EMPRESA 2
+      -------------------------------------------------------- -->
+      <div class="grupo-empresa-carrito">
+
+        <div class="encabezado-grupo-empresa">
+          <div class="empresa-grupo-logo" style="background:var(--color-amarillo);color:var(--color-negro)">SM</div>
+          <div class="empresa-grupo-info">
+            <p class="empresa-grupo-nombre">SoleModa</p>
+            <p class="empresa-grupo-ciudad">📍 Medellín · ✓ Verificada</p>
+          </div>
+          <p class="empresa-grupo-envio">🚚 Envío gratis desde $200.000</p>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="item-carrito" id="item-3">
+          <div class="item-imagen" style="background:#e8f0e8">
+            <span class="item-emoji">🥿</span>
+          </div>
+          <div class="item-info">
+            <p class="item-marca">Adidas</p>
+            <p class="item-nombre">Ultraboost 22 Running</p>
+            <div class="item-variantes">
+              <span class="item-variante">Talla: 39</span>
+              <span class="separador-variante">·</span>
+              <span class="item-variante">Color: Verde</span>
+            </div>
+            <div class="item-etiqueta-oferta">🏷 30% OFF aplicado</div>
+          </div>
+          <div class="item-controles">
+            <div class="control-cantidad-carrito">
+              <button class="boton-restar-item" data-id="3">−</button>
+              <span class="cantidad-item">1</span>
+              <button class="boton-sumar-item" data-id="3">+</button>
+            </div>
+            <div class="item-precio-contenedor">
+              <p class="item-precio-unitario-tachado">$450.000</p>
+              <p class="item-precio-unitario">$315.000 c/u</p>
+              <p class="item-precio-total">$315.000</p>
+            </div>
+            <button class="boton-eliminar-item" data-id="3" title="Eliminar">✕</button>
+          </div>
+        </div>
+
+      </div>
+      <!-- fin grupo empresa 2 -->
+
+
+      <!-- Botones inferiores -->
+      <div id="acciones-carrito">
+        <a href="Catalogo.html" id="boton-seguir-comprando">← Seguir comprando</a>
+        <button id="boton-vaciar-carrito">🗑 Vaciar carrito</button>
+      </div>
+
+    </div>
+    <!-- fin lista-productos-carrito -->
+
+
+    <!-- COLUMNA DERECHA: resumen y pago -->
+    <aside id="resumen-pedido">
+
+      <h2 id="titulo-resumen">Resumen del pedido</h2>
+
+      <!-- Desglose de precios -->
+      <div id="desglose-precios">
+        <div class="fila-precio">
+          <span class="etiqueta-precio">Subtotal (3 productos)</span>
+          <span class="valor-precio" id="valor-subtotal">$1.324.900</span>
+        </div>
+        <div class="fila-precio">
+          <span class="etiqueta-precio">Descuentos</span>
+          <span class="valor-precio valor-descuento" id="valor-descuentos">− $135.000</span>
+        </div>
+        <div class="fila-precio">
+          <span class="etiqueta-precio">Envío</span>
+          <span class="valor-precio valor-envio-gratis" id="valor-envio">Gratis</span>
+        </div>
+      </div>
+
+      <!-- Cupón de descuento -->
+      <div id="seccion-cupon">
+        <p id="etiqueta-cupon">¿Tienes un cupón?</p>
+        <div id="input-cupon-contenedor">
+          <input
+            type="text"
+            id="input-cupon"
+            placeholder="Ingresa tu código"
+            autocomplete="off"
+          />
+          <button id="boton-aplicar-cupon">Aplicar</button>
+        </div>
+        <p id="mensaje-cupon" style="display:none"></p>
+      </div>
+
+      <!-- Total -->
+      <div id="bloque-total">
+        <div class="fila-precio fila-total">
+          <span id="etiqueta-total">Total a pagar</span>
+          <span id="valor-total">$1.189.900</span>
+        </div>
+        <p id="nota-impuestos">* Precios incluyen IVA</p>
+      </div>
+
+      <!-- Botón de pago -->
+      <button id="boton-proceder-pago" class="boton-principal">
+        Proceder al pago →
+      </button>
+
+      <!-- Métodos de pago aceptados -->
+      <div id="metodos-pago-aceptados">
+        <p id="etiqueta-metodos-pago">Pagos seguros con</p>
+        <div id="logos-metodos-pago">
+          <span class="logo-pago">PSE</span>
+          <span class="logo-pago">Nequi</span>
+          <span class="logo-pago">Bancolombia</span>
+          <span class="logo-pago">Efecty</span>
+        </div>
+      </div>
+
+      <!-- Garantías -->
+      <div id="garantias-resumen">
+        <div class="garantia-item">
+          <span class="garantia-icono">🔒</span>
+          <span class="garantia-texto">Pago 100% seguro</span>
+        </div>
+        <div class="garantia-item">
+          <span class="garantia-icono">↩️</span>
+          <span class="garantia-texto">Devolución en 30 días</span>
+        </div>
+        <div class="garantia-item">
+          <span class="garantia-icono">🚚</span>
+          <span class="garantia-texto">Envío a todo Colombia</span>
+        </div>
+      </div>
+
+    </aside>
+    <!-- fin resumen-pedido -->
+
+  </main>
+
+
+  <!-- ============================================================
+       CARRITO VACIO (se muestra cuando no hay productos)
+  ============================================================ -->
+  <div id="estado-carrito-vacio" style="display:none">
+    <div id="carrito-vacio-contenido">
+      <div id="carrito-vacio-icono">🛒</div>
+      <h2 id="carrito-vacio-titulo">Tu carrito está vacío</h2>
+      <p id="carrito-vacio-descripcion">
+        Aún no has agregado ningún producto. Explora nuestro catálogo y encuentra el par perfecto.
+      </p>
+      <a href="Catalogo.html" class="boton-principal" id="boton-ir-catalogo">
+        Explorar catálogo →
+      </a>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       PRODUCTOS SUGERIDOS
+  ============================================================ -->
+  <section id="seccion-sugeridos">
+    <div class="encabezado-seccion revelar">
+      <div>
+        <p class="etiqueta-seccion">Completa tu compra</p>
+        <h2 class="titulo-seccion">También te <em>puede gustar</em></h2>
+      </div>
+      <a href="Catalogo.html" class="enlace-ver-todos">Ver más →</a>
+    </div>
+
+    <div id="grilla-sugeridos" class="revelar">
+      <div class="tarjeta-producto">
+        <div class="imagen-producto" style="background:#f0e8e8">
+          <span class="etiqueta-producto etiqueta-popular">🔥 Top</span>
+          👠
+          <button class="boton-agregar-carrito">+ Agregar al carrito</button>
+        </div>
+        <div class="detalle-producto">
+          <p class="vendedor-producto">por <a href="#" class="enlace-vendedor">PasosHub</a></p>
+          <p class="marca-producto">Puma</p>
+          <p class="nombre-producto">RS-X3 Puzzle Blanco</p>
+          <div class="estrellas-valoracion"><span class="estrellas">★★★★★</span><span class="cantidad-resenas">(312)</span></div>
+          <div class="pie-producto"><div class="precio-producto">$278.500</div></div>
+        </div>
+      </div>
+      <div class="tarjeta-producto">
+        <div class="imagen-producto" style="background:#e8eaf0">
+          <span class="etiqueta-producto etiqueta-nuevo">Nuevo</span>
+          🥾
+          <button class="boton-agregar-carrito">+ Agregar al carrito</button>
+        </div>
+        <div class="detalle-producto">
+          <p class="vendedor-producto">por <a href="#" class="enlace-vendedor">UrbanFeet</a></p>
+          <p class="marca-producto">Skechers</p>
+          <p class="nombre-producto">D'Lites Memory Foam</p>
+          <div class="estrellas-valoracion"><span class="estrellas">★★★★☆</span><span class="cantidad-resenas">(97)</span></div>
+          <div class="pie-producto"><div class="precio-producto">$220.000</div></div>
+        </div>
+      </div>
+      <div class="tarjeta-producto">
+        <div class="imagen-producto" style="background:#f4e8f0">
+          👟
+          <button class="boton-agregar-carrito">+ Agregar al carrito</button>
+        </div>
+        <div class="detalle-producto">
+          <p class="vendedor-producto">por <a href="#" class="enlace-vendedor">ZapatoStyle</a></p>
+          <p class="marca-producto">Vans</p>
+          <p class="nombre-producto">Old Skool Platform</p>
+          <div class="estrellas-valoracion"><span class="estrellas">★★★★★</span><span class="cantidad-resenas">(209)</span></div>
+          <div class="pie-producto"><div class="precio-producto">$195.000</div></div>
+        </div>
+      </div>
+      <div class="tarjeta-producto">
+        <div class="imagen-producto" style="background:#e8ecf0">
+          🥿
+          <button class="boton-agregar-carrito">+ Agregar al carrito</button>
+        </div>
+        <div class="detalle-producto">
+          <p class="vendedor-producto">por <a href="#" class="enlace-vendedor">SoleModa</a></p>
+          <p class="marca-producto">New Balance</p>
+          <p class="nombre-producto">574 Core Plus</p>
+          <div class="estrellas-valoracion"><span class="estrellas">★★★★☆</span><span class="cantidad-resenas">(178)</span></div>
+          <div class="pie-producto"><div class="precio-producto">$340.000</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer id="pie-de-pagina">
+    <div id="grilla-footer">
+      <div id="footer-columna-principal">
+        <div id="footer-logo">NEXO<span id="footer-logo-shop">SHOP</span></div>
+        <p id="footer-descripcion">El marketplace de zapatos de Colombia.</p>
+        <div id="footer-redes-sociales">
+          <a href="#" class="boton-red-social">f</a>
+          <a href="#" class="boton-red-social">in</a>
+          <a href="#" class="boton-red-social">ig</a>
+          <a href="#" class="boton-red-social">yt</a>
+        </div>
+      </div>
+      <div class="footer-columna-links">
+        <h4 class="footer-titulo-columna">Marketplace</h4>
+        <ul class="footer-lista-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="Catalogo.html">Catálogo</a></li>
+          <li><a href="#">Empresas</a></li>
+          <li><a href="#">Ofertas</a></li>
+        </ul>
+      </div>
+      <div class="footer-columna-links">
+        <h4 class="footer-titulo-columna">Vendedores</h4>
+        <ul class="footer-lista-links">
+          <li><a href="#">Registrar empresa</a></li>
+          <li><a href="#">Panel vendedor</a></li>
+          <li><a href="#">Comisiones</a></li>
+          <li><a href="#">Soporte</a></li>
+        </ul>
+      </div>
+      <div class="footer-columna-links">
+        <h4 class="footer-titulo-columna">Ayuda</h4>
+        <ul class="footer-lista-links">
+          <li><a href="#">Mi cuenta</a></li>
+          <li><a href="#">Mis pedidos</a></li>
+          <li><a href="#">Devoluciones</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="footer-parte-inferior">
+      <p>© 2025 NexoShop — Marketplace de Zapatos · Todos los derechos reservados.</p>
+      <p>💳 PSE · Nequi · Bancolombia · Efecty</p>
+    </div>
+  </footer>
+
+
+  <script src="js/scripts.js"></script>
+  <script src="js/scripts_Carrito.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mis Favoritos — NexoShop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/estilos.css"/>
+  <link rel="stylesheet" href="css/estilos_Comprador.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="barra-navegacion">
+    <a href="index.html" id="logo-nexoshop">NEXO<span id="logo-shop">SHOP</span></a>
+    <ul id="menu-categorias">
+      <li><a href="#">Deportivos</a></li>
+      <li><a href="#">Casual</a></li>
+      <li><a href="#">Marcas</a></li>
+      <li><a href="#">Empresas</a></li>
+      <li><a href="#" id="menu-ofertas">Ofertas</a></li>
+    </ul>
+    <div id="contenedor-barra-busqueda">
+      <input type="text" id="input-busqueda" placeholder="Buscar zapatos, marcas, empresas..." autocomplete="off"/>
+      <button id="boton-ejecutar-busqueda">Buscar</button>
+      <div id="panel-sugerencias-busqueda" style="display:none">
+        <p class="sugerencia-label">Búsquedas populares</p>
+        <ul id="lista-sugerencias">
+          <li class="sugerencia-item">👟 Nike Air Max</li>
+          <li class="sugerencia-item">🥿 Adidas Ultraboost</li>
+          <li class="sugerencia-item">👠 Tacones mujer</li>
+          <li class="sugerencia-item">🥾 Botas cuero hombre</li>
+        </ul>
+      </div>
+    </div>
+    <div id="iconos-derecha">
+      <button class="boton-icono" id="boton-favoritos">♡</button>
+      <button class="boton-icono" id="boton-carrito">🛒<span id="contador-carrito">0</span></button>
+      <button id="boton-login">Ingresar</button>
+      <button id="boton-registro-vender">Vender aquí</button>
+    </div>
+  </nav>
+
+
+  <!-- CABECERA -->
+  <header id="cabecera-comprador">
+    <div id="cabecera-comprador-contenido">
+      <p id="ruta-navegacion-comprador">
+        <a href="index.html">Inicio</a>
+        <span class="separador-ruta">→</span>
+        <span>Mis favoritos</span>
+      </p>
+      <h1 id="titulo-pagina-comprador">
+        MIS <span class="titulo-rojo">FAVORITOS</span>
+      </h1>
+      <p id="subtitulo-pagina-comprador">Productos que guardaste para después</p>
+    </div>
+    <nav id="subnav-comprador">
+      <a href="mis-pedidos.html" class="subnav-enlace">📦 Mis pedidos</a>
+      <a href="mis-favoritos.html" class="subnav-enlace activo">♡ Favoritos</a>
+      <a href="mi-cuenta.html" class="subnav-enlace">👤 Mi cuenta</a>
+    </nav>
+  </header>
+
+
+  <!-- CUERPO -->
+  <main id="cuerpo-comprador">
+
+    <div id="grilla-favoritos">
+
+      <div class="tarjeta-favorito revelar">
+        <div class="tarjeta-producto">
+          <div class="imagen-producto" style="background:#f0ece4">
+            <span class="etiqueta-producto etiqueta-nuevo">Nuevo</span>
+            👟
+            <button class="boton-agregar-carrito">+ Agregar al carrito</button>
+          </div>
+          <div class="detalle-producto">
+            <p class="vendedor-producto">por <a href="#" class="enlace-vendedor">ZapatoStyle</a></p>
+            <p class="marca-producto">Nike</p>
+            <p class="nombre-producto">Air Max 270 React ENG</p>
+            <div class="estrellas-valoracion">
+              <span class="estrellas">★★★★★</span>
+              <span class="cantidad-resenas">(248)</span>
+            </div>
+            <div class="pie-producto">
+              <div class="precio-producto">$389.900</div>
+              <div class="colores-disponibles">
+                <div class="circulo-color" style="background:#111"></div>
+                <div class="circulo-color" style="background:#c8452d"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn-quitar-favorito" title="Quitar de favoritos">✕ Quitar</button>
+      </div>
+
+      <div class="tarjeta-favorito revelar">
+        <div class="tarjeta-producto">
+          <div class="imagen-producto" style="background:#faf0e8">
+            <span class="etiqueta-producto etiqueta-popular">🔥 Top</span>
+            👟
+            <button class="boton-agregar-carrito">+ Agregar al carrito</button>
+          </div>
+          <div class="detalle-producto">
+            <p class="vendedor-producto">por <a href="#" class="enlace-vendedor">ZapatoStyle</a></p>
+            <p class="marca-producto">Jordan</p>
+            <p class="nombre-producto">Air Jordan 1 Retro High OG</p>
+            <div class="estrellas-valoracion">
+              <span class="estrellas">★★★★★</span>
+              <span class="cantidad-resenas">(521)</span>
+            </div>
+            <div class="pie-producto">
+              <div class="precio-producto">$620.000</div>
+              <div class="colores-disponibles">
+                <div class="circulo-color" style="background:#c8452d"></div>
+                <div class="circulo-color" style="background:#111"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn-quitar-favorito" title="Quitar de favoritos">✕ Quitar</button>
+      </div>
+
+      <div class="tarjeta-favorito revelar">
+        <div class="tarjeta-producto">
+          <div class="imagen-producto" style="background:#f4e8f0">
+            👟
+            <button class="boton-agregar-carrito">+ Agregar al carrito</button>
+          </div>
+          <div class="detalle-producto">
+            <p class="vendedor-producto">por <a href="#" class="enlace-vendedor">PasosHub</a></p>
+            <p class="marca-producto">Vans</p>
+            <p class="nombre-producto">Old Skool Platform</p>
+            <div class="estrellas-valoracion">
+              <span class="estrellas">★★★★★</span>
+              <span class="cantidad-resenas">(209)</span>
+            </div>
+            <div class="pie-producto">
+              <div class="precio-producto">$195.000</div>
+              <div class="colores-disponibles">
+                <div class="circulo-color" style="background:#111"></div>
+                <div class="circulo-color" style="background:#fff;border:2px solid #ddd"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn-quitar-favorito" title="Quitar de favoritos">✕ Quitar</button>
+      </div>
+
+    </div>
+
+    <!-- Estado vacío -->
+    <div id="favoritos-vacio" style="display:none">
+      <div id="favoritos-vacio-contenido">
+        <p id="favoritos-vacio-icono">♡</p>
+        <h2>No tienes favoritos aún</h2>
+        <p>Guarda los productos que te gusten haciendo clic en el corazón.</p>
+        <a href="Catalogo.html" class="boton-principal">Explorar catálogo →</a>
+      </div>
+    </div>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer id="pie-de-pagina">
+    <div id="grilla-footer">
+      <div id="footer-columna-principal">
+        <div id="footer-logo">NEXO<span id="footer-logo-shop">SHOP</span></div>
+        <p id="footer-descripcion">El marketplace de zapatos de Colombia.</p>
+        <div id="footer-redes-sociales">
+          <a href="#" class="boton-red-social">f</a>
+          <a href="#" class="boton-red-social">in</a>
+          <a href="#" class="boton-red-social">ig</a>
+          <a href="#" class="boton-red-social">yt</a>
+        </div>
+      </div>
+      <div class="footer-columna-links">
+        <h4 class="footer-titulo-columna">Marketplace</h4>
+        <ul class="footer-lista-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="Catalogo.html">Catálogo</a></li>
+          <li><a href="#">Empresas</a></li>
+        </ul>
+      </div>
+      <div class="footer-columna-links">
+        <h4 class="footer-titulo-columna">Mi cuenta</h4>
+        <ul class="footer-lista-links">
+          <li><a href="mis-pedidos.html">Mis pedidos</a></li>
+          <li><a href="mis-favoritos.html">Mis favoritos</a></li>
+          <li><a href="mi-cuenta.html">Mi cuenta</a></li>
+        </ul>
+      </div>
+      <div class="footer-columna-links">
+        <h4 class="footer-titulo-columna">Ayuda</h4>
+        <ul class="footer-lista-links">
+          <li><a href="#">Devoluciones</a></li>
+          <li><a href="#">Envíos</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="footer-parte-inferior">
+      <p>© 2025 NexoShop — Marketplace de Zapatos · Todos los derechos reservados.</p>
+      <p>💳 PSE · Nequi · Bancolombia · Efecty</p>
+    </div>
+  </footer>
+
+  <script src="js/scripts.js"></script>
+  <script src="js/scripts_Comprador.js"></script>
+</body>
+</html>

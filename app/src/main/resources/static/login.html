@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ingresar — NexoShop</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet"/>
+
+  <!-- Estilos compartidos -->
+  <link rel="stylesheet" href="css/estilos.css"/>
+
+  <!-- Estilos propios de esta página -->
+  <link rel="stylesheet" href="css/estilos_login.css"/>
+</head>
+<body id="pagina-login">
+
+  <!-- ============================================================
+       NAVBAR MINIMALISTA (solo logo)
+  ============================================================ -->
+  <nav id="navbar-login">
+    <a href="index.html" id="logo-nexoshop">NEXO<span id="logo-shop">SHOP</span></a>
+    <a href="index.html" id="enlace-volver-inicio">← Volver al inicio</a>
+  </nav>
+
+
+  <!-- ============================================================
+       CONTENEDOR PRINCIPAL: izquierda decorativa + derecha formulario
+  ============================================================ -->
+  <div id="contenedor-login-registro">
+
+    <!-- LADO IZQUIERDO — decorativo -->
+    <div id="panel-decorativo">
+      <div id="panel-decorativo-contenido">
+
+        <div id="panel-texto-grande">NEXO<br><span id="panel-shop-rojo">SHOP</span></div>
+
+        <h2 id="panel-titulo">El marketplace<br>de zapatos<br><em>de Colombia.</em></h2>
+
+        <p id="panel-descripcion">
+          Compra los mejores modelos de decenas de empresas
+          o registra tu negocio y empieza a vender hoy mismo.
+        </p>
+
+        <!-- Estadísticas pequeñas -->
+        <div id="panel-estadisticas">
+          <div class="panel-stat">
+            <span class="panel-stat-numero">+500</span>
+            <span class="panel-stat-label">Productos</span>
+          </div>
+          <div class="panel-stat">
+            <span class="panel-stat-numero">+40</span>
+            <span class="panel-stat-label">Empresas</span>
+          </div>
+          <div class="panel-stat">
+            <span class="panel-stat-numero">+12k</span>
+            <span class="panel-stat-label">Compradores</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Zapato decorativo flotando -->
+      <div id="panel-zapato-decorativo">👟</div>
+    </div>
+
+
+    <!-- LADO DERECHO — formularios -->
+    <div id="panel-formularios">
+
+      <!-- Tabs: Ingresar / Registrarse -->
+      <div id="tabs-login-registro">
+        <button class="tab-auth activo" id="tab-login"    data-tab="login">Ingresar</button>
+        <button class="tab-auth"        id="tab-registro" data-tab="registro">Registrarse</button>
+      </div>
+
+
+      <!-- ======================================================
+           FORMULARIO DE LOGIN
+      ====================================================== -->
+      <div id="formulario-login" class="contenedor-formulario">
+
+        <div class="form-encabezado">
+          <h1 class="form-titulo">Bienvenido<br><span class="form-titulo-rojo">de vuelta.</span></h1>
+          <p class="form-subtitulo">Ingresa con tu cuenta para continuar</p>
+        </div>
+
+        <form id="form-login" novalidate>
+
+          <!-- Email -->
+          <div class="grupo-campo">
+            <label class="etiqueta-campo" for="login-email">Correo electrónico</label>
+            <input
+              type="email"
+              id="login-email"
+              name="email"
+              class="campo-texto"
+              placeholder="tucorreo@ejemplo.com"
+              autocomplete="email"
+            />
+            <span class="mensaje-error" id="error-login-email"></span>
+          </div>
+
+          <!-- Contraseña -->
+          <div class="grupo-campo">
+            <div class="etiqueta-campo-fila">
+              <label class="etiqueta-campo" for="login-password">Contraseña</label>
+              <a href="#" class="enlace-olvide-password">¿Olvidaste tu contraseña?</a>
+            </div>
+            <div class="campo-password-contenedor">
+              <input
+                type="password"
+                id="login-password"
+                name="password"
+                class="campo-texto"
+                placeholder="••••••••"
+                autocomplete="current-password"
+              />
+              <button type="button" class="boton-mostrar-password" data-target="login-password">👁</button>
+            </div>
+            <span class="mensaje-error" id="error-login-password"></span>
+          </div>
+
+          <!-- Recordarme -->
+          <div class="grupo-checkbox-recordar">
+            <label class="opcion-recordar">
+              <input type="checkbox" id="checkbox-recordar"/>
+              <span>Recordar mi sesión</span>
+            </label>
+          </div>
+
+          <!-- Botón submit -->
+          <button type="submit" class="boton-submit" id="boton-submit-login">
+            <span class="boton-submit-texto">Ingresar</span>
+            <span class="boton-submit-cargando" style="display:none">Cargando...</span>
+          </button>
+
+          <!-- Mensaje de error general -->
+          <div class="alerta-error" id="alerta-error-login" style="display:none">
+            ❌ Correo o contraseña incorrectos. Intenta de nuevo.
+          </div>
+
+        </form>
+
+        <p class="texto-cambiar-tab">
+          ¿No tienes cuenta?
+          <button class="enlace-cambiar-tab" data-ir-a="registro">Regístrate gratis</button>
+        </p>
+
+      </div>
+      <!-- fin formulario-login -->
+
+
+      <!-- ======================================================
+           FORMULARIO DE REGISTRO
+           Primero elegir el tipo de usuario
+      ====================================================== -->
+      <div id="formulario-registro" class="contenedor-formulario" style="display:none">
+
+        <div class="form-encabezado">
+          <h1 class="form-titulo">Crear<br><span class="form-titulo-rojo">cuenta.</span></h1>
+          <p class="form-subtitulo">¿Cómo quieres usar NexoShop?</p>
+        </div>
+
+        <!-- Selector de tipo de usuario -->
+        <div id="selector-tipo-usuario">
+          <button class="boton-tipo-usuario activo" id="tipo-comprador" data-tipo="COMPRADOR">
+            <span class="tipo-icono">🛒</span>
+            <span class="tipo-nombre">Quiero comprar</span>
+            <span class="tipo-descripcion">Soy un comprador</span>
+          </button>
+          <button class="boton-tipo-usuario" id="tipo-vendedor" data-tipo="VENDEDOR">
+            <span class="tipo-icono">🏢</span>
+            <span class="tipo-nombre">Quiero vender</span>
+            <span class="tipo-descripcion">Tengo una empresa</span>
+          </button>
+        </div>
+
+        <!-- CAMPOS COMUNES para comprador y vendedor -->
+        <form id="form-registro" novalidate>
+
+          <!-- Nombre completo -->
+          <div class="grupo-campo">
+            <label class="etiqueta-campo" for="registro-nombre">Nombre completo</label>
+            <input
+              type="text"
+              id="registro-nombre"
+              name="nombre"
+              class="campo-texto"
+              placeholder="Tu nombre completo"
+              autocomplete="name"
+            />
+            <span class="mensaje-error" id="error-registro-nombre"></span>
+          </div>
+
+          <!-- Email -->
+          <div class="grupo-campo">
+            <label class="etiqueta-campo" for="registro-email">Correo electrónico</label>
+            <input
+              type="email"
+              id="registro-email"
+              name="email"
+              class="campo-texto"
+              placeholder="tucorreo@ejemplo.com"
+              autocomplete="email"
+            />
+            <span class="mensaje-error" id="error-registro-email"></span>
+          </div>
+
+          <!-- Teléfono -->
+          <div class="grupo-campo">
+            <label class="etiqueta-campo" for="registro-telefono">Teléfono</label>
+            <input
+              type="tel"
+              id="registro-telefono"
+              name="telefono"
+              class="campo-texto"
+              placeholder="300 123 4567"
+              autocomplete="tel"
+            />
+            <span class="mensaje-error" id="error-registro-telefono"></span>
+          </div>
+
+          <!-- CAMPOS EXTRA solo para vendedor (empresa) -->
+          <div id="campos-empresa" style="display:none">
+
+            <div class="separador-seccion">
+              <span>Datos de tu empresa</span>
+            </div>
+
+            <div class="grupo-campo">
+              <label class="etiqueta-campo" for="empresa-nombre">Nombre de la empresa</label>
+              <input
+                type="text"
+                id="empresa-nombre"
+                name="empresaNombre"
+                class="campo-texto"
+                placeholder="Ej: ZapatoStyle SAS"
+              />
+              <span class="mensaje-error" id="error-empresa-nombre"></span>
+            </div>
+
+            <div class="grupo-campo">
+              <label class="etiqueta-campo" for="empresa-nit">NIT</label>
+              <input
+                type="text"
+                id="empresa-nit"
+                name="empresaNit"
+                class="campo-texto"
+                placeholder="900.123.456-7"
+              />
+              <span class="mensaje-error" id="error-empresa-nit"></span>
+            </div>
+
+            <div class="grupo-campo">
+              <label class="etiqueta-campo" for="empresa-ciudad">Ciudad</label>
+              <select id="empresa-ciudad" name="empresaCiudad" class="campo-texto campo-select">
+                <option value="">Selecciona tu ciudad</option>
+                <option value="bogota">Bogotá</option>
+                <option value="medellin">Medellín</option>
+                <option value="cali">Cali</option>
+                <option value="barranquilla">Barranquilla</option>
+                <option value="cartagena">Cartagena</option>
+                <option value="bucaramanga">Bucaramanga</option>
+                <option value="otra">Otra ciudad</option>
+              </select>
+              <span class="mensaje-error" id="error-empresa-ciudad"></span>
+            </div>
+
+            <!-- Aviso de aprobación -->
+            <div class="aviso-aprobacion">
+              ⏳ Tu empresa será revisada por el administrador de NexoShop antes de poder publicar productos. El proceso toma máximo 24 horas.
+            </div>
+
+          </div>
+          <!-- fin campos-empresa -->
+
+          <!-- Contraseña -->
+          <div class="grupo-campo">
+            <label class="etiqueta-campo" for="registro-password">Contraseña</label>
+            <div class="campo-password-contenedor">
+              <input
+                type="password"
+                id="registro-password"
+                name="password"
+                class="campo-texto"
+                placeholder="Mínimo 8 caracteres"
+                autocomplete="new-password"
+              />
+              <button type="button" class="boton-mostrar-password" data-target="registro-password">👁</button>
+            </div>
+            <!-- Barra de seguridad de la contraseña -->
+            <div id="barra-seguridad-password">
+              <div id="nivel-seguridad-barra"></div>
+            </div>
+            <span id="texto-seguridad-password"></span>
+            <span class="mensaje-error" id="error-registro-password"></span>
+          </div>
+
+          <!-- Confirmar contraseña -->
+          <div class="grupo-campo">
+            <label class="etiqueta-campo" for="registro-confirmar-password">Confirmar contraseña</label>
+            <div class="campo-password-contenedor">
+              <input
+                type="password"
+                id="registro-confirmar-password"
+                name="confirmarPassword"
+                class="campo-texto"
+                placeholder="Repite tu contraseña"
+                autocomplete="new-password"
+              />
+              <button type="button" class="boton-mostrar-password" data-target="registro-confirmar-password">👁</button>
+            </div>
+            <span class="mensaje-error" id="error-registro-confirmar"></span>
+          </div>
+
+          <!-- Términos y condiciones -->
+          <div class="grupo-campo">
+            <label class="opcion-terminos">
+              <input type="checkbox" id="checkbox-terminos"/>
+              <span>Acepto los <a href="#" class="enlace-terminos">términos y condiciones</a> de NexoShop</span>
+            </label>
+            <span class="mensaje-error" id="error-terminos"></span>
+          </div>
+
+          <!-- Botón submit -->
+          <button type="submit" class="boton-submit" id="boton-submit-registro">
+            <span class="boton-submit-texto">Crear cuenta</span>
+            <span class="boton-submit-cargando" style="display:none">Creando cuenta...</span>
+          </button>
+
+          <!-- Mensaje de éxito -->
+          <div class="alerta-exito" id="alerta-exito-registro" style="display:none">
+            ✅ ¡Cuenta creada exitosamente! Redirigiendo...
+          </div>
+
+          <!-- Mensaje de error general -->
+          <div class="alerta-error" id="alerta-error-registro" style="display:none">
+            ❌ Ocurrió un error. Por favor intenta de nuevo.
+          </div>
+
+        </form>
+
+        <p class="texto-cambiar-tab">
+          ¿Ya tienes cuenta?
+          <button class="enlace-cambiar-tab" data-ir-a="login">Ingresar aquí</button>
+        </p>
+
+      </div>
+      <!-- fin formulario-registro -->
+
+    </div>
+    <!-- fin panel-formularios -->
+
+  </div>
+  <!-- fin contenedor-login-registro -->
+
+
+  <!-- Scripts compartidos -->
+  <script src="js/scrips_login.js"></script>
+
+</body>
+</html>

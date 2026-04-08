@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel Vendedor — NexoShop</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="css/estilos.css"/>
+  <link rel="stylesheet" href="css/estilos_Admin.css"/>
+  <link rel="stylesheet" href="css/estilos_Vendedor.css"/>
+</head>
+<body id="pagina-vendedor">
+
+  <!-- ============================================================
+       SIDEBAR — menú lateral del vendedor
+  ============================================================ -->
+  <aside id="sidebar-admin">
+
+    <div id="sidebar-logo">
+      <a href="index.html">NEXO<span>SHOP</span></a>
+      <p id="sidebar-rol-badge" style="background:var(--color-amarillo);color:var(--color-negro)">VENDEDOR</p>
+    </div>
+
+    <!-- Info de la empresa -->
+    <div id="sidebar-perfil-admin">
+      <div id="sidebar-avatar-admin" style="background:var(--color-amarillo);color:var(--color-negro)">ZS</div>
+      <div id="sidebar-info-admin">
+        <p id="sidebar-nombre-admin">ZapatoStyle</p>
+        <p id="sidebar-email-admin">vendedor@zapatostyle.com</p>
+      </div>
+    </div>
+
+    <nav id="sidebar-nav">
+
+      <p class="sidebar-seccion-titulo">Mi tienda</p>
+      <ul class="sidebar-lista">
+        <li>
+          <a href="#" class="sidebar-enlace activo" data-seccion="dashboard-vendedor">
+            <span class="sidebar-icono">📊</span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-enlace" data-seccion="mis-productos">
+            <span class="sidebar-icono">👟</span>
+            <span>Mis productos</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-enlace" data-seccion="nuevo-producto">
+            <span class="sidebar-icono">➕</span>
+            <span>Agregar producto</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-enlace" data-seccion="mis-pedidos">
+            <span class="sidebar-icono">📦</span>
+            <span>Mis pedidos</span>
+            <span class="sidebar-badge sidebar-badge-rojo">4</span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="sidebar-seccion-titulo">Mi empresa</p>
+      <ul class="sidebar-lista">
+        <li>
+          <a href="#" class="sidebar-enlace" data-seccion="mi-empresa">
+            <span class="sidebar-icono">🏢</span>
+            <span>Datos de empresa</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-enlace" data-seccion="mis-ventas">
+            <span class="sidebar-icono">💰</span>
+            <span>Mis ventas</span>
+          </a>
+        </li>
+      </ul>
+
+    </nav>
+
+    <div id="sidebar-footer">
+      <a href="index.html" id="boton-ver-marketplace">🌐 Ver marketplace</a>
+      <button id="boton-cerrar-sesion-admin">↩ Cerrar sesión</button>
+    </div>
+
+  </aside>
+
+
+  <!-- ============================================================
+       CONTENIDO PRINCIPAL
+  ============================================================ -->
+  <main id="contenido-admin">
+
+    <!-- Topbar -->
+    <div id="topbar-admin">
+      <div id="topbar-titulo">
+        <h1 id="titulo-seccion-actual">Dashboard</h1>
+        <p id="subtitulo-seccion-actual">Resumen de tu tienda ZapatoStyle</p>
+      </div>
+      <div id="topbar-acciones">
+        <div id="topbar-fecha">📅 Lunes, 16 Marzo 2026</div>
+        <div id="estado-empresa-badge">✓ Empresa verificada</div>
+        <button id="boton-notificaciones">
+          🔔
+          <span id="badge-notificaciones">2</span>
+        </button>
+      </div>
+    </div>
+
+
+    <!-- ============================================================
+         SECCION: DASHBOARD VENDEDOR
+    ============================================================ -->
+    <div id="seccion-dashboard-vendedor" class="seccion-panel activa">
+
+      <!-- Métricas -->
+      <div id="grilla-metricas">
+        <div class="tarjeta-metrica">
+          <div class="metrica-icono" style="background:rgba(232,168,56,0.15);color:var(--color-amarillo)">💰</div>
+          <div class="metrica-info">
+            <p class="metrica-valor">$12.480.000</p>
+            <p class="metrica-nombre">Ventas del mes</p>
+            <p class="metrica-variacion positiva">↑ 18% vs mes anterior</p>
+          </div>
+        </div>
+        <div class="tarjeta-metrica">
+          <div class="metrica-icono" style="background:rgba(200,69,45,0.15);color:var(--color-rojo)">📦</div>
+          <div class="metrica-info">
+            <p class="metrica-valor">86</p>
+            <p class="metrica-nombre">Pedidos del mes</p>
+            <p class="metrica-variacion positiva">↑ 5% vs mes anterior</p>
+          </div>
+        </div>
+        <div class="tarjeta-metrica">
+          <div class="metrica-icono" style="background:rgba(45,110,45,0.15);color:#2d6e2d">👟</div>
+          <div class="metrica-info">
+            <p class="metrica-valor">142</p>
+            <p class="metrica-nombre">Productos activos</p>
+            <p class="metrica-variacion positiva">↑ 8 nuevos este mes</p>
+          </div>
+        </div>
+        <div class="tarjeta-metrica">
+          <div class="metrica-icono" style="background:rgba(26,58,110,0.3);color:#5b8fd4">⭐</div>
+          <div class="metrica-info">
+            <p class="metrica-valor">4.9</p>
+            <p class="metrica-nombre">Valoración promedio</p>
+            <p class="metrica-variacion positiva">Basado en 1.248 reseñas</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pedidos recientes + productos más vendidos -->
+      <div id="grilla-dashboard-inferior">
+
+        <!-- Pedidos recientes -->
+        <div class="panel-card">
+          <div class="panel-card-header">
+            <h3 class="panel-card-titulo">Pedidos recientes</h3>
+            <a href="#" class="panel-card-enlace" data-ir-a="mis-pedidos">Ver todos →</a>
+          </div>
+          <table class="tabla-admin">
+            <thead>
+              <tr>
+                <th>Pedido</th>
+                <th>Producto</th>
+                <th>Total</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="celda-id">#4521</td>
+                <td>Air Max 270</td>
+                <td>$389.900</td>
+                <td><span class="badge-estado badge-entregado">Entregado</span></td>
+              </tr>
+              <tr>
+                <td class="celda-id">#4520</td>
+                <td>Air Jordan 1</td>
+                <td>$620.000</td>
+                <td><span class="badge-estado badge-enviado">Enviado</span></td>
+              </tr>
+              <tr>
+                <td class="celda-id">#4519</td>
+                <td>Air Max 270</td>
+                <td>$389.900</td>
+                <td><span class="badge-estado badge-procesando">Procesando</span></td>
+              </tr>
+              <tr>
+                <td class="celda-id">#4518</td>
+                <td>Converse Hi</td>
+                <td>$180.000</td>
+                <td><span class="badge-estado badge-procesando">Procesando</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Productos más vendidos -->
+        <div class="panel-card">
+          <div class="panel-card-header">
+            <h3 class="panel-card-titulo">Más vendidos</h3>
+            <a href="#" class="panel-card-enlace" data-ir-a="mis-productos">Ver todos →</a>
+          </div>
+          <div id="lista-mas-vendidos">
+            <div class="fila-mas-vendido">
+              <span class="mas-vendido-posicion">01</span>
+              <span class="mas-vendido-emoji">👟</span>
+              <div class="mas-vendido-info">
+                <p class="mas-vendido-nombre">Air Jordan 1 Retro High</p>
+                <p class="mas-vendido-ventas">201 ventas · $620.000</p>
+              </div>
+              <div class="mas-vendido-barra-contenedor">
+                <div class="mas-vendido-barra" style="width:100%"></div>
+              </div>
+            </div>
+            <div class="fila-mas-vendido">
+              <span class="mas-vendido-posicion">02</span>
+              <span class="mas-vendido-emoji">👟</span>
+              <div class="mas-vendido-info">
+                <p class="mas-vendido-nombre">Air Max 270 React</p>
+                <p class="mas-vendido-ventas">124 ventas · $389.900</p>
+              </div>
+              <div class="mas-vendido-barra-contenedor">
+                <div class="mas-vendido-barra" style="width:62%"></div>
+              </div>
+            </div>
+            <div class="fila-mas-vendido">
+              <span class="mas-vendido-posicion">03</span>
+              <span class="mas-vendido-emoji">🥾</span>
+              <div class="mas-vendido-info">
+                <p class="mas-vendido-nombre">Converse Chuck Taylor Hi</p>
+                <p class="mas-vendido-ventas">98 ventas · $180.000</p>
+              </div>
+              <div class="mas-vendido-barra-contenedor">
+                <div class="mas-vendido-barra" style="width:49%"></div>
+              </div>
+            </div>
+            <div class="fila-mas-vendido">
+              <span class="mas-vendido-posicion">04</span>
+              <span class="mas-vendido-emoji">👟</span>
+              <div class="mas-vendido-info">
+                <p class="mas-vendido-nombre">Vans Old Skool Platform</p>
+                <p class="mas-vendido-ventas">76 ventas · $195.000</p>
+              </div>
+              <div class="mas-vendido-barra-contenedor">
+                <div class="mas-vendido-barra" style="width:38%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ============================================================
+         SECCION: MIS PRODUCTOS
+    ============================================================ -->
+    <div id="seccion-mis-productos" class="seccion-panel">
+
+      <div class="seccion-panel-header">
+        <div>
+          <h2 class="seccion-panel-titulo">Mis Productos</h2>
+          <p class="seccion-panel-subtitulo">142 productos publicados en el marketplace</p>
+        </div>
+        <div class="seccion-panel-acciones">
+          <input type="text" class="input-busqueda-admin" placeholder="Buscar producto..." id="buscar-mi-producto"/>
+          <button class="boton-accion-primaria" id="boton-ir-nuevo-producto">+ Agregar producto</button>
+        </div>
+      </div>
+
+      <table class="tabla-admin tabla-completa">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Tallas</th>
+            <th>Ventas</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-mis-productos">
+          <tr>
+            <td>
+              <div class="celda-producto">
+                <span class="producto-tabla-emoji">👟</span>
+                <div>
+                  <p class="producto-tabla-nombre">Air Max 270 React ENG</p>
+                  <p class="producto-tabla-marca">Nike</p>
+                </div>
+              </div>
+            </td>
+            <td>$389.900</td>
+            <td><span class="stock-disponible">8 und</span></td>
+            <td class="celda-gris">37,38,39,40,41,43</td>
+            <td>124</td>
+            <td><span class="badge-estado badge-entregado">Activo</span></td>
+            <td>
+              <div class="acciones-tabla">
+                <button class="boton-accion-tabla boton-ver-tabla" title="Ver en tienda">👁</button>
+                <button class="boton-accion-tabla boton-editar-tabla" title="Editar" data-seccion="nuevo-producto">✏️</button>
+                <button class="boton-accion-tabla boton-suspender-tabla" title="Desactivar">⏸</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="celda-producto">
+                <span class="producto-tabla-emoji">👟</span>
+                <div>
+                  <p class="producto-tabla-nombre">Air Jordan 1 Retro High OG</p>
+                  <p class="producto-tabla-marca">Jordan</p>
+                </div>
+              </div>
+            </td>
+            <td>$620.000</td>
+            <td><span class="stock-disponible">5 und</span></td>
+            <td class="celda-gris">38,39,40,41,42</td>
+            <td>201</td>
+            <td><span class="badge-estado badge-entregado">Activo</span></td>
+            <td>
+              <div class="acciones-tabla">
+                <button class="boton-accion-tabla boton-ver-tabla" title="Ver en tienda">👁</button>
+                <button class="boton-accion-tabla boton-editar-tabla" title="Editar">✏️</button>
+                <button class="boton-accion-tabla boton-suspender-tabla" title="Desactivar">⏸</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="celda-producto">
+                <span class="producto-tabla-emoji">🥾</span>
+                <div>
+                  <p class="producto-tabla-nombre">Converse Chuck Taylor Hi</p>
+                  <p class="producto-tabla-marca">Converse</p>
+                </div>
+              </div>
+            </td>
+            <td>$180.000</td>
+            <td><span class="stock-agotado">0 und</span></td>
+            <td class="celda-gris">36,37,38,39,40</td>
+            <td>98</td>
+            <td><span class="badge-estado badge-cancelado">Sin stock</span></td>
+            <td>
+              <div class="acciones-tabla">
+                <button class="boton-accion-tabla boton-ver-tabla" title="Ver en tienda">👁</button>
+                <button class="boton-accion-tabla boton-editar-tabla" title="Editar">✏️</button>
+                <button class="boton-accion-tabla boton-suspender-tabla" title="Desactivar">⏸</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+
+    <!-- ============================================================
+         SECCION: AGREGAR / EDITAR PRODUCTO
+    ============================================================ -->
+    <div id="seccion-nuevo-producto" class="seccion-panel">
+
+      <div class="seccion-panel-header">
+        <div>
+          <h2 class="seccion-panel-titulo">Agregar Producto</h2>
+          <p class="seccion-panel-subtitulo">Completa todos los campos para publicar tu producto</p>
+        </div>
+        <button class="boton-accion-secundaria" id="boton-volver-productos" data-ir-a="mis-productos">← Volver a productos</button>
+      </div>
+
+      <form id="form-nuevo-producto" novalidate>
+        <div id="grilla-form-producto">
+
+          <!-- Columna izquierda -->
+          <div class="columna-form">
+
+            <div class="seccion-form">
+              <h3 class="seccion-form-titulo">Información básica</h3>
+
+              <div class="grupo-campo-admin">
+                <label class="etiqueta-campo-admin" for="prod-nombre">Nombre del producto *</label>
+                <input type="text" id="prod-nombre" class="campo-admin" placeholder="Ej: Nike Air Max 270 React"/>
+                <span class="error-campo-admin" id="error-prod-nombre"></span>
+              </div>
+
+              <div class="grupo-campo-admin">
+                <label class="etiqueta-campo-admin" for="prod-marca">Marca *</label>
+                <select id="prod-marca" class="campo-admin campo-select-admin">
+                  <option value="">Selecciona la marca</option>
+                  <option>Nike</option>
+                  <option>Adidas</option>
+                  <option>Puma</option>
+                  <option>Reebok</option>
+                  <option>Skechers</option>
+                  <option>Jordan</option>
+                  <option>Vans</option>
+                  <option>Converse</option>
+                  <option>New Balance</option>
+                  <option>Otra</option>
+                </select>
+                <span class="error-campo-admin" id="error-prod-marca"></span>
+              </div>
+
+              <div class="fila-dos-campos">
+                <div class="grupo-campo-admin">
+                  <label class="etiqueta-campo-admin" for="prod-categoria">Categoría *</label>
+                  <select id="prod-categoria" class="campo-admin campo-select-admin">
+                    <option value="">Selecciona</option>
+                    <option>Deportivos</option>
+                    <option>Casual</option>
+                    <option>Tacones</option>
+                    <option>Botas</option>
+                    <option>Sandalias</option>
+                  </select>
+                  <span class="error-campo-admin" id="error-prod-categoria"></span>
+                </div>
+                <div class="grupo-campo-admin">
+                  <label class="etiqueta-campo-admin" for="prod-genero">Género *</label>
+                  <select id="prod-genero" class="campo-admin campo-select-admin">
+                    <option value="">Selecciona</option>
+                    <option>Hombre</option>
+                    <option>Mujer</option>
+                    <option>Unisex</option>
+                    <option>Niño</option>
+                  </select>
+                  <span class="error-campo-admin" id="error-prod-genero"></span>
+                </div>
+              </div>
+
+              <div class="grupo-campo-admin">
+                <label class="etiqueta-campo-admin" for="prod-descripcion">Descripción *</label>
+                <textarea id="prod-descripcion" class="campo-admin campo-textarea" placeholder="Describe tu producto: materiales, características, uso recomendado..." rows="4"></textarea>
+                <span class="error-campo-admin" id="error-prod-descripcion"></span>
+              </div>
+
+            </div>
+
+            <div class="seccion-form">
+              <h3 class="seccion-form-titulo">Precio y stock</h3>
+
+              <div class="fila-dos-campos">
+                <div class="grupo-campo-admin">
+                  <label class="etiqueta-campo-admin" for="prod-precio">Precio (COP) *</label>
+                  <input type="number" id="prod-precio" class="campo-admin" placeholder="389900" min="0"/>
+                  <span class="error-campo-admin" id="error-prod-precio"></span>
+                </div>
+                <div class="grupo-campo-admin">
+                  <label class="etiqueta-campo-admin" for="prod-precio-descuento">Precio con descuento</label>
+                  <input type="number" id="prod-precio-descuento" class="campo-admin" placeholder="Opcional" min="0"/>
+                </div>
+              </div>
+
+              <div class="grupo-campo-admin">
+                <label class="etiqueta-campo-admin">Tallas disponibles *</label>
+                <div id="selector-tallas-form">
+                  <button type="button" class="boton-talla-form" data-talla="34">34</button>
+                  <button type="button" class="boton-talla-form" data-talla="35">35</button>
+                  <button type="button" class="boton-talla-form" data-talla="36">36</button>
+                  <button type="button" class="boton-talla-form" data-talla="37">37</button>
+                  <button type="button" class="boton-talla-form" data-talla="38">38</button>
+                  <button type="button" class="boton-talla-form" data-talla="39">39</button>
+                  <button type="button" class="boton-talla-form" data-talla="40">40</button>
+                  <button type="button" class="boton-talla-form" data-talla="41">41</button>
+                  <button type="button" class="boton-talla-form" data-talla="42">42</button>
+                  <button type="button" class="boton-talla-form" data-talla="43">43</button>
+                  <button type="button" class="boton-talla-form" data-talla="44">44</button>
+                  <button type="button" class="boton-talla-form" data-talla="45">45</button>
+                </div>
+                <span class="error-campo-admin" id="error-prod-tallas"></span>
+              </div>
+
+              <!-- Stock por talla -->
+              <div id="contenedor-stock-por-talla" style="display:none">
+                <label class="etiqueta-campo-admin">Stock por talla *</label>
+                <div id="grilla-stock-tallas"></div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Columna derecha -->
+          <div class="columna-form">
+
+            <div class="seccion-form">
+              <h3 class="seccion-form-titulo">Imágenes del producto</h3>
+
+              <!-- Área de carga de imágenes -->
+              <div id="zona-carga-imagenes">
+                <div id="zona-carga-principal">
+                  <p class="zona-carga-icono">📷</p>
+                  <p class="zona-carga-texto">Arrastra tus fotos aquí</p>
+                  <p class="zona-carga-subtexto">o haz clic para seleccionar</p>
+                  <p class="zona-carga-formato">JPG, PNG · Máx 5MB por imagen</p>
+                  <input type="file" id="input-imagenes" accept="image/*" multiple style="display:none"/>
+                </div>
+                <div id="previsualizacion-imagenes">
+                  <!-- Las miniaturas aparecen aquí al cargar -->
+                </div>
+              </div>
+              <span class="error-campo-admin" id="error-prod-imagenes"></span>
+            </div>
+
+            <div class="seccion-form">
+              <h3 class="seccion-form-titulo">Colores disponibles</h3>
+              <div id="selector-colores-form">
+                <label class="opcion-color-form">
+                  <input type="checkbox" value="Negro"/> Negro
+                </label>
+                <label class="opcion-color-form">
+                  <input type="checkbox" value="Blanco"/> Blanco
+                </label>
+                <label class="opcion-color-form">
+                  <input type="checkbox" value="Rojo"/> Rojo
+                </label>
+                <label class="opcion-color-form">
+                  <input type="checkbox" value="Azul"/> Azul
+                </label>
+                <label class="opcion-color-form">
+                  <input type="checkbox" value="Verde"/> Verde
+                </label>
+                <label class="opcion-color-form">
+                  <input type="checkbox" value="Gris"/> Gris
+                </label>
+                <label class="opcion-color-form">
+                  <input type="checkbox" value="Café"/> Café
+                </label>
+                <label class="opcion-color-form">
+                  <input type="checkbox" value="Morado"/> Morado
+                </label>
+              </div>
+            </div>
+
+            <div class="seccion-form">
+              <h3 class="seccion-form-titulo">Visibilidad</h3>
+              <div class="grupo-campo-admin">
+                <label class="opcion-toggle">
+                  <input type="checkbox" id="toggle-publicar" checked/>
+                  <span class="toggle-slider"></span>
+                  <span class="toggle-texto">Publicar inmediatamente</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Botones de acción del form -->
+            <div id="botones-form-producto">
+              <button type="button" class="boton-accion-secundaria" id="boton-guardar-borrador">
+                Guardar borrador
+              </button>
+              <button type="submit" class="boton-accion-primaria" id="boton-publicar-producto">
+                Publicar producto
+              </button>
+            </div>
+
+            <!-- Mensajes de resultado -->
+            <div class="alerta-exito-admin" id="alerta-exito-producto" style="display:none">
+              ✅ ¡Producto publicado exitosamente!
+            </div>
+            <div class="alerta-error-admin" id="alerta-error-producto" style="display:none">
+              ❌ Por favor completa todos los campos obligatorios.
+            </div>
+
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+
+
+    <!-- ============================================================
+         SECCION: MIS PEDIDOS
+    ============================================================ -->
+    <div id="seccion-mis-pedidos" class="seccion-panel">
+
+      <div class="seccion-panel-header">
+        <div>
+          <h2 class="seccion-panel-titulo">Mis Pedidos</h2>
+          <p class="seccion-panel-subtitulo">Pedidos recibidos en tu tienda</p>
+        </div>
+        <div class="seccion-panel-acciones">
+          <select class="selector-filtro-admin" id="filtro-estado-mis-pedidos">
+            <option value="todos">Todos</option>
+            <option value="procesando">Procesando</option>
+            <option value="enviado">Enviados</option>
+            <option value="entregado">Entregados</option>
+            <option value="cancelado">Cancelados</option>
+          </select>
+        </div>
+      </div>
+
+      <table class="tabla-admin tabla-completa">
+        <thead>
+          <tr>
+            <th>Pedido</th>
+            <th>Comprador</th>
+            <th>Producto</th>
+            <th>Talla</th>
+            <th>Total</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-mis-pedidos">
+          <tr>
+            <td class="celda-id">#4521</td>
+            <td>Carlos A.</td>
+            <td>Air Max 270</td>
+            <td>40</td>
+            <td>$389.900</td>
+            <td class="celda-gris">15/03/2026</td>
+            <td><span class="badge-estado badge-entregado">Entregado</span></td>
+            <td>
+              <button class="boton-accion-tabla boton-ver-tabla" title="Ver detalle">👁</button>
+            </td>
+          </tr>
+          <tr>
+            <td class="celda-id">#4520</td>
+            <td>María L.</td>
+            <td>Air Jordan 1</td>
+            <td>38</td>
+            <td>$620.000</td>
+            <td class="celda-gris">15/03/2026</td>
+            <td><span class="badge-estado badge-enviado">Enviado</span></td>
+            <td>
+              <div class="acciones-tabla">
+                <button class="boton-accion-tabla boton-ver-tabla" title="Ver detalle">👁</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="celda-id">#4519</td>
+            <td>Juan R.</td>
+            <td>Air Max 270</td>
+            <td>42</td>
+            <td>$389.900</td>
+            <td class="celda-gris">16/03/2026</td>
+            <td><span class="badge-estado badge-procesando">Procesando</span></td>
+            <td>
+              <div class="acciones-tabla">
+                <button class="boton-accion-tabla boton-ver-tabla" title="Ver detalle">👁</button>
+                <button class="boton-accion-tabla boton-activar-tabla" title="Marcar como enviado" id="boton-marcar-enviado">🚚</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="celda-id">#4518</td>
+            <td>Ana M.</td>
+            <td>Converse Hi</td>
+            <td>37</td>
+            <td>$180.000</td>
+            <td class="celda-gris">16/03/2026</td>
+            <td><span class="badge-estado badge-procesando">Procesando</span></td>
+            <td>
+              <div class="acciones-tabla">
+                <button class="boton-accion-tabla boton-ver-tabla" title="Ver detalle">👁</button>
+                <button class="boton-accion-tabla boton-activar-tabla" title="Marcar como enviado">🚚</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+
+    <!-- ============================================================
+         SECCION: MI EMPRESA
+    ============================================================ -->
+    <div id="seccion-mi-empresa" class="seccion-panel">
+
+      <div class="seccion-panel-header">
+        <div>
+          <h2 class="seccion-panel-titulo">Datos de Mi Empresa</h2>
+          <p class="seccion-panel-subtitulo">Información pública de tu tienda en el marketplace</p>
+        </div>
+        <span class="badge-estado badge-entregado">✓ Verificada por NexoShop</span>
+      </div>
+
+      <div id="grilla-form-empresa">
+
+        <div class="seccion-form">
+          <h3 class="seccion-form-titulo">Información de la empresa</h3>
+          <div class="grupo-campo-admin">
+            <label class="etiqueta-campo-admin" for="emp-nombre">Nombre de la empresa</label>
+            <input type="text" id="emp-nombre" class="campo-admin" value="ZapatoStyle"/>
+          </div>
+          <div class="fila-dos-campos">
+            <div class="grupo-campo-admin">
+              <label class="etiqueta-campo-admin" for="emp-nit">NIT</label>
+              <input type="text" id="emp-nit" class="campo-admin" value="900.123.456-7" disabled/>
+              <p class="nota-campo">El NIT no puede modificarse</p>
+            </div>
+            <div class="grupo-campo-admin">
+              <label class="etiqueta-campo-admin" for="emp-ciudad">Ciudad</label>
+              <select id="emp-ciudad" class="campo-admin campo-select-admin">
+                <option selected>Bogotá</option>
+                <option>Medellín</option>
+                <option>Cali</option>
+                <option>Barranquilla</option>
+                <option>Cartagena</option>
+              </select>
+            </div>
+          </div>
+          <div class="grupo-campo-admin">
+            <label class="etiqueta-campo-admin" for="emp-descripcion">Descripción de la tienda</label>
+            <textarea id="emp-descripcion" class="campo-admin campo-textarea" rows="3">Tienda especializada en calzado deportivo y casual de las mejores marcas internacionales.</textarea>
+          </div>
+          <button type="button" class="boton-accion-primaria" id="boton-guardar-empresa">
+            Guardar cambios
+          </button>
+        </div>
+
+        <div class="seccion-form">
+          <h3 class="seccion-form-titulo">Estadísticas de la tienda</h3>
+          <div id="stats-empresa">
+            <div class="stat-empresa-item">
+              <p class="stat-empresa-valor">142</p>
+              <p class="stat-empresa-label">Productos activos</p>
+            </div>
+            <div class="stat-empresa-item">
+              <p class="stat-empresa-valor">1.248</p>
+              <p class="stat-empresa-label">Ventas totales</p>
+            </div>
+            <div class="stat-empresa-item">
+              <p class="stat-empresa-valor">4.9 ★</p>
+              <p class="stat-empresa-label">Valoración</p>
+            </div>
+            <div class="stat-empresa-item">
+              <p class="stat-empresa-valor">$48.2M</p>
+              <p class="stat-empresa-label">Ventas totales COP</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ============================================================
+         SECCION: MIS VENTAS
+    ============================================================ -->
+    <div id="seccion-mis-ventas" class="seccion-panel">
+
+      <div class="seccion-panel-header">
+        <div>
+          <h2 class="seccion-panel-titulo">Mis Ventas</h2>
+          <p class="seccion-panel-subtitulo">Historial de ventas y ganancias de tu tienda</p>
+        </div>
+        <select class="selector-filtro-admin" id="filtro-periodo-ventas">
+          <option>Este mes</option>
+          <option>Último trimestre</option>
+          <option>Este año</option>
+          <option>Todo el tiempo</option>
+        </select>
+      </div>
+
+      <!-- Resumen de ventas -->
+      <div id="resumen-ventas">
+        <div class="tarjeta-venta-resumen">
+          <p class="venta-resumen-label">Ingresos brutos</p>
+          <p class="venta-resumen-valor">$12.480.000</p>
+        </div>
+        <div class="tarjeta-venta-resumen">
+          <p class="venta-resumen-label">Comisión NexoShop (5%)</p>
+          <p class="venta-resumen-valor negativo">− $624.000</p>
+        </div>
+        <div class="tarjeta-venta-resumen tarjeta-venta-total">
+          <p class="venta-resumen-label">Tus ganancias netas</p>
+          <p class="venta-resumen-valor positivo">$11.856.000</p>
+        </div>
+      </div>
+
+      <table class="tabla-admin tabla-completa" style="margin-top:24px">
+        <thead>
+          <tr>
+            <th>Pedido</th>
+            <th>Producto</th>
+            <th>Precio venta</th>
+            <th>Comisión (5%)</th>
+            <th>Tu ganancia</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="celda-id">#4521</td>
+            <td>Air Max 270 React</td>
+            <td>$389.900</td>
+            <td class="celda-gris">$19.495</td>
+            <td style="color:#4caf50;font-weight:700">$370.405</td>
+            <td class="celda-gris">15/03/2026</td>
+          </tr>
+          <tr>
+            <td class="celda-id">#4520</td>
+            <td>Air Jordan 1 Retro</td>
+            <td>$620.000</td>
+            <td class="celda-gris">$31.000</td>
+            <td style="color:#4caf50;font-weight:700">$589.000</td>
+            <td class="celda-gris">15/03/2026</td>
+          </tr>
+          <tr>
+            <td class="celda-id">#4515</td>
+            <td>Converse Chuck Hi</td>
+            <td>$180.000</td>
+            <td class="celda-gris">$9.000</td>
+            <td style="color:#4caf50;font-weight:700">$171.000</td>
+            <td class="celda-gris">14/03/2026</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </main>
+
+  <script src="js/scripts.js"></script>
+  <script src="js/scripts_Admin.js"></script>
+  <script src="js/scripts_Vendedor.js"></script>
+
+</body>
+</html>
