@@ -1,9 +1,5 @@
-/* ================================================================
-   SCRIPTS_LOGIN.JS — NexoShop
-   Conectado con Spring Boot — POST /api/auth/login y /registro
-================================================================ */
 
-// URL base del backend (cambia el puerto si es diferente)
+// URL base del backend
 const API_BASE = '/api/auth';
 
 

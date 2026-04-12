@@ -1,9 +1,3 @@
-/* ================================================================
-   SCRIPTS_COMPRADOR.JS — NexoShop
-   Maneja: filtros pedidos, modal reseña, favoritos,
-   datos personales, contraseña, direcciones, espera aprobación
-================================================================ */
-
 
 // ----------------------------------------------------------------
 // FILTROS DE ESTADO EN MIS PEDIDOS

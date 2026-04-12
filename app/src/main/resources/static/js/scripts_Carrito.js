@@ -1,9 +1,3 @@
-/* ================================================================
-   SCRIPTS_CARRITO.JS — NexoShop
-   Maneja: cantidades, eliminar items, cupones,
-   cálculo de totales, vaciar carrito, proceder al pago
-================================================================ */
-
 
 // ----------------------------------------------------------------
 // DATOS DEL CARRITO

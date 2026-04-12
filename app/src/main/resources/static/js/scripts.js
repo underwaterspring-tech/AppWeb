@@ -1,8 +1,3 @@
-/* ================================================================
-   SCRIPTS.JS — NexoShop
-   Aquí va toda la interactividad: movimiento del cursor,
-   animaciones al hacer scroll, carrusel, carrito, etc.
-================================================================ */
 
 
 // ----------------------------------------------------------------

@@ -620,9 +620,56 @@
   </footer>
 
 
-  <!-- ✅ Scripts compartidos del home -->
-  <script src="js/scripts.js"></script>
-
+  <div id="modal-detalle-overlay">
+  <div id="modal-detalle">
+ 
+    <button id="modal-boton-cerrar" title="Cerrar">&#10005;</button>
+ 
+    <!-- Lado izquierdo: imagen -->
+    <div id="modal-imagen">
+      <!-- Se rellena por JS -->
+    </div>
+ 
+    <!-- Lado derecho: información -->
+    <div id="modal-info">
+ 
+      <p id="modal-vendedor">por <a href="#">NexoShop</a></p>
+      <p id="modal-marca">—</p>
+      <h2 id="modal-nombre">—</h2>
+      <p id="modal-descripcion">—</p>
+ 
+      <!-- Precio -->
+      <div id="modal-precio-bloque">
+        <!-- JS inyecta precio normal o tachado+oferta -->
+      </div>
+ 
+      <!-- Género / Categoría / Stock -->
+      <div id="modal-meta">
+        <!-- JS inyecta -->
+      </div>
+ 
+      <!-- Tallas -->
+      <div>
+        <p id="modal-tallas-titulo">Talla</p>
+        <div id="modal-tallas-grid">
+          <!-- JS inyecta botones -->
+        </div>
+      </div>
+ 
+      <!-- Colores -->
+      <div>
+        <p id="modal-colores-titulo">Color</p>
+        <div id="modal-colores-grid">
+          <!-- JS inyecta círculos -->
+        </div>
+      </div>
+ 
+      <!-- Botón carrito -->
+      <button id="modal-boton-carrito">+ Agregar al carrito</button>
+ 
+    </div>
+  </div>
+</div>
   <!-- ✅ Scripts únicos del catálogo -->
   <script src="js/scripts_Catalogo.js"></script>
 
