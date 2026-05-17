@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pago — Underwater</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/estilos.css" rel="stylesheet" />
+    <link href="css/checkout.css" rel="stylesheet" />
+
+  </head>
+  <body>
+    <nav id="barra-navegacion">
+      <a id="logo-nexoshop" href="/index"><img src="logos/underwater-logo-v3.svg" width="50px" alt=""/></a>
+      <ul id="menu-categorias">
+        <li><a href="/catalogo?categoria=deportivos">Deportivos</a></li>
+        <li><a href="/catalogo?categoria=casual">Casual</a></li>
+        <li><a href="/marcas">Marcas</a></li>
+        <li><a href="/empresas">Empresas</a></li>
+        <li><a id="menu-ofertas" href="/catalogo?ofertas=true">Ofertas</a></li>
+      </ul>
+      <div id="iconos-derecha">
+        <button class="boton-icono" onclick="window.location.href = '/carrito'">
+          🛒<span id="contador-carrito">0</span>
+        </button>
+      </div>
+    </nav>
+
+    <div
+      style="
+        background: #ffffff;
+        padding: 80px 48px 32px;
+        border-bottom: 1px solid #e2e8f0;
+      "
+    >
+      <p
+        style="
+          font-size: 0.75rem;
+          letter-spacing: 0.1em;
+          color: #64748b;
+          text-transform: uppercase;
+          margin-bottom: 12px;
+        "
+      >
+        <a href="/index" style="color: #94a3b8; text-decoration: none"
+          >Inicio</a
+        >
+        <span style="margin: 0 8px">→</span>
+        <a href="/carrito" style="color: #94a3b8; text-decoration: none"
+          >Carrito</a
+        >
+        <span style="margin: 0 8px">→</span>
+        <span>Pago</span>
+      </p>
+      <h1
+        style="
+          font-family: var(--fuente-titulos);
+          font-size: clamp(2.5rem, 5vw, 5rem);
+          letter-spacing: 0.03em;
+          color: #0f172a;
+        "
+      >
+        FINALIZAR <span style="color: #19876E">COMPRA</span>
+      </h1>
+    </div>
+
+    <div id="cuerpo-checkout">
+      <!-- COLUMNA IZQUIERDA -->
+      <div>
+        <!-- DIRECCIÓN DE ENTREGA -->
+        <div class="checkout-seccion">
+          <h2 class="checkout-titulo">📍 Dirección de entrega</h2>
+          <div id="direcciones-guardadas"></div>
+          <div id="form-nueva-dir">
+            <div class="checkout-fila">
+              <div class="checkout-campo">
+                <label class="checkout-label">Nombre completo *</label>
+                <input
+                  class="checkout-input"
+                  id="dir-nombre"
+                  type="text"
+                  placeholder="Tu nombre"
+                />
+              </div>
+              <div class="checkout-campo">
+                <label class="checkout-label">Teléfono *</label>
+                <input
+                  class="checkout-input"
+                  id="dir-telefono"
+                  type="tel"
+                  placeholder="300 123 4567"
+                />
+              </div>
+            </div>
+            <div class="checkout-campo">
+              <label class="checkout-label">Dirección *</label>
+              <input
+                class="checkout-input"
+                id="dir-linea"
+                type="text"
+                placeholder="Calle 123 # 45-67, Apto 301"
+              />
+            </div>
+            <div class="checkout-fila">
+              <div class="checkout-campo">
+                <label class="checkout-label">Ciudad *</label>
+                <select class="checkout-input" id="dir-ciudad">
+                  <option value="">Selecciona ciudad</option>
+                  <option>Bogotá</option>
+                  <option>Medellín</option>
+                  <option>Cali</option>
+                  <option>Barranquilla</option>
+                  <option>Cartagena</option>
+                  <option>Bucaramanga</option>
+                  <option>Pereira</option>
+                  <option>Manizales</option>
+                  <option>Cúcuta</option>
+                  <option>Santa Marta</option>
+                  <option>Ibagué</option>
+                  <option>Pasto</option>
+                </select>
+              </div>
+              <div class="checkout-campo">
+                <label class="checkout-label">Departamento</label>
+                <input
+                  class="checkout-input"
+                  id="dir-departamento"
+                  type="text"
+                  placeholder="Cundinamarca"
+                />
+              </div>
+            </div>
+            <div class="error-checkout" id="error-dir"></div>
+            <button
+              onclick="guardarDireccionPerfil()"
+              style="
+                background: none;
+                border: 1px solid #cbd5e1;
+                color: #94a3b8;
+                padding: 10px 16px;
+                font-family: var(--fuente-cuerpo);
+                font-size: 0.78rem;
+                font-weight: 700;
+                cursor: pointer;
+                margin-top: 8px;
+                transition: all 0.2s;
+              "
+              onmouseover="this.style.borderColor = '#E2E8F0'"
+              onmouseout="this.style.borderColor = '#E2E8F0'"
+            >
+              💾 Guardar esta dirección en mi perfil
+            </button>
+          </div>
+        </div>
+
+        <!-- MÉTODO DE PAGO -->
+        <div class="checkout-seccion">
+          <h2 class="checkout-titulo">💳 Método de pago</h2>
+          <div id="metodos-pago">
+            <div
+              class="metodo-pago-btn activo"
+              data-metodo="PSE"
+              onclick="seleccionarMetodo(this)"
+            >
+              <span class="metodo-icono">🏦</span>
+              <div>
+                <p class="metodo-nombre">PSE</p>
+                <p class="metodo-desc">Pago en línea con tu banco</p>
+              </div>
+            </div>
+            <div
+              class="metodo-pago-btn"
+              data-metodo="Nequi"
+              onclick="seleccionarMetodo(this)"
+            >
+              <span class="metodo-icono">📱</span>
+              <div>
+                <p class="metodo-nombre">Nequi</p>
+                <p class="metodo-desc">Paga con tu cuenta Nequi</p>
+              </div>
+            </div>
+            <div
+              class="metodo-pago-btn"
+              data-metodo="Bancolombia"
+              onclick="seleccionarMetodo(this)"
+            >
+              <span class="metodo-icono">🏛</span>
+              <div>
+                <p class="metodo-nombre">Bancolombia</p>
+                <p class="metodo-desc">Transferencia Bancolombia</p>
+              </div>
+            </div>
+            <div
+              class="metodo-pago-btn"
+              data-metodo="Efecty"
+              onclick="seleccionarMetodo(this)"
+            >
+              <span class="metodo-icono">💵</span>
+              <div>
+                <p class="metodo-nombre">Efecty</p>
+                <p class="metodo-desc">Paga en efectivo en puntos Efecty</p>
+              </div>
+            </div>
+            <div
+              class="metodo-pago-btn"
+              data-metodo="Tarjeta"
+              onclick="seleccionarMetodo(this)"
+            >
+              <span class="metodo-icono">💳</span>
+              <div>
+                <p class="metodo-nombre">Tarjeta crédito/débito</p>
+                <p class="metodo-desc">Visa, Mastercard, Amex</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Datos tarjeta (aparece solo si se selecciona tarjeta) -->
+          <div id="form-tarjeta" style="display: none; margin-top: 16px">
+            <div class="checkout-campo">
+              <label class="checkout-label">Número de tarjeta</label>
+              <input
+                class="checkout-input"
+                id="tarjeta-num"
+                type="text"
+                placeholder="0000 0000 0000 0000"
+                maxlength="19"
+                oninput="formatarTarjeta(this)"
+              />
+            </div>
+            <div class="checkout-fila">
+              <div class="checkout-campo">
+                <label class="checkout-label">Fecha de vencimiento</label>
+                <input
+                  class="checkout-input"
+                  id="tarjeta-exp"
+                  type="text"
+                  placeholder="MM/AA"
+                  maxlength="5"
+                  oninput="formatarExp(this)"
+                />
+              </div>
+              <div class="checkout-campo">
+                <label class="checkout-label">CVV</label>
+                <input
+                  class="checkout-input"
+                  id="tarjeta-cvv"
+                  type="text"
+                  placeholder="123"
+                  maxlength="3"
+                />
+              </div>
+            </div>
+            <div class="checkout-campo">
+              <label class="checkout-label">Nombre en la tarjeta</label>
+              <input
+                class="checkout-input"
+                id="tarjeta-nombre"
+                type="text"
+                placeholder="Como aparece en la tarjeta"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLUMNA DERECHA — resumen -->
+      <div>
+        <div class="checkout-seccion" style="position: sticky; top: 90px">
+          <h2 class="checkout-titulo">🛒 Resumen del pedido</h2>
+          <div id="resumen-items"></div>
+          <div class="resumen-total">
+            <span class="resumen-total-label">Total</span>
+            <span class="resumen-total-valor" id="resumen-total-valor">$0</span>
+          </div>
+          <div
+            style="
+              margin-top: 12px;
+              padding: 10px;
+              background: rgba(45, 110, 45, 0.08);
+              border: 1px solid rgba(45, 110, 45, 0.2);
+            "
+          >
+            <p style="font-size: 0.72rem; color: #4caf50; font-weight: 700">
+              ✓ Envío gratis en todos los pedidos
+            </p>
+          </div>
+          <div
+            class="error-checkout"
+            id="error-pago"
+            style="margin-top: 10px"
+          ></div>
+          <button id="btn-confirmar-pago" onclick="confirmarPago()">
+            Confirmar y pagar →
+          </button>
+          <p
+            style="
+              text-align: center;
+              font-size: 0.7rem;
+              color: #64748b;
+              margin-top: 12px;
+            "
+          >
+            🔒 Pago 100% seguro · SSL encriptado
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- OVERLAY DE ÉXITO -->
+    <div id="overlay-exito">
+      <div id="caja-exito">
+        <span class="exito-icono">✅</span>
+        <h2 class="exito-titulo">¡PEDIDO REALIZADO!</h2>
+        <span class="exito-pedido-id" id="exito-pedido-id"></span>
+        <p class="exito-msg">
+          Tu pedido ha sido confirmado. Recibirás una notificación cuando sea
+          enviado.<br />Puedes hacer seguimiento en
+          <strong>Mis Pedidos</strong>.
+        </p>
+        <div style="display: flex; gap: 12px; justify-content: center">
+          <a
+            class="boton-principal"
+            href="/pedidos"
+            style="
+              text-decoration: none;
+              display: inline-block;
+              padding: 14px 24px;
+            "
+            >Ver mis pedidos</a
+          >
+          <a
+            class="boton-secundario"
+            href="/catalogo"
+            style="
+              text-decoration: none;
+              display: inline-block;
+              padding: 14px 24px;
+            "
+            >Seguir comprando</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <script src="js/scripts.js"></script>
+    <script src="js/scripts_Checkout.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mi Cuenta — Underwater</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/estilos.css"/>
+  <link rel="stylesheet" href="css/estilos_Comprador.css"/>
+</head>
+<body>
+
+  <nav id="barra-navegacion">
+    <a href="/index" id="logo-nexoshop"><img src="logos/underwater-logo-v3.svg" width="50px" alt=""/></a>
+    <ul id="menu-categorias">
+      <li><a href="/catalogo?categoria=deportivos">Deportivos</a></li>
+      <li><a href="/catalogo?categoria=casual">Casual</a></li>
+      <li><a href="/catalogo">Marcas</a></li>
+      <li><a href="/catalogo">Empresas</a></li>
+      <li><a href="/catalogo" id="menu-ofertas">Ofertas</a></li>
+    </ul>
+    <div id="contenedor-barra-busqueda">
+      <input type="text" id="input-busqueda" placeholder="Buscar zapatos, marcas, empresas..." autocomplete="off"/>
+      <button id="boton-ejecutar-busqueda"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="6" stroke="white" stroke-width="2"/><line x1="13" y1="13" x2="19" y2="19" stroke="white" stroke-width="2.5" stroke-linecap="square"/></svg></button>
+      <div id="panel-sugerencias-busqueda" style="display:none">
+        <p class="sugerencia-label">Búsquedas populares</p>
+        <ul id="lista-sugerencias">
+          <li class="sugerencia-item">👟 Nike Air Max</li>
+          <li class="sugerencia-item">🥿 Adidas Ultraboost</li>
+          <li class="sugerencia-item">👠 Tacones mujer</li>
+          <li class="sugerencia-item">🥾 Botas cuero hombre</li>
+        </ul>
+      </div>
+    </div>
+    <div id="iconos-derecha">
+      <button class="boton-icono" id="boton-favoritos"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 20 L3 9 L7 4 L12 8 L17 4 L21 9 Z" stroke="#f5f2ee" stroke-width="2" fill="none" stroke-linejoin="miter"/></svg></button>
+      <button class="boton-icono" id="boton-carrito"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="8" width="12" height="8" rx="0" stroke="#f5f2ee" stroke-width="1.8"/><line x1="6" y1="8" x2="4" y2="3" stroke="#f5f2ee" stroke-width="1.8" stroke-linecap="square"/><line x1="18" y1="8" x2="20" y2="3" stroke="#f5f2ee" stroke-width="1.8" stroke-linecap="square"/><circle cx="8" cy="18" r="2" fill="none" stroke="#f5f2ee" stroke-width="1.8"/><circle cx="16" cy="18" r="2" fill="none" stroke="#f5f2ee" stroke-width="1.8"/></svg><span id="contador-carrito">0</span></button>
+      <button id="boton-login">Ingresar</button>
+      <button id="boton-registro-vender">Vender aquí</button>
+    </div>
+  </nav>
+
+  <header id="cabecera-comprador">
+    <div id="cabecera-comprador-contenido">
+      <p id="ruta-navegacion-comprador">
+        <a href="/index">Inicio</a><span class="separador-ruta">→</span><span>Mi cuenta</span>
+      </p>
+      <h1 id="titulo-pagina-comprador">MI <span class="titulo-rojo">CUENTA</span></h1>
+      <p id="subtitulo-pagina-comprador">Gestiona tu información personal y direcciones</p>
+    </div>
+    <nav id="subnav-comprador">
+      <a href="/pedidos"   class="subnav-enlace">📦 Mis pedidos</a>
+      <a href="/favoritos" class="subnav-enlace">♡ Favoritos</a>
+      <a href="/mi-cuenta" class="subnav-enlace activo">👤 Mi cuenta</a>
+    </nav>
+  </header>
+
+  <main id="cuerpo-comprador">
+
+    <!-- Sin sesión -->
+    <div id="cuenta-sin-sesion" style="display:none;text-align:center;padding:80px 20px">
+      <p style="font-size:3rem;margin-bottom:16px">🔒</p>
+      <h2 style="font-family:var(--fuente-titulos);font-size:2.5rem;letter-spacing:0.04em;color:#0F172A;margin-bottom:12px">INICIA SESIÓN</h2>
+      <p style="color:#64748B;margin-bottom:28px">Debes iniciar sesión para ver tu cuenta.</p>
+      <a href="/login" class="boton-principal" style="text-decoration:none;display:inline-block;padding:14px 32px">Ingresar →</a>
+    </div>
+
+    <div id="grilla-mi-cuenta">
+
+      <!-- DATOS PERSONALES -->
+      <div class="seccion-cuenta">
+        <div class="seccion-cuenta-header">
+          <h2 class="seccion-cuenta-titulo">Datos personales</h2>
+        </div>
+        <div id="perfil-avatar-contenedor">
+          <div id="perfil-avatar">--</div>
+          <div id="perfil-info-breve">
+            <p id="perfil-nombre-completo">Cargando...</p>
+            <p id="perfil-email"></p>
+            <p id="perfil-miembro-desde"></p>
+          </div>
+        </div>
+        <form id="form-datos-personales" novalidate>
+          <div class="fila-dos-campos-cuenta">
+            <div class="grupo-campo-cuenta">
+              <label class="etiqueta-campo-cuenta" for="cuenta-nombre">Nombre</label>
+              <input type="text" id="cuenta-nombre" class="campo-cuenta" placeholder="Tu nombre"/>
+            </div>
+            <div class="grupo-campo-cuenta">
+              <label class="etiqueta-campo-cuenta" for="cuenta-apellido">Apellido</label>
+              <input type="text" id="cuenta-apellido" class="campo-cuenta" placeholder="Tu apellido"/>
+            </div>
+          </div>
+          <div class="grupo-campo-cuenta">
+            <label class="etiqueta-campo-cuenta" for="cuenta-email">Correo electrónico</label>
+            <input type="email" id="cuenta-email" class="campo-cuenta" placeholder="correo@ejemplo.com" readonly style="opacity:0.6"/>
+          </div>
+          <div class="grupo-campo-cuenta">
+            <label class="etiqueta-campo-cuenta" for="cuenta-telefono">Teléfono</label>
+            <input type="tel" id="cuenta-telefono" class="campo-cuenta" placeholder="300 123 4567"/>
+          </div>
+          <div class="grupo-campo-cuenta">
+            <label class="etiqueta-campo-cuenta" for="cuenta-direccion">Dirección</label>
+            <input type="text" id="cuenta-direccion" class="campo-cuenta" placeholder="Calle 123 # 45-67"/>
+          </div>
+          <button type="submit" class="btn-guardar-cuenta" id="btn-guardar-datos">Guardar cambios</button>
+          <p class="mensaje-exito-cuenta" id="exito-datos" style="display:none">✓ Datos actualizados correctamente</p>
+          <p id="error-datos" style="display:none;color:#e05252;font-size:0.8rem;margin-top:8px"></p>
+        </form>
+      </div>
+
+      <!-- CAMBIAR CONTRASEÑA -->
+      <div class="seccion-cuenta">
+        <div class="seccion-cuenta-header">
+          <h2 class="seccion-cuenta-titulo">Cambiar contraseña</h2>
+        </div>
+        <form id="form-cambiar-password" novalidate>
+          <div class="grupo-campo-cuenta">
+            <label class="etiqueta-campo-cuenta" for="pass-actual">Contraseña actual</label>
+            <div class="campo-password-wrap">
+              <input type="password" id="pass-actual" class="campo-cuenta" placeholder="••••••••"/>
+              <button type="button" class="btn-toggle-password" data-target="pass-actual">👁</button>
+            </div>
+          </div>
+          <div class="grupo-campo-cuenta">
+            <label class="etiqueta-campo-cuenta" for="pass-nueva">Nueva contraseña</label>
+            <div class="campo-password-wrap">
+              <input type="password" id="pass-nueva" class="campo-cuenta" placeholder="Mínimo 8 caracteres"/>
+              <button type="button" class="btn-toggle-password" data-target="pass-nueva">👁</button>
+            </div>
+          </div>
+          <div class="grupo-campo-cuenta">
+            <label class="etiqueta-campo-cuenta" for="pass-confirmar">Confirmar nueva contraseña</label>
+            <div class="campo-password-wrap">
+              <input type="password" id="pass-confirmar" class="campo-cuenta" placeholder="Repite la nueva contraseña"/>
+              <button type="button" class="btn-toggle-password" data-target="pass-confirmar">👁</button>
+            </div>
+            <p class="error-campo-cuenta" id="error-password"></p>
+          </div>
+          <button type="submit" class="btn-guardar-cuenta" id="btn-cambiar-password">Cambiar contraseña</button>
+          <p class="mensaje-exito-cuenta" id="exito-password" style="display:none">✓ Contraseña actualizada correctamente</p>
+        </form>
+      </div>
+
+      <!-- MIS DIRECCIONES -->
+      <div class="seccion-cuenta seccion-cuenta-ancha">
+        <div class="seccion-cuenta-header">
+          <h2 class="seccion-cuenta-titulo">Mis direcciones</h2>
+          <button class="btn-agregar-direccion" id="btn-nueva-direccion">+ Nueva dirección</button>
+        </div>
+        <div id="grilla-direcciones-cuenta">
+          <!-- Se carga dinámicamente -->
+          <div class="tarjeta-direccion-nueva" id="tarjeta-nueva-dir" onclick="agregarDireccion()">
+            <span class="nueva-dir-icono">+</span>
+            <p class="nueva-dir-texto">Agregar dirección</p>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- MIS REPORTES -->
+      <div class="seccion-cuenta">
+        <div class="seccion-cuenta-header">
+          <h2 class="seccion-cuenta-titulo">Mis Reportes</h2>
+          <button onclick="abrirModalReporte('OTRO')" class="boton-secundario" style="font-size:0.75rem;padding:8px 16px">
+            + Nuevo reporte
+          </button>
+        </div>
+        <div id="lista-mis-reportes-comprador">
+          <p style="color:#888;text-align:center;padding:32px;font-size:0.88rem">Cargando...</p>
+        </div>
+      </div>
+
+      <!-- CERRAR SESIÓN -->
+      <div class="seccion-cuenta seccion-cuenta-peligro">
+        <div class="seccion-cuenta-header">
+          <h2 class="seccion-cuenta-titulo">Sesión</h2>
+        </div>
+        <div style="margin-bottom:20px;padding:16px;background:#F8FAFC;border:1px solid #E2E8F0">
+          <p style="font-size:0.82rem;color:#64748B;margin-bottom:12px">¿Tienes algun problema? Envianos un reporte al administrador.</p>
+          <button onclick="abrirModalReporte('OTRO')" style="background:none;border:1px solid #CBD5E1;color:#0F172A;padding:10px 20px;font-family:var(--fuente-cuerpo);font-size:0.8rem;font-weight:700;cursor:pointer;letter-spacing:0.06em">&#9888; Enviar reporte</button>
+        </div>
+        <p class="texto-cerrar-sesion">¿Quieres salir de tu cuenta en este dispositivo?</p>
+        <button id="btn-cerrar-sesion-cuenta" class="btn-cerrar-sesion">↩ Cerrar sesión</button>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="pie-de-pagina">
+    <div id="grilla-footer">
+      <div id="footer-columna-principal">
+        <div id="footer-logo">UNDER<span id="footer-logo-shop">WATER</span></div>
+        <p id="footer-descripcion">El marketplace de zapatos de Colombia.</p>
+        <div id="footer-redes-sociales">
+          <a href="#" class="boton-red-social">f</a><a href="#" class="boton-red-social">in</a>
+          <a href="#" class="boton-red-social">ig</a><a href="#" class="boton-red-social">yt</a>
+        </div>
+      </div>
+      <div class="footer-columna-links">
+        <h4 class="footer-titulo-columna">Marketplace</h4>
+        <ul class="footer-lista-links">
+          <li><a href="/index">Inicio</a></li>
+          <li><a href="/catalogo">Catálogo</a></li>
+          <li><a href="/empresas">Empresas</a></li>
+        </ul>
+      </div>
+      <div class="footer-columna-links">
+        <h4 class="footer-titulo-columna">Mi cuenta</h4>
+        <ul class="footer-lista-links">
+          <li><a href="/pedidos">Mis pedidos</a></li>
+          <li><a href="/favoritos">Mis favoritos</a></li>
+          <li><a href="/mi-cuenta">Mi cuenta</a></li>
+        </ul>
+      </div>
+      <div class="footer-columna-links">
+        <h4 class="footer-titulo-columna">Ayuda</h4>
+        <ul class="footer-lista-links">
+          <li><a href="#">Devoluciones</a></li>
+          <li><a href="#">Envíos</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="footer-parte-inferior">
+      <p>© 2025 Underwater — Marketplace de Zapatos · Todos los derechos reservados.</p>
+      <p>💳 PSE · Nequi · Bancolombia · Efecty</p>
+    </div>
+  </footer>
+
+  <script src="js/scripts.js"></script>
+  <script src="js/scripts_Comprador.js"></script>
+  <script src="js/scripts_Reportes.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', async function() {
+    if (typeof cargarMisReportes === 'function') cargarMisReportes();
+    var usuarioId = localStorage.getItem('uw-id');
+    var grilla    = document.getElementById('grilla-mi-cuenta');
+    var sinSesion = document.getElementById('cuenta-sin-sesion');
+
+    if (!usuarioId) {
+      grilla.style.display = 'none';
+      sinSesion.style.display = 'block';
+      return;
+    }
+
+    // Cargar perfil desde la BD
+    try {
+      var res  = await fetch('/api/comprador/perfil?usuarioId=' + usuarioId);
+      var data = await res.json();
+
+      var partes   = (data.nombre || '').split(' ');
+      var iniciales = partes.map(function(p){return p[0]||'';}).join('').substring(0,2).toUpperCase();
+
+      // Avatar e info breve
+      document.getElementById('perfil-avatar').textContent           = iniciales || '--';
+      document.getElementById('perfil-nombre-completo').textContent  = data.nombre || '';
+      document.getElementById('perfil-email').textContent            = data.email  || '';
+
+      if (data.fechaRegistro) {
+        try {
+          var d = new Date(data.fechaRegistro);
+          document.getElementById('perfil-miembro-desde').textContent = 'Miembro desde ' + d.toLocaleDateString('es-CO',{year:'numeric',month:'long'});
+        } catch { document.getElementById('perfil-miembro-desde').textContent = 'Miembro desde ' + data.fechaRegistro; }
+      }
+
+      // Formulario
+      document.getElementById('cuenta-nombre').value    = partes[0] || '';
+      document.getElementById('cuenta-apellido').value  = partes.slice(1).join(' ') || '';
+      document.getElementById('cuenta-email').value     = data.email    || '';
+      document.getElementById('cuenta-telefono').value  = data.telefono || '';
+      document.getElementById('cuenta-direccion').value = data.direccion || '';
+
+      // Dirección en la grilla si tiene una guardada
+      if (data.direccion) {
+        var grillaDirs = document.getElementById('grilla-direcciones-cuenta');
+        var tarjetaNueva = document.getElementById('tarjeta-nueva-dir');
+        var tarjetaDir = document.createElement('div');
+        tarjetaDir.className = 'tarjeta-direccion-cuenta predeterminada';
+        tarjetaDir.innerHTML = '<div class="direccion-badge-pred">✓ Predeterminada</div>'
+          + '<p class="direccion-nombre">' + (data.nombre||'') + '</p>'
+          + '<p class="direccion-linea">' + data.direccion + '</p>'
+          + '<p class="direccion-tel">📞 ' + (data.telefono||'—') + '</p>'
+          + '<div class="direccion-acciones"><button class="btn-editar-direccion" onclick="document.getElementById(\'cuenta-direccion\').focus()">Editar</button></div>';
+        grillaDirs.insertBefore(tarjetaDir, tarjetaNueva);
+      }
+
+    } catch(err) { console.warn('Error perfil:', err); }
+  });
+
+  // Guardar datos personales → BD
+  document.getElementById('form-datos-personales').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var usuarioId = localStorage.getItem('uw-id');
+    if (!usuarioId) return;
+
+    var nombre    = (document.getElementById('cuenta-nombre').value.trim() + ' ' + document.getElementById('cuenta-apellido').value.trim()).trim();
+    var telefono  = document.getElementById('cuenta-telefono').value.trim();
+    var direccion = document.getElementById('cuenta-direccion').value.trim();
+    var exitoEl   = document.getElementById('exito-datos');
+    var errorEl   = document.getElementById('error-datos');
+
+    try {
+      var res  = await fetch('/api/comprador/perfil', {
+        method: 'PUT', headers: {'Content-Type':'application/json'},
+        body:   JSON.stringify({ usuarioId, nombre, telefono, direccion })
+      });
+      var data = await res.json();
+
+      if (data.exito) {
+        // Actualizar sesión y UI
+        localStorage.setItem('uw-nombre', nombre);
+        document.getElementById('perfil-nombre-completo').textContent = nombre;
+        document.getElementById('perfil-avatar').textContent = nombre.split(' ').map(function(p){return p[0]||'';}).join('').substring(0,2).toUpperCase();
+        exitoEl.style.display = 'block';
+        errorEl.style.display = 'none';
+        setTimeout(function(){ exitoEl.style.display='none'; }, 3000);
+      } else {
+        errorEl.textContent   = data.mensaje || 'Error al guardar';
+        errorEl.style.display = 'block';
+        exitoEl.style.display = 'none';
+      }
+    } catch {
+      errorEl.textContent   = 'Error de conexión';
+      errorEl.style.display = 'block';
+    }
+  });
+
+  // Cambiar contraseña → BD
+  document.getElementById('form-cambiar-password').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var usuarioId = localStorage.getItem('uw-id');
+    if (!usuarioId) return;
+
+    var actual    = document.getElementById('pass-actual').value;
+    var nueva     = document.getElementById('pass-nueva').value;
+    var confirmar = document.getElementById('pass-confirmar').value;
+    var errEl     = document.getElementById('error-password');
+    var exitoEl   = document.getElementById('exito-password');
+
+    if (nueva !== confirmar) { errEl.textContent='Las contraseñas no coinciden'; return; }
+    if (nueva.length < 8)    { errEl.textContent='Mínimo 8 caracteres'; return; }
+    errEl.textContent = '';
+
+    try {
+      var res  = await fetch('/api/comprador/cambiar-password', {
+        method: 'PUT', headers: {'Content-Type':'application/json'},
+        body:   JSON.stringify({ usuarioId, passwordActual: actual, passwordNueva: nueva })
+      });
+      var data = await res.json();
+
+      if (data.exito) {
+        exitoEl.style.display = 'block';
+        setTimeout(function(){ exitoEl.style.display='none'; }, 3000);
+        document.getElementById('form-cambiar-password').reset();
+        errEl.textContent = '';
+      } else {
+        errEl.textContent = data.mensaje || 'Contraseña actual incorrecta';
+      }
+    } catch { errEl.textContent = 'Error de conexión'; }
+  });
+
+  // Toggle mostrar/ocultar contraseña
+  document.querySelectorAll('.btn-toggle-password').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var campo = document.getElementById(this.dataset.target);
+      if (!campo) return;
+      campo.type       = campo.type === 'password' ? 'text' : 'password';
+      this.textContent = campo.type === 'password' ? '👁' : '🙈';
+    });
+  });
+
+  // Nueva dirección (simplificado — edita la dirección en el campo)
+  document.getElementById('btn-nueva-direccion').addEventListener('click', function() {
+    document.getElementById('cuenta-direccion').focus();
+    document.getElementById('cuenta-direccion').scrollIntoView({behavior:'smooth'});
+  });
+
+  document.getElementById('tarjeta-nueva-dir').addEventListener('click', function() {
+    document.getElementById('cuenta-direccion').focus();
+    document.getElementById('cuenta-direccion').scrollIntoView({behavior:'smooth'});
+  });
+
+  function agregarDireccion() {
+    document.getElementById('cuenta-direccion').focus();
+  }
+
+  // Cerrar sesión
+  document.getElementById('btn-cerrar-sesion-cuenta').addEventListener('click', function() {
+    if (!confirm('¿Cerrar sesión?')) return;
+    fetch('/api/auth/logout', {method:'POST'}).catch(function(){});
+    localStorage.clear();
+    window.location.href = '/index';
+  });
+  </script>
+</body>
+</html>
+<script>
+// Override función agregarDireccion para abrir modal
+function agregarDireccion() {
+  var modal = document.getElementById('modal-nueva-dir');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'modal-nueva-dir';
+    modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px';
+    modal.innerHTML = `
+      <div style="background:#FFFFFF;border:1px solid #E2E8F0;max-width:480px;width:100%;padding:32px;position:relative">
+        <button onclick="document.getElementById('modal-nueva-dir').style.display='none'"
+          style="position:absolute;top:16px;right:16px;background:none;border:none;color:#888;font-size:1.2rem;cursor:pointer">✕</button>
+        <h3 style="font-family:var(--fuente-titulos);font-size:1.5rem;color:#0F172A;margin-bottom:20px">AGREGAR DIRECCIÓN</h3>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div><label style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#94A3B8;display:block;margin-bottom:6px">Dirección completa *</label>
+            <input type="text" id="modal-dir-linea" style="width:100%;background:#F8FAFC;border:1px solid #E2E8F0;color:#0F172A;font-family:var(--fuente-cuerpo);padding:12px 16px;outline:none;box-sizing:border-box" placeholder="Calle 123 # 45-67, Apto 301"/></div>
+          <div><label style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#94A3B8;display:block;margin-bottom:6px">Ciudad *</label>
+            <select id="modal-dir-ciudad" style="width:100%;background:#F8FAFC;border:1px solid #E2E8F0;color:#0F172A;font-family:var(--fuente-cuerpo);padding:12px 16px;outline:none;box-sizing:border-box;border-radius:6px">
+              <option value="">Selecciona</option>
+              <option>Bogotá</option><option>Medellín</option><option>Cali</option>
+              <option>Barranquilla</option><option>Cartagena</option><option>Bucaramanga</option>
+              <option>Pereira</option><option>Santa Marta</option><option>Manizales</option>
+            </select></div>
+          <div><label style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#94A3B8;display:block;margin-bottom:6px">Teléfono</label>
+            <input type="tel" id="modal-dir-tel" style="width:100%;background:#F8FAFC;border:1px solid #E2E8F0;color:#0F172A;font-family:var(--fuente-cuerpo);padding:12px 16px;outline:none;box-sizing:border-box" placeholder="300 123 4567"/></div>
+          <p id="modal-dir-error" style="color:#e05252;font-size:0.78rem;display:none"></p>
+          <button onclick="guardarNuevaDireccion()" style="width:100%;padding:14px;background:#0E6655;border:none;color:white;font-family:var(--fuente-cuerpo);font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer">
+            Guardar dirección
+          </button>
+        </div>
+      </div>`;
+    document.body.appendChild(modal);
+  }
+  modal.style.display = 'flex';
+}
+
+async function guardarNuevaDireccion() {
+  var uid    = localStorage.getItem('uw-id');
+  var linea  = document.getElementById('modal-dir-linea').value.trim();
+  var ciudad = document.getElementById('modal-dir-ciudad').value;
+  var tel    = document.getElementById('modal-dir-tel').value.trim();
+  var errEl  = document.getElementById('modal-dir-error');
+
+  if (!linea || !ciudad) { errEl.textContent='Completa los campos requeridos'; errEl.style.display='block'; return; }
+  errEl.style.display = 'none';
+
+  // Guardar en perfil del usuario
+  var dirCompleta = linea + ', ' + ciudad;
+  try {
+    var res  = await fetch('/api/comprador/perfil', {
+      method: 'PUT', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ usuarioId: uid, direccion: dirCompleta, telefono: tel || undefined })
+    });
+    var data = await res.json();
+    if (data.exito) {
+      // Agregar tarjeta visualmente
+      var grilla    = document.getElementById('grilla-direcciones-cuenta');
+      var tarjetaNew = document.getElementById('tarjeta-nueva-dir');
+      var div = document.createElement('div');
+      div.className = 'tarjeta-direccion-cuenta';
+      div.innerHTML = '<p class="direccion-nombre">' + (localStorage.getItem('uw-nombre')||'') + '</p>'
+        + '<p class="direccion-linea">' + linea + '</p>'
+        + '<p class="direccion-ciudad">' + ciudad + '</p>'
+        + (tel ? '<p class="direccion-tel">📞 ' + tel + '</p>' : '')
+        + '<div class="direccion-acciones"><button class="btn-editar-direccion" onclick="document.getElementById(\'cuenta-direccion\').value=\'' + dirCompleta.replace(/'/g,"") + '\';document.getElementById(\'cuenta-direccion\').focus()">Editar</button></div>';
+      grilla.insertBefore(div, tarjetaNew);
+      document.getElementById('modal-nueva-dir').style.display = 'none';
+      // Limpiar modal
+      document.getElementById('modal-dir-linea').value = '';
+      document.getElementById('modal-dir-ciudad').value = '';
+      document.getElementById('modal-dir-tel').value = '';
+    }
+  } catch(e) { errEl.textContent='Error de conexión'; errEl.style.display='block'; }
+}
+</script>

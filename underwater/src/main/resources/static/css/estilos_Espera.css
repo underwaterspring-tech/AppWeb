@@ -1,0 +1,103 @@
+/* ================================================================
+   ESTILOS_ESPERA.CSS — Underwater — Página espera aprobación
+================================================================ */
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 40px;
+  background: #ffffff;
+}
+#contenido-espera {
+  max-width: 540px;
+  width: 100%;
+}
+#icono-espera {
+  font-size: 5rem;
+  margin-bottom: 24px;
+  display: block;
+  animation: girar 6s linear infinite;
+}
+@keyframes girar {
+  0%,
+  100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+#titulo-espera {
+  font-family: var(--fuente-titulos);
+  font-size: 3.2rem;
+  letter-spacing: 0.06em;
+  color: var(--texto);
+  margin-bottom: 10px;
+  line-height: 1;
+}
+#titulo-espera span {
+  color: var(--rojo);
+}
+#desc-espera {
+  color: var(--texto-suave);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  margin-bottom: 36px;
+}
+#pasos-espera {
+  text-align: left;
+  background: var(--fondo);
+  border: 1px solid var(--borde);
+  padding: 28px 28px 14px;
+  margin-bottom: 36px;
+}
+.paso-espera {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+  font-size: 0.88rem;
+  color: var(--texto);
+  font-weight: 600;
+}
+.paso-espera:last-child {
+  margin-bottom: 0;
+}
+.paso-num {
+  background: var(--rojo);
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.paso-texto {
+  color: var(--texto-suave);
+  font-size: 0.86rem;
+  font-weight: 400;
+  margin-top: 2px;
+}
+#btn-volver {
+  background: var(--texto);
+  color: white;
+  border: none;
+  padding: 14px 40px;
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#btn-volver:hover {
+  background: var(--rojo);
+}

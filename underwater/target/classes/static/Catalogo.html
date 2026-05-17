@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catálogo — Underwater</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet"/>
+
+  <!-- ✅ Estilos compartidos del home (navbar, botones, colores, cursor...) -->
+  <link rel="stylesheet" href="css/estilos.css"/>
+
+  <!-- ✅ Estilos únicos del catálogo -->
+  <link rel="stylesheet" href="css/estilos_Catalogo.css"/>
+</head>
+<body>
+
+  <!-- Cursor personalizado (viene de estilos.css) -->
+  <div id="cursor-punto"></div>
+  <div id="cursor-circulo"></div>
+
+
+  <!-- ============================================================
+       NAVBAR — igual al home, solo cambia el enlace activo
+  ============================================================ -->
+  <nav id="barra-navegacion">
+    <a href="/index" id="logo-nexoshop"><img src="logos/underwater-logo-v3.svg" width="50px" alt=""/></a>
+
+    <ul id="menu-categorias">
+      <li><a href="/catalogo?categoria=deportivos">Deportivos</a></li>
+      <li><a href="/catalogo?categoria=casual">Casual</a></li>
+      <li><a href="/marcas">Marcas</a></li>
+      <li><a href="/empresas">Empresas</a></li>
+      <li><a href="/catalogo?ofertas=true" id="menu-ofertas">Ofertas</a></li>
+    </ul>
+
+    <!-- Barra de búsqueda -->
+    <div id="contenedor-barra-busqueda">
+      <input
+        type="text"
+        id="input-busqueda"
+        placeholder="Buscar zapatos, marcas, empresas..."
+        autocomplete="off"
+      />
+      <button id="boton-ejecutar-busqueda"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="6" stroke="white" stroke-width="2"/><line x1="13" y1="13" x2="19" y2="19" stroke="white" stroke-width="2.5" stroke-linecap="square"/></svg></button>
+      <div id="panel-sugerencias-busqueda" style="display:none">
+        <p class="sugerencia-label">Búsquedas populares</p>
+        <ul id="lista-sugerencias">
+          <li class="sugerencia-item">👟 Nike Air Max</li>
+          <li class="sugerencia-item">🥿 Adidas Ultraboost</li>
+          <li class="sugerencia-item">👠 Tacones mujer</li>
+          <li class="sugerencia-item">🥾 Botas cuero hombre</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="iconos-derecha">
+      <button class="boton-icono" id="boton-favoritos" onclick="window.location.href='/favoritos'" title="Favoritos"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 20 L3 9 L7 4 L12 8 L17 4 L21 9 Z" stroke="#f5f2ee" stroke-width="2" fill="none" stroke-linejoin="miter"/></svg></button>
+      <button class="boton-icono" id="boton-carrito" title="Carrito">
+        🛒<span id="contador-carrito">0</span>
+      </button>
+      <button id="boton-login">Ingresar</button>
+      <button id="boton-registro-vender">Vender aquí</button>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       CABECERA DEL CATALOGO
+  ============================================================ -->
+  <header id="cabecera-catalogo">
+    <div id="cabecera-contenido">
+      <!-- Ruta de navegación: Inicio > Catálogo -->
+      <p id="ruta-navegacion">
+        <a href="/index">Inicio</a>
+        <span class="separador-ruta">→</span>
+        <span>Catálogo</span>
+      </p>
+      <h1 id="titulo-catalogo">
+        TODOS LOS <span id="titulo-catalogo-rojo">PRODUCTOS</span>
+      </h1>
+      <p id="subtitulo-catalogo">Encuentra el par perfecto entre más de 500 modelos de 40 empresas</p>
+    </div>
+  </header>
+
+
+  <!-- ============================================================
+       CUERPO PRINCIPAL: FILTROS (izquierda) + PRODUCTOS (derecha)
+  ============================================================ -->
+  <main id="cuerpo-catalogo">
+
+
+    <!-- --------------------------------------------------------
+         PANEL DE FILTROS — columna izquierda fija
+    -------------------------------------------------------- -->
+    <aside id="panel-filtros">
+
+      <div id="filtros-encabezado">
+        <h2 id="filtros-titulo">Filtros</h2>
+        <button id="boton-limpiar-filtros">Limpiar todo</button>
+      </div>
+
+
+      <!-- Filtro: Categoría -->
+      <div class="grupo-filtro">
+        <h3 class="filtro-nombre">Categoría</h3>
+        <ul class="lista-opciones-filtro">
+          <li>
+            <label class="opcion-filtro">
+              <input type="checkbox" class="checkbox-filtro" value="deportivos"/>
+              <span class="texto-opcion">Deportivos</span>
+              <span class="cantidad-opcion">124</span>
+            </label>
+          </li>
+          <li>
+            <label class="opcion-filtro">
+              <input type="checkbox" class="checkbox-filtro" value="casual"/>
+              <span class="texto-opcion">Casual</span>
+              <span class="cantidad-opcion">92</span>
+            </label>
+          </li>
+          <li>
+            <label class="opcion-filtro">
+              <input type="checkbox" class="checkbox-filtro" value="tacones"/>
+              <span class="texto-opcion">Tacones</span>
+              <span class="cantidad-opcion">86</span>
+            </label>
+          </li>
+          <li>
+            <label class="opcion-filtro">
+              <input type="checkbox" class="checkbox-filtro" value="botas"/>
+              <span class="texto-opcion">Botas</span>
+              <span class="cantidad-opcion">67</span>
+            </label>
+          </li>
+          <li>
+            <label class="opcion-filtro">
+              <input type="checkbox" class="checkbox-filtro" value="sandalias"/>
+              <span class="texto-opcion">Sandalias</span>
+              <span class="cantidad-opcion">55</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+
+      <div class="separador-filtro"></div>
+
+      <!-- Filtro: Marca -->
+      <div class="grupo-filtro">
+        <h3 class="filtro-nombre">Marca</h3>
+        <ul class="lista-opciones-filtro">
+          <li><label class="opcion-filtro"><input type="checkbox" class="checkbox-filtro" value="nike"/><span class="texto-opcion">Nike</span><span class="cantidad-opcion">87</span></label></li>
+          <li><label class="opcion-filtro"><input type="checkbox" class="checkbox-filtro" value="adidas"/><span class="texto-opcion">Adidas</span><span class="cantidad-opcion">74</span></label></li>
+          <li><label class="opcion-filtro"><input type="checkbox" class="checkbox-filtro" value="puma"/><span class="texto-opcion">Puma</span><span class="cantidad-opcion">52</span></label></li>
+          <li><label class="opcion-filtro"><input type="checkbox" class="checkbox-filtro" value="reebok"/><span class="texto-opcion">Reebok</span><span class="cantidad-opcion">38</span></label></li>
+          <li><label class="opcion-filtro"><input type="checkbox" class="checkbox-filtro" value="skechers"/><span class="texto-opcion">Skechers</span><span class="cantidad-opcion">45</span></label></li>
+          <li><label class="opcion-filtro"><input type="checkbox" class="checkbox-filtro" value="vans"/><span class="texto-opcion">Vans</span><span class="cantidad-opcion">29</span></label></li>
+          <li><label class="opcion-filtro"><input type="checkbox" class="checkbox-filtro" value="converse"/><span class="texto-opcion">Converse</span><span class="cantidad-opcion">33</span></label></li>
+          <li><label class="opcion-filtro"><input type="checkbox" class="checkbox-filtro" value="jordan"/><span class="texto-opcion">Jordan</span><span class="cantidad-opcion">41</span></label></li>
+        </ul>
+      </div>
+
+      <div class="separador-filtro"></div>
+
+      <!-- Filtro: Género -->
+      <div class="grupo-filtro">
+        <h3 class="filtro-nombre">Género</h3>
+        <div id="botones-genero">
+          <button class="boton-genero activo" data-genero="todos">Todos</button>
+          <button class="boton-genero" data-genero="hombre">Hombre</button>
+          <button class="boton-genero" data-genero="mujer">Mujer</button>
+          <button class="boton-genero" data-genero="nino">Niño</button>
+        </div>
+      </div>
+
+      <div class="separador-filtro"></div>
+
+      <!-- Filtro: Precio -->
+      <div class="grupo-filtro">
+        <h3 class="filtro-nombre">Precio máximo</h3>
+        <div id="contenedor-slider-precio">
+          <input type="range" id="slider-precio" min="50000" max="800000" value="800000" step="10000"/>
+          <div id="etiquetas-rango-precio">
+            <span>$50.000</span>
+            <span id="valor-precio-maximo">$800.000</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="separador-filtro"></div>
+
+      <!-- Filtro: Talla -->
+      <div class="grupo-filtro">
+        <h3 class="filtro-nombre">Talla</h3>
+        <div id="grilla-botones-talla">
+          <button class="boton-talla" data-talla="34">34</button>
+          <button class="boton-talla" data-talla="35">35</button>
+          <button class="boton-talla" data-talla="36">36</button>
+          <button class="boton-talla" data-talla="37">37</button>
+          <button class="boton-talla" data-talla="38">38</button>
+          <button class="boton-talla" data-talla="39">39</button>
+          <button class="boton-talla" data-talla="40">40</button>
+          <button class="boton-talla" data-talla="41">41</button>
+          <button class="boton-talla" data-talla="42">42</button>
+          <button class="boton-talla" data-talla="43">43</button>
+          <button class="boton-talla" data-talla="44">44</button>
+          <button class="boton-talla" data-talla="45">45</button>
+        </div>
+      </div>
+
+      <div class="separador-filtro"></div>
+
+      <!-- Filtro: Color -->
+      <div class="grupo-filtro">
+        <h3 class="filtro-nombre">Color</h3>
+        <div id="grilla-colores">
+          <button class="boton-color" data-color="negro"  style="background:#111"                    title="Negro"></button>
+          <button class="boton-color" data-color="blanco" style="background:#fff;border:2px solid #ccc" title="Blanco"></button>
+          <button class="boton-color" data-color="rojo"   style="background:#c8452d"                 title="Rojo"></button>
+          <button class="boton-color" data-color="azul"   style="background:#1a3a6e"                 title="Azul"></button>
+          <button class="boton-color" data-color="verde"  style="background:#2d6e2d"                 title="Verde"></button>
+          <button class="boton-color" data-color="gris"   style="background:#888"                    title="Gris"></button>
+          <button class="boton-color" data-color="morado" style="background:#8b5cf6"                 title="Morado"></button>
+          <button class="boton-color" data-color="cafe"   style="background:#7c5a3c"                 title="Café"></button>
+        </div>
+      </div>
+
+      <div class="separador-filtro"></div>
+
+      <!-- Filtro: Empresa vendedora — cargado dinámicamente desde BD -->
+      <div class="grupo-filtro">
+        <h3 class="filtro-nombre">Empresa</h3>
+        <ul class="lista-opciones-filtro" id="lista-filtro-empresas">
+          <li style="color:#888;font-size:0.78rem;padding:8px 0">Cargando empresas...</li>
+        </ul>
+      </div>
+
+      <!-- Botón aplicar -->
+      <button id="boton-aplicar-filtros" class="boton-principal">Aplicar filtros</button>
+
+    </aside>
+
+
+    <!-- --------------------------------------------------------
+         AREA DE RESULTADOS — columna derecha
+    -------------------------------------------------------- -->
+    <section id="area-resultados">
+
+      <!-- Barra superior: cantidad + ordenar + vista -->
+      <div id="barra-superior-resultados">
+        <p id="texto-resultados">
+          Mostrando <strong id="numero-resultados">24</strong> productos
+        </p>
+        <div id="controles-orden-vista">
+          <select id="selector-ordenar">
+            <option value="relevancia">Más relevantes</option>
+            <option value="precio-asc">Precio: menor a mayor</option>
+            <option value="precio-desc">Precio: mayor a menor</option>
+            <option value="novedad">Más nuevos</option>
+            <option value="valoracion">Mejor valorados</option>
+          </select>
+          <div id="botones-tipo-vista">
+            <button class="boton-vista activo" id="boton-vista-cuadricula" title="Cuadrícula">⊞</button>
+            <button class="boton-vista" id="boton-vista-lista" title="Lista">☰</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etiquetas de filtros activos -->
+      <div id="contenedor-filtros-activos">
+        <!-- Se llenan dinámicamente con JavaScript -->
+      </div>
+
+
+      <!-- GRILLA DE PRODUCTOS -->
+      <div id="grilla-productos-catalogo">
+        <!-- Productos cargados dinámicamente desde la BD -->
+      </div>
+
+      <!-- PAGINACION -->
+      <div id="contenedor-paginacion">
+        <button class="boton-pagina" id="boton-anterior" disabled>← Anterior</button>
+        <div id="numeros-pagina">
+          <button class="numero-pagina activo">1</button>
+          <button class="numero-pagina">2</button>
+          <button class="numero-pagina">3</button>
+          <span class="puntos-paginacion">...</span>
+          <button class="numero-pagina">12</button>
+        </div>
+        <button class="boton-pagina" id="boton-siguiente">Siguiente →</button>
+      </div>
+
+    </section>
+    <!-- fin area-resultados -->
+
+  </main>
+
+
+  <!-- ============================================================
+       PIE DE PAGINA — igual al home
+  ============================================================ -->
+  <footer id="pie-de-pagina">
+    <div id="grilla-footer">
+      <div id="footer-columna-principal">
+        <div id="footer-logo">UNDER<span id="footer-logo-shop">WATER</span></div>
+        <p id="footer-descripcion">El marketplace de zapatos de Colombia. Conectamos compradores y empresas vendedoras en un solo lugar.</p>
+        <div id="footer-redes-sociales">
+          <a href="#" class="boton-red-social">f</a>
+          <a href="#" class="boton-red-social">in</a>
+          <a href="#" class="boton-red-social">ig</a>
+          <a href="#" class="boton-red-social">yt</a>
+        </div>
+      </div>
+      <div class="footer-columna-links">
+        <h4 class="footer-titulo-columna">Marketplace</h4>
+        <ul class="footer-lista-links">
+          <li><a href="/index">Inicio</a></li>
+          <li><a href="/catalogo">Catálogo</a></li>
+          <li><a href="/empresas">Empresas</a></li>
+          <li><a href="/catalogo?ofertas=true">Ofertas</a></li>
+        </ul>
+      </div>
+      <div class="footer-columna-links">
+        <h4 class="footer-titulo-columna">Vendedores</h4>
+        <ul class="footer-lista-links">
+          <li><a href="/login">Registrar empresa</a></li>
+          <li><a href="/panel-vendedor">Panel vendedor</a></li>
+          <li><a href="#">Comisiones</a></li>
+          <li><a href="#">Soporte</a></li>
+        </ul>
+      </div>
+      <div class="footer-columna-links">
+        <h4 class="footer-titulo-columna">Ayuda</h4>
+        <ul class="footer-lista-links">
+          <li><a href="#">Mi cuenta</a></li>
+          <li><a href="#">Mis pedidos</a></li>
+          <li><a href="#">Devoluciones</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="footer-parte-inferior">
+      <p>© 2025 Underwater — Marketplace de Zapatos · Todos los derechos reservados.</p>
+      <p>💳 PSE · Nequi · Bancolombia · Efecty</p>
+    </div>
+  </footer>
+
+  <!-- ✅ Scripts únicos del catálogo -->
+  <script src="js/scripts.js"></script>
+  <script src="js/scripts_Catalogo.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel Admin — NexoShop</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="css/estilos.css"/>
+  <link rel="stylesheet" href="css/estilos_Admin.css"/>
+</head>
+<body id="pagina-admin">
+
+  <!-- ============================================================
+       SIDEBAR — menú lateral fijo del admin
+  ============================================================ -->
+  <aside id="sidebar-admin">
+
+    <!-- Logo -->
+    <div id="sidebar-logo">
+      <a href="/index" style="display:flex;align-items:center"><img src="logos/underwater-logo-v3.svg" width="50px" alt=""></a>
+      <p id="sidebar-rol-badge">ADMIN</p>
+    </div>
+
+    <!-- Información del admin -->
+    <div id="sidebar-perfil-admin">
+      <div id="sidebar-avatar-admin">A</div>
+      <div id="sidebar-info-admin">
+        <p id="sidebar-nombre-admin">Administrador</p>
+        <p id="sidebar-email-admin">admin@nexoshop.com</p>
+      </div>
+    </div>
+
+    <!-- Navegación del sidebar -->
+    <nav id="sidebar-nav">
+
+      <p class="sidebar-seccion-titulo">Principal</p>
+      <ul class="sidebar-lista">
+        <li>
+          <a href="#" class="sidebar-enlace activo" data-seccion="dashboard">
+            <span class="sidebar-icono">📊</span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-enlace" data-seccion="empresas">
+            <span class="sidebar-icono">🏢</span>
+            <span>Empresas</span>
+            <span class="sidebar-badge sidebar-badge-amarillo">3</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-enlace" data-seccion="usuarios">
+            <span class="sidebar-icono">👥</span>
+            <span>Usuarios</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-enlace" data-seccion="productos">
+            <span class="sidebar-icono">👟</span>
+            <span>Productos</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-enlace" data-seccion="pedidos">
+            <span class="sidebar-icono">📦</span>
+            <span>Pedidos</span>
+            <span class="sidebar-badge sidebar-badge-rojo">8</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-enlace" data-seccion="reportes">
+            <span class="sidebar-icono">📈</span>
+            <span>Reportes</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Botón salir -->
+    <div id="sidebar-footer">
+      <a href="/index" id="boton-ver-marketplace">🌐 Ver marketplace</a>
+      <button id="boton-cerrar-sesion-admin">↩ Cerrar sesión</button>
+    </div>
+
+  </aside>
+
+
+  <!-- ============================================================
+       CONTENIDO PRINCIPAL
+  ============================================================ -->
+  <main id="contenido-admin">
+
+   
+
+    <!-- ============================================================
+         SECCION: DASHBOARD (vista por defecto)
+    ============================================================ -->
+    <div id="seccion-dashboard" class="seccion-panel activa">
+
+      <!-- Tarjetas de métricas -->
+      <div id="grilla-metricas">
+
+        <div class="tarjeta-metrica">
+          <div class="metrica-icono" style="background:rgba(200,69,45,0.15);color:#F97316">💰</div>
+          <div class="metrica-info">
+            <p class="metrica-valor">$48.250.000</p>
+            <p class="metrica-nombre">Ventas del mes</p>
+            <p class="metrica-variacion positiva">↑ 12% vs mes anterior</p>
+          </div>
+        </div>
+
+        <div class="tarjeta-metrica">
+          <div class="metrica-icono" style="background:rgba(232,168,56,0.15);color:#F97316">📦</div>
+          <div class="metrica-info">
+            <p class="metrica-valor">324</p>
+            <p class="metrica-nombre">Pedidos del mes</p>
+            <p class="metrica-variacion positiva">↑ 8% vs mes anterior</p>
+          </div>
+        </div>
+
+        <div class="tarjeta-metrica">
+          <div class="metrica-icono" style="background:rgba(45,110,45,0.15);color:#2d6e2d">👥</div>
+          <div class="metrica-info">
+            <p class="metrica-valor">1.248</p>
+            <p class="metrica-nombre">Compradores activos</p>
+            <p class="metrica-variacion positiva">↑ 22% vs mes anterior</p>
+          </div>
+        </div>
+
+        <div class="tarjeta-metrica">
+          <div class="metrica-icono" style="background:rgba(26,58,110,0.3);color:#5b8fd4">🏢</div>
+          <div class="metrica-info">
+            <p class="metrica-valor">42</p>
+            <p class="metrica-nombre">Empresas activas</p>
+            <p class="metrica-variacion positiva">↑ 3 nuevas este mes</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Fila: Empresas pendientes + Pedidos recientes -->
+      <div id="grilla-dashboard-inferior">
+
+        <!-- Empresas pendientes de aprobación -->
+        <div class="panel-card">
+          <div class="panel-card-header">
+            <h3 class="panel-card-titulo">Empresas pendientes</h3>
+            <span class="badge-pendientes">3 pendientes</span>
+          </div>
+
+          <div class="lista-empresas-pendientes">
+
+            <div class="fila-empresa-pendiente">
+              <div class="empresa-pendiente-logo" style="background:#2d6e2d">KS</div>
+              <div class="empresa-pendiente-info">
+                <p class="empresa-pendiente-nombre">KicksStore SAS</p>
+                <p class="empresa-pendiente-detalle">NIT: 901.234.567 · Bogotá · Hace 2 horas</p>
+              </div>
+              <div class="empresa-pendiente-acciones">
+                <button class="boton-aprobar" data-id="1">✓ Aprobar</button>
+                <button class="boton-rechazar" data-id="1">✕ Rechazar</button>
+              </div>
+            </div>
+
+            <div class="fila-empresa-pendiente">
+              <div class="empresa-pendiente-logo" style="background:#1a3a6e">SS</div>
+              <div class="empresa-pendiente-info">
+                <p class="empresa-pendiente-nombre">StepStyle Ltda</p>
+                <p class="empresa-pendiente-detalle">NIT: 900.876.543 · Medellín · Hace 5 horas</p>
+              </div>
+              <div class="empresa-pendiente-acciones">
+                <button class="boton-aprobar" data-id="2">✓ Aprobar</button>
+                <button class="boton-rechazar" data-id="2">✕ Rechazar</button>
+              </div>
+            </div>
+
+            <div class="fila-empresa-pendiente">
+              <div class="empresa-pendiente-logo" style="background:#7c5a3c">FW</div>
+              <div class="empresa-pendiente-info">
+                <p class="empresa-pendiente-nombre">FeetWalk Colombia</p>
+                <p class="empresa-pendiente-detalle">NIT: 800.123.456 · Cali · Hace 1 día</p>
+              </div>
+              <div class="empresa-pendiente-acciones">
+                <button class="boton-aprobar" data-id="3">✓ Aprobar</button>
+                <button class="boton-rechazar" data-id="3">✕ Rechazar</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Pedidos recientes -->
+        <div class="panel-card">
+          <div class="panel-card-header">
+            <h3 class="panel-card-titulo">Pedidos recientes</h3>
+            <a href="#" class="panel-card-enlace" data-ir-a="pedidos">Ver todos →</a>
+          </div>
+
+          <table class="tabla-admin">
+            <thead>
+              <tr>
+                <th>Pedido</th>
+                <th>Comprador</th>
+                <th>Total</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ============================================================
+         SECCION: GESTIÓN DE EMPRESAS
+    ============================================================ -->
+    <div id="seccion-empresas" class="seccion-panel">
+
+      <div class="seccion-panel-header">
+        <div>
+          <h2 class="seccion-panel-titulo">Gestión de Empresas</h2>
+          <p class="seccion-panel-subtitulo">Aprueba, rechaza y gestiona las empresas vendedoras</p>
+        </div>
+        <div class="seccion-panel-acciones">
+          <select class="selector-filtro-admin" id="filtro-estado-empresas">
+            <option value="todas">Todas</option>
+            <option value="pendiente">Pendientes</option>
+            <option value="aprobada">Aprobadas</option>
+            <option value="rechazada">Rechazadas</option>
+          </select>
+          <input type="text" class="input-busqueda-admin" placeholder="Buscar empresa..." id="buscar-empresa"/>
+        </div>
+      </div>
+
+      <table class="tabla-admin tabla-completa">
+        <thead>
+          <tr>
+            <th>Empresa</th>
+            <th>NIT</th>
+            <th>Ciudad</th>
+            <th>Vendedor</th>
+            <th>Productos</th>
+            <th>Fecha registro</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-cuerpo-empresas">
+        </tbody>
+      </table>
+
+    </div>
+
+
+    <!-- ============================================================
+         SECCION: GESTIÓN DE USUARIOS
+    ============================================================ -->
+    <div id="seccion-usuarios" class="seccion-panel">
+
+      <div class="seccion-panel-header">
+        <div>
+          <h2 class="seccion-panel-titulo">Gestión de Usuarios</h2>
+          <p class="seccion-panel-subtitulo">Administra compradores y vendedores</p>
+        </div>
+        <div class="seccion-panel-acciones">
+          <select class="selector-filtro-admin" id="filtro-rol-usuarios">
+            <option value="todos">Todos los roles</option>
+            <option value="COMPRADOR">Compradores</option>
+            <option value="VENDEDOR">Vendedores</option>
+          </select>
+          <input type="text" class="input-busqueda-admin" placeholder="Buscar usuario..." id="buscar-usuario"/>
+        </div>
+      </div>
+
+      <table class="tabla-admin tabla-completa">
+        <thead>
+          <tr>
+            <th>Usuario</th>
+            <th>Email</th>
+            <th>Rol</th>
+            <th>Teléfono</th>
+            <th>Fecha registro</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+    </div>
+
+
+    <!-- ============================================================
+         SECCION: GESTIÓN DE PRODUCTOS
+    ============================================================ -->
+    <div id="seccion-productos" class="seccion-panel">
+
+      <div class="seccion-panel-header">
+        <div>
+          <h2 class="seccion-panel-titulo">Gestión de Productos</h2>
+          <p class="seccion-panel-subtitulo">Todos los productos publicados en el marketplace</p>
+        </div>
+        <div class="seccion-panel-acciones">
+          <input type="text" class="input-busqueda-admin" placeholder="Buscar producto..." id="buscar-producto"/>
+        </div>
+      </div>
+
+      <table class="tabla-admin tabla-completa">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Empresa</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Ventas</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+    </div>
+
+
+    <!-- ============================================================
+         SECCION: GESTIÓN DE PEDIDOS
+    ============================================================ -->
+    <div id="seccion-pedidos" class="seccion-panel">
+
+      <div class="seccion-panel-header">
+        <div>
+          <h2 class="seccion-panel-titulo">Gestión de Pedidos</h2>
+          <p class="seccion-panel-subtitulo">Todos los pedidos del marketplace</p>
+        </div>
+        <div class="seccion-panel-acciones">
+          <select class="selector-filtro-admin" id="filtro-estado-pedidos">
+            <option value="todos">Todos</option>
+            <option value="procesando">Procesando</option>
+            <option value="enviado">Enviados</option>
+            <option value="entregado">Entregados</option>
+            <option value="cancelado">Cancelados</option>
+          </select>
+          <input type="text" class="input-busqueda-admin" placeholder="Buscar pedido..." id="buscar-pedido"/>
+        </div>
+      </div>
+
+      <table class="tabla-admin tabla-completa">
+        <thead>
+          <tr>
+            <th>Pedido</th>
+            <th>Comprador</th>
+            <th>Empresa</th>
+            <th>Productos</th>
+            <th>Total</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+    </div>
+
+
+    <!-- ============================================================
+         MODAL: Confirmar aprobación / rechazo de empresa
+    ============================================================ -->
+    <div id="modal-confirmacion" style="display:none">
+      <div id="modal-caja">
+        <h3 id="modal-titulo">Confirmar acción</h3>
+        <p id="modal-mensaje">¿Estás seguro de que deseas realizar esta acción?</p>
+        <div id="modal-botones">
+          <button id="modal-boton-cancelar">Cancelar</button>
+          <button id="modal-boton-confirmar">Confirmar</button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- REPORTES -->
+    <div id="seccion-reportes" class="seccion-panel">
+      <div class="seccion-panel-header">
+        <div>
+          <h2 class="seccion-panel-titulo">Reportes</h2>
+          <p class="seccion-panel-subtitulo">Reportes enviados por compradores y vendedores</p>
+        </div>
+        <div style="display:flex;gap:10px">
+          <select id="filtro-estado-reporte" onchange="cargarReportesAdmin()" style="background:#F8FAFC;border:1px solid #E2E8F0;color:#0F172A;padding:8px 14px;font-family:var(--fuente-cuerpo);font-size:0.8rem;border-radius:6px;outline:none">
+            <option value="">Todos</option>
+            <option value="PENDIENTE">Pendientes</option>
+            <option value="REVISADO">Revisados</option>
+            <option value="RESUELTO">Resueltos</option>
+          </select>
+        </div>
+      </div>
+      <table class="tabla-admin tabla-completa">
+        <thead>
+          <tr>
+            <th>Asunto</th>
+            <th>Usuario</th>
+            <th>Tipo</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Accion</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-reportes-admin">
+          <tr><td colspan="6" style="text-align:center;padding:24px;color:#888">Cargando reportes...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+  <!-- fin contenido-admin -->
+
+
+  <!-- GUARD: Solo ADMIN -->
+  <script>
+    (function() {
+      var rol = localStorage.getItem('uw-rol');
+      var id  = localStorage.getItem('uw-id');
+      if (!id || rol !== 'ADMIN') window.location.replace('/login');
+    })();
+  </script>
+  <script src="js/scripts.js"></script>
+  <script src="js/scripts_Admin.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Pedidos — Underwater</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+  <link href="css/estilos.css" rel="stylesheet">
+  <link href="css/estilos_Comprador.css" rel="stylesheet">
+</head>
+<body>
+
+  <nav id="barra-navegacion">
+    <a id="logo-nexoshop" href="/index"><img src="logos/underwater-logo-v3.svg" width="50px" alt=""></a>
+    <ul id="menu-categorias">
+      <li><a href="/catalogo?categoria=deportivos">Deportivos</a></li>
+      <li><a href="/catalogo?categoria=casual">Casual</a></li>
+      <li><a href="/catalogo">Marcas</a></li>
+      <li><a href="/catalogo">Empresas</a></li>
+      <li><a id="menu-ofertas" href="/catalogo">Ofertas</a></li>
+    </ul>
+    <div id="contenedor-barra-busqueda">
+      <input id="input-busqueda" type="text" placeholder="Buscar zapatos, marcas, empresas..." autocomplete="off">
+      <button id="boton-ejecutar-busqueda"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="6" stroke="white" stroke-width="2"></circle><line x1="13" y1="13" x2="19" y2="19" stroke="white" stroke-width="2.5" stroke-linecap="square"></line></svg></button>
+      <div id="panel-sugerencias-busqueda" style="display:none">
+        <p class="sugerencia-label">Búsquedas populares</p>
+        <ul id="lista-sugerencias">
+          <li class="sugerencia-item">👟 Nike Air Max</li>
+          <li class="sugerencia-item">🥿 Adidas Ultraboost</li>
+          <li class="sugerencia-item">👠 Tacones mujer</li>
+          <li class="sugerencia-item">🥾 Botas cuero hombre</li>
+        </ul>
+      </div>
+    </div>
+    <div id="iconos-derecha">
+      <button class="boton-icono" id="boton-favoritos"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 20 L3 9 L7 4 L12 8 L17 4 L21 9 Z" stroke="#f5f2ee" stroke-width="2" fill="none" stroke-linejoin="miter"></path></svg></button>
+      <button class="boton-icono" id="boton-carrito"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="8" width="12" height="8" rx="0" stroke="#f5f2ee" stroke-width="1.8"></rect><line x1="6" y1="8" x2="4" y2="3" stroke="#f5f2ee" stroke-width="1.8" stroke-linecap="square"></line><line x1="18" y1="8" x2="20" y2="3" stroke="#f5f2ee" stroke-width="1.8" stroke-linecap="square"></line><circle cx="8" cy="18" r="2" fill="none" stroke="#f5f2ee" stroke-width="1.8"></circle><circle cx="16" cy="18" r="2" fill="none" stroke="#f5f2ee" stroke-width="1.8"></circle></svg><span id="contador-carrito">0</span></button>
+      <button id="boton-login">Ingresar</button>
+      <button id="boton-registro-vender">Vender aquí</button>
+    </div>
+  </nav>
+
+  <header id="cabecera-comprador">
+    <div id="cabecera-comprador-contenido">
+      <p id="ruta-navegacion-comprador">
+        <a href="/index">Inicio</a><span class="separador-ruta">→</span><span>Mis pedidos</span>
+      </p>
+      <h1 id="titulo-pagina-comprador">MIS <span class="titulo-rojo">PEDIDOS</span></h1>
+      <p id="subtitulo-pagina-comprador">Seguimiento y estado de todas tus compras</p>
+    </div>
+    <nav id="subnav-comprador">
+      <a class="subnav-enlace activo" href="/pedidos">📦 Mis pedidos</a>
+      <a class="subnav-enlace" href="/favoritos">♡ Favoritos</a>
+      <a class="subnav-enlace" href="/mi-cuenta">👤 Mi cuenta</a>
+    </nav>
+  </header>
+
+  <main id="cuerpo-comprador">
+
+    <div id="filtros-estado-pedidos">
+      <button class="filtro-estado-btn activo" data-estado="todos">Todos</button>
+      <button class="filtro-estado-btn" data-estado="procesando"><span class="filtro-punto filtro-punto-amarillo"></span>En proceso</button>
+      <button class="filtro-estado-btn" data-estado="enviado"><span class="filtro-punto filtro-punto-azul"></span>Enviados</button>
+      <button class="filtro-estado-btn" data-estado="entregado"><span class="filtro-punto filtro-punto-verde"></span>Entregados</button>
+      <button class="filtro-estado-btn" data-estado="cancelado"><span class="filtro-punto filtro-punto-rojo"></span>Cancelados</button>
+    </div>
+
+    <div id="ped-sin-sesion" style="display:none;text-align:center;padding:80px 20px">
+      <p style="font-size:3rem;margin-bottom:16px">🔒</p>
+      <h2 style="font-family:var(--fuente-titulos);font-size:2.5rem;letter-spacing:0.04em;color:#0F172A;margin-bottom:12px">INICIA SESIÓN</h2>
+      <p style="color:#64748B;margin-bottom:28px">Debes iniciar sesión para ver tus pedidos.</p>
+      <a class="boton-principal" href="/login" style="text-decoration:none;display:inline-block;padding:14px 32px">Ingresar →</a>
+    </div>
+
+    <div id="ped-vacio" style="display:none;text-align:center;padding:80px 20px">
+      <p style="font-size:4rem;opacity:0.25;margin-bottom:16px">📦</p>
+      <h2 style="font-family:var(--fuente-titulos);font-size:2.5rem;letter-spacing:0.04em;color:#0F172A;margin-bottom:12px">NO TIENES PEDIDOS AÚN</h2>
+      <p style="color:#64748B;margin-bottom:28px">Explora el catálogo y realiza tu primera compra.</p>
+      <a class="boton-principal" href="/catalogo" style="text-decoration:none;display:inline-block;padding:14px 32px">Ver catálogo →</a>
+    </div>
+
+    <div id="lista-mis-pedidos"></div>
+
+  </main>
+
+  <!-- MODAL RESEÑA -->
+  <div id="modal-resena" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:1000;align-items:center;justify-content:center">
+    <div id="modal-resena-caja">
+      <div id="modal-resena-header">
+        <h3>Dejar reseña</h3>
+        <button id="btn-cerrar-modal-resena">✕</button>
+      </div>
+      <div id="modal-resena-producto-info">
+        <span>👟</span>
+        <div>
+          <p id="modal-nombre-producto">Producto</p>
+          <p id="modal-empresa-producto">Tienda</p>
+        </div>
+      </div>
+      <div id="selector-estrellas">
+        <p class="etiqueta-modal">Tu valoración *</p>
+        <div id="estrellas-interactivas">
+          <span class="estrella-click" data-valor="1">★</span>
+          <span class="estrella-click" data-valor="2">★</span>
+          <span class="estrella-click" data-valor="3">★</span>
+          <span class="estrella-click" data-valor="4">★</span>
+          <span class="estrella-click" data-valor="5">★</span>
+        </div>
+        <p id="texto-valoracion">Selecciona una valoración</p>
+      </div>
+      <div id="campo-comentario-resena">
+        <label class="etiqueta-modal" for="input-comentario-resena">Tu comentario *</label>
+        <textarea id="input-comentario-resena" placeholder="Cuéntanos cómo te fue con el producto..." rows="4"></textarea>
+        <p id="error-resena" style="color:#e05252;font-size:0.78rem;margin-top:6px"></p>
+      </div>
+      <button id="btn-enviar-resena">Publicar reseña</button>
+    </div>
+  </div>
+
+  <footer id="pie-de-pagina">
+    <div id="grilla-footer">
+      <div id="footer-columna-principal">
+        <div id="footer-logo">UNDER<span id="footer-logo-shop">WATER</span></div>
+        <p id="footer-descripcion">El marketplace de zapatos de Colombia.</p>
+        <div id="footer-redes-sociales">
+          <a class="boton-red-social" href="#">f</a><a class="boton-red-social" href="#">in</a>
+          <a class="boton-red-social" href="#">ig</a><a class="boton-red-social" href="#">yt</a>
+        </div>
+      </div>
+      <div class="footer-columna-links">
+        <h4 class="footer-titulo-columna">Marketplace</h4>
+        <ul class="footer-lista-links">
+          <li><a href="/index">Inicio</a></li>
+          <li><a href="/catalogo">Catálogo</a></li>
+          <li><a href="/catalogo?ofertas=true">Ofertas</a></li>
+        </ul>
+      </div>
+      <div class="footer-columna-links">
+        <h4 class="footer-titulo-columna">Mi cuenta</h4>
+        <ul class="footer-lista-links">
+          <li><a href="/pedidos">Mis pedidos</a></li>
+          <li><a href="/favoritos">Mis favoritos</a></li>
+          <li><a href="/mi-cuenta">Mi cuenta</a></li>
+        </ul>
+      </div>
+      <div class="footer-columna-links">
+        <h4 class="footer-titulo-columna">Ayuda</h4>
+        <ul class="footer-lista-links">
+          <li><a href="#">Devoluciones</a></li>
+          <li><a href="#">Envíos</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="footer-parte-inferior">
+      <p>© 2025 Underwater — Marketplace de Zapatos · Todos los derechos reservados.</p>
+      <p>💳 PSE · Nequi · Bancolombia · Efecty</p>
+    </div>
+  </footer>
+
+  <script src="js/scripts.js"></script>  
+  <script src="js/scripts_Pedidos.js"></script>
+  </body>
+</html>

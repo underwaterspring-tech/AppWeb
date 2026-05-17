@@ -1,0 +1,303 @@
+/* ================================================================
+   ESTILOS_ESPERA.CSS — Underwater — Página espera aprobación
+================================================================ */
+
+/* ── Reset del body — anula el body del CSS viejo ───────────────── */
+body {
+  background: #ede8e0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: unset;
+  justify-content: unset;
+  text-align: left;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ── Navbar ──────────────────────────────────────────────────────── */
+#navbar-espera {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 60px;
+  background: #080d1a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+#navbar-espera img {
+  width: 42px;
+}
+#enlace-volver {
+  text-decoration: none;
+  color: rgba(255,255,255,0.55);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+#enlace-volver:hover {
+  color: #ffffff;
+}
+
+/* ── Zona central ────────────────────────────────────────────────── */
+#zona-espera {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 90px 24px 40px;
+}
+
+/* ── Card ────────────────────────────────────────────────────────── */
+#card-espera {
+  background: #ffffff;
+  border: 1px solid #d8d0c4;
+  max-width: 560px;
+  width: 100%;
+  padding: 56px 48px 48px;
+  box-shadow: 0 8px 32px rgba(8,13,26,0.14);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+#card-espera::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: #0e6655;
+}
+
+/* ── Icono ───────────────────────────────────────────────────────── */
+#icono-espera {
+  font-size: 4.5rem;
+  display: block;
+  margin-bottom: 28px;
+  animation: balanceo 5s ease-in-out infinite;
+}
+@keyframes balanceo {
+  0%, 100% { transform: rotate(-8deg) scale(1); }
+  50%       { transform: rotate(8deg) scale(1.05); }
+}
+
+/* ── Nombre vendedor ─────────────────────────────────────────────── */
+#nombre-vendedor {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: #0e6655;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* ── Título ──────────────────────────────────────────────────────── */
+#titulo-espera {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 0.06em;
+  color: #080d1a;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+#titulo-espera span {
+  color: #0e6655;
+}
+
+/* ── Badge ───────────────────────────────────────────────────────── */
+#estado-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(14,102,85,0.08);
+  border: 1px solid rgba(14,102,85,0.25);
+  color: #0e6655;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  margin-bottom: 24px;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+#estado-badge .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #0e6655;
+  flex-shrink: 0;
+  animation: pulso 1.8s ease-in-out infinite;
+}
+@keyframes pulso {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.75); }
+}
+
+/* ── Alerta aprobado — OCULTA por defecto ────────────────────────── */
+#alerta-aprobado {
+  display: none;
+  background: rgba(26,110,63,0.08);
+  border: 1px solid #1a6e3f;
+  color: #1a6e3f;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+}
+
+/* ── Descripción ─────────────────────────────────────────────────── */
+#desc-espera {
+  color: #8a7f72;
+  font-size: 0.91rem;
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+#desc-espera strong,
+#email-espera {
+  color: #080d1a;
+  font-weight: 700;
+}
+
+/* ── Pasos ───────────────────────────────────────────────────────── */
+#pasos-espera {
+  text-align: left;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  padding: 24px 28px 8px;
+  margin-bottom: 36px;
+}
+#pasos-titulo {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8a7f72;
+  margin-bottom: 20px;
+}
+.paso-espera {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.paso-espera:last-child {
+  margin-bottom: 12px;
+}
+.paso-num {
+  background: #d8d0c4;
+  color: #8a7f72;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+/* Completado */
+.paso-espera.completado .paso-num {
+  background: #1a6e3f;
+  color: white;
+}
+.paso-espera.completado .paso-num span { display: none; }
+.paso-espera.completado .paso-num::after { content: '✓'; }
+
+/* Activo */
+.paso-espera.activo .paso-num {
+  background: #0e6655;
+  color: white;
+  box-shadow: 0 0 0 4px rgba(14,102,85,0.15);
+}
+
+.paso-info strong {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #080d1a;
+  display: block;
+  margin-bottom: 2px;
+}
+.paso-espera:not(.completado):not(.activo) .paso-info strong {
+  color: #8a7f72;
+}
+.paso-texto {
+  font-size: 0.82rem;
+  color: #8a7f72;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+/* ── Botones ─────────────────────────────────────────────────────── */
+#acciones-espera {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.btn-espera {
+  display: inline-block;
+  border: none;
+  padding: 13px 32px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+#btn-volver {
+  background: #0e6655;
+  color: #ffffff;
+}
+#btn-volver:hover {
+  background: #19876e;
+}
+#btn-logout {
+  background: transparent;
+  color: #8a7f72;
+  border: 1px solid #d8d0c4;
+}
+#btn-logout:hover {
+  color: #a0281e;
+  border-color: #a0281e;
+}
+
+/* ── Info refresco ───────────────────────────────────────────────── */
+#refresco-info {
+  font-size: 0.75rem;
+  color: #b0a898;
+  margin-top: 4px;
+}
+#refresco-info span {
+  font-weight: 800;
+  color: #0e6655;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────── */
+@media (max-width: 540px) {
+  #card-espera {
+    padding: 40px 24px 36px;
+  }
+  #titulo-espera {
+    font-size: 2.4rem;
+  }
+  #pasos-espera {
+    padding: 20px 20px 8px;
+  }
+  #acciones-espera {
+    flex-direction: column;
+  }
+  .btn-espera {
+    width: 100%;
+    text-align: center;
+  }
+}

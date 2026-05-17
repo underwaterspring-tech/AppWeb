@@ -1,0 +1,106 @@
+/* ================================================================
+   ESTILOS_MARCAS.CSS — Underwater — Tema claro
+================================================================ */
+
+#cabecera-marcas {
+  background: #0f172a;
+  padding: 120px 48px 48px;
+  position: relative;
+  overflow: hidden;
+}
+#cabecera-marcas::before {
+  content: "MARCAS";
+  font-family: var(--fuente-titulos);
+  font-size: 16vw;
+  color: rgba(255, 255, 255, 0.06);
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  pointer-events: none;
+}
+#titulo-marcas {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(3rem, 6vw, 6rem);
+  letter-spacing: 0.03em;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+#titulo-marcas span {
+  color: #19876E;
+}
+#sub-marcas {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 1;
+}
+#ruta-marcas {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+#ruta-marcas a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+#ruta-marcas a:hover {
+  color: white;
+}
+
+#grilla-marcas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 56px 48px 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #f8fafc;
+}
+
+.tarjeta-marca {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 36px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.tarjeta-marca:hover {
+  transform: translateY(-4px);
+  border-color: #19876E;
+  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.12);
+}
+.marca-nombre {
+  font-family: var(--fuente-titulos);
+  font-size: 1.5rem content;
+  letter-spacing: 0.1em;
+  color: #0f172a;
+  display: block;
+  margin-bottom: 8px;
+}
+.marca-linea {
+  width: 32px;
+  height: 2px;
+  background: #19876E;
+  margin: 10px auto;
+  border-radius: 2px;
+}
+.marca-cant {
+  font-size: 0.72rem;
+  color: #64748b;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}

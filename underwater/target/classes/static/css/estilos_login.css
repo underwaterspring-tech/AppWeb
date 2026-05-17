@@ -1,0 +1,542 @@
+
+/* ================================================================
+   BODY DE ESTA PAGINA
+   Ocupamos toda la pantalla, sin scroll innecesario
+================================================================ */
+#pagina-login {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ================================================================
+   NAVBAR MINIMALISTA (solo logo + volver)
+================================================================ */
+#navbar-login {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(15,23,42,0.97);
+  border-bottom: 1px solid #E2E8F0;
+  backdrop-filter: blur(10px);
+}
+
+#enlace-volver-inicio {
+  color: #19876E;
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+#enlace-volver-inicio:hover { color: #0E6655; }
+
+
+/* ================================================================
+   CONTENEDOR PRINCIPAL: 2 columnas
+   Izquierda: decorativa | Derecha: formulario
+================================================================ */
+#contenedor-login-registro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  padding-top: 65px; /* altura del navbar */
+}
+
+
+/* ================================================================
+   PANEL IZQUIERDO — decorativo
+================================================================ */
+#panel-decorativo {
+  background: #0F172A;
+  padding: 60px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid #E2E8F0;
+}
+
+/* Texto gigante de fondo */
+#panel-texto-grande {
+  font-family: var(--fuente-titulos);
+  font-size: 8rem;
+  color: rgba(255,255,255,0.6);
+  position: relative;
+  top: 0px; left: -20px;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+}
+#panel-shop-rojo { Color: rgba(255,255,255,0.6) }
+
+#panel-decorativo-contenido {
+  position: relative;
+  z-index: 1;
+}
+
+/* Título principal del panel */
+#panel-titulo {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(2.8rem, 4vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: #0F172A;
+  margin-bottom: 20px;
+}
+#panel-titulo em {
+  font-family: var(--fuente-cursiva);
+  color: #0F172A;
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+#panel-descripcion {
+  color: #64748B;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  max-width: 360px;
+  margin-bottom: 44px;
+  
+}
+
+/* Estadísticas del panel */
+#panel-estadisticas {
+  display: flex;
+  gap: 32px;
+  padding-top: 36px;
+  border-top: 1px solid #E2E8F0;
+}
+.panel-stat-numero {
+  display: block;
+  font-family: var(--fuente-titulos);
+  font-size: 2rem;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+.panel-stat-label {
+  display: block;
+  font-size: 0.68rem;
+  color: #64748B;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* Zapato decorativo flotando */
+#panel-zapato-decorativo {
+  position: absolute;
+  bottom: 60px; right: 40px;
+  font-size: 8rem;
+  opacity: 0.12;
+  transform: rotate(-15deg);
+  pointer-events: none;
+  animation: flotar-suave 5s ease-in-out infinite;
+}
+
+@keyframes flotar-suave {
+  0%, 100% { transform: rotate(-15deg) translateY(0); }
+  50%       { transform: rotate(-10deg) translateY(-15px); }
+}
+
+
+/* ================================================================
+   PANEL DERECHO — formularios
+================================================================ */
+#panel-formularios {
+  background: #FFFFFF;
+  padding: 48px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+
+/* ================================================================
+   TABS: Ingresar / Registrarse
+================================================================ */
+#tabs-login-registro {
+  display: flex;
+  gap: 0;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.tab-auth {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #94A3B8;
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 12px 24px 14px;
+  cursor: pointer;
+  margin-bottom: -1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.tab-auth:hover { color: #0F172A; }
+.tab-auth.activo {
+  color: #0F172A;
+  border-bottom-color: #0E6655;
+}
+
+
+/* ================================================================
+   ENCABEZADO DE CADA FORMULARIO
+================================================================ */
+.form-encabezado { margin-bottom: 32px; }
+
+.form-titulo {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(2.4rem, 3.5vw, 3.5rem);
+  letter-spacing: 0.03em;
+  line-height: 0.95;
+  color: #0F172A;
+  margin-bottom: 10px;
+}
+.form-titulo-rojo { color: #19876E; }
+
+.form-subtitulo {
+  color: #64748B;
+  font-size: 0.88rem;
+}
+
+
+/* ================================================================
+   SELECTOR TIPO DE USUARIO (Comprador / Vendedor)
+================================================================ */
+#selector-tipo-usuario {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.boton-tipo-usuario {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  color: #94A3B8;
+  cursor: pointer;
+  padding: 16px 14px;
+  text-align: left;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.boton-tipo-usuario:hover {
+  border-color: #94A3B8;
+  background: #E2E8F0;
+}
+.boton-tipo-usuario.activo {
+  border-color: #0E6655 ;
+  background: rgba(200,69,45,0.08);
+}
+.tipo-icono { font-size: 1.4rem; margin-bottom: 4px; }
+.tipo-nombre {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #0F172A;
+}
+.tipo-descripcion {
+  font-size: 0.7rem;
+  color: #64748B;
+  letter-spacing: 0.04em;
+}
+
+
+/* ================================================================
+   CAMPOS DEL FORMULARIO
+================================================================ */
+.grupo-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+/* Fila de etiqueta + enlace "¿olvidaste?" */
+.etiqueta-campo-fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.etiqueta-campo {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #94A3B8;
+}
+
+/* Input de texto base */
+.campo-texto {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  color: #0F172A;
+  border-radius: 6px;
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.88rem;
+  padding: 12px 16px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+}
+.campo-texto::placeholder { color: #64748B; }
+.campo-texto:focus {
+  border-color: #0E6655 ;
+  background: #E2E8F0;
+}
+/* Estado de error */
+.campo-texto.campo-con-error { border-color: #EF4444; }
+/* Estado válido */
+.campo-texto.campo-valido { border-color: #16A34A; }
+
+/* Select */
+.campo-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6760' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+.campo-select option { background: #E2E8F0; }
+
+/* Campo de contraseña con botón de mostrar/ocultar */
+.campo-password-contenedor {
+  position: relative;
+  display: flex;
+}
+.campo-password-contenedor .campo-texto { padding-right: 44px; }
+.boton-mostrar-password {
+  position: absolute;
+  right: 12px; top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #64748B;
+  font-size: 0.9rem;
+  padding: 4px;
+  transition: color 0.2s;
+}
+.boton-mostrar-password:hover { color: #0F172A; }
+
+/* Enlace "¿olvidaste la contraseña?" */
+.enlace-olvide-password {
+  color: #19876E;
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  transition: color 0.2s;
+}
+.enlace-olvide-password:hover { color: #19876E; }
+
+/* Mensajes de error bajo cada campo */
+.mensaje-error {
+  font-size: 0.72rem;
+  color: #EF4444;
+  letter-spacing: 0.04em;
+  min-height: 14px;
+}
+
+/* Checkbox "Recordar sesión" */
+.grupo-checkbox-recordar { margin-bottom: 20px; }
+.opcion-recordar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: #64748B;
+}
+.opcion-recordar input[type="checkbox"] {
+  accent-color: #19876E;
+  width: 15px; height: 15px;
+  cursor: pointer;
+}
+
+/* Checkbox de términos */
+.opcion-terminos {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: #64748B;
+  line-height: 1.5;
+}
+.opcion-terminos input[type="checkbox"] {
+  accent-color: #19876E;
+  width: 15px; height: 15px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  cursor: pointer;
+}
+.enlace-terminos {
+  color: #19876E;
+  text-decoration: none;
+  font-weight: 700;
+}
+.enlace-terminos:hover { color: #19876E; }
+
+
+/* ================================================================
+   BARRA DE SEGURIDAD DE LA CONTRASEÑA
+================================================================ */
+#barra-seguridad-password {
+  height: 4px;
+  background: #E2E8F0;
+  margin-top: 6px;
+  overflow: hidden;
+}
+#nivel-seguridad-barra {
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+/* Niveles: débil, media, fuerte */
+.seguridad-debil  { width: 33% !important; background: #EF4444 !important; }
+.seguridad-media  { width: 66% !important; background: #F97316 !important; }
+.seguridad-fuerte { width: 100% !important; background: #16A34A !important; }
+
+#texto-seguridad-password {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+.texto-debil  { color: #EF4444; }
+.texto-media  { color: #F97316; }
+.texto-fuerte { color: #16A34A; }
+
+
+/* ================================================================
+   SEPARADOR DE SECCIÓN (para campos de empresa)
+================================================================ */
+.separador-seccion {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0 18px;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #64748B;
+  font-weight: 700;
+}
+.separador-seccion::before,
+.separador-seccion::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #E2E8F0;
+}
+
+
+/* ================================================================
+   AVISO DE APROBACION (solo para vendedores)
+================================================================ */
+.aviso-aprobacion {
+  background: rgba(232,168,56,0.08);
+  border: 1px solid rgba(232,168,56,0.25);
+  color: #19876E;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+}
+
+
+/* ================================================================
+   BOTON DE SUBMIT
+================================================================ */
+.boton-submit {
+  width: 100%;
+  background: #0E6655;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 15px;
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background 0.2s, transform 0.15s;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  position: relative;
+}
+.boton-submit:hover {
+  background: #0E6655;
+  transform: translateY(-1px);
+}
+.boton-submit:active { transform: translateY(0); }
+.boton-submit:disabled {
+  background: #64748B;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* ================================================================
+   ALERTAS DE EXITO Y ERROR
+================================================================ */
+.alerta-error {
+  background: rgba(224,82,82,0.1);
+  border: 1px solid rgba(224,82,82,0.3);
+  color: #EF4444;
+  font-size: 0.8rem;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.alerta-exito {
+  background: rgba(45,110,45,0.1);
+  border: 1px solid rgba(45,110,45,0.3);
+  color: #22C55E;
+  font-size: 0.8rem;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+
+/* ================================================================
+   TEXTO INFERIOR "¿Ya tienes cuenta?"
+================================================================ */
+.texto-cambiar-tab {
+  text-align: center;
+  font-size: 0.82rem;
+  color: #64748B;
+  margin-top: 8px;
+}
+.enlace-cambiar-tab {
+  background: none;
+  border: none;
+  color: #19876E;
+  cursor: pointer;
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.enlace-cambiar-tab:hover { color: #19876E; }

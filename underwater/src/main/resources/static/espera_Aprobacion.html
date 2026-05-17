@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cuenta en Revisión — Underwater</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="css/estilos.css"/>
+  <link rel="stylesheet" href="css/estilos.Espera.css"/>
+</head>
+<body>
+
+  <!-- NAVBAR MÍNIMO -->
+  <nav id="navbar-espera">
+    <a href="/login"><img src="logos/underwater-logo-v3.svg" alt="Underwater"/></a>
+    <a href="/login" id="enlace-volver">← Volver al login</a>
+  </nav>
+
+  <!-- ZONA CENTRAL -->
+  <div id="zona-espera">
+    <div id="card-espera">
+
+      <span id="icono-espera">⏳</span>
+
+      <span id="nombre-vendedor"></span>
+
+      <h1 id="titulo-espera">CUENTA EN<br><span>REVISIÓN</span></h1>
+
+      <div id="estado-badge">
+        <div class="dot"></div>
+        <span id="badge-texto">Pendiente de aprobación</span>
+      </div>
+
+      <div id="alerta-aprobado">
+        ✅ ¡Tu empresa fue aprobada! Redirigiendo al panel...
+      </div>
+
+      <p id="desc-espera">
+        Hola, <strong id="email-espera">vendedor</strong>.<br>
+        Tu solicitud fue recibida y está siendo revisada por nuestro equipo.
+        Te notificaremos una vez que sea aprobada (máximo 24 horas).
+      </p>
+
+      <div id="pasos-espera">
+        <h3 id="pasos-titulo">Estado de tu solicitud</h3>
+
+        <div class="paso-espera completado" id="paso-1">
+          <div class="paso-num"><span>1</span></div>
+          <div class="paso-info">
+            <strong>Registro completado</strong>
+            <p class="paso-texto">Tu cuenta y empresa fueron registradas correctamente.</p>
+          </div>
+        </div>
+
+        <div class="paso-espera activo" id="paso-2">
+          <div class="paso-num"><span>2</span></div>
+          <div class="paso-info">
+            <strong>Revisión del administrador</strong>
+            <p class="paso-texto">Estamos verificando los datos de tu empresa. Máximo 24 h.</p>
+          </div>
+        </div>
+
+        <div class="paso-espera" id="paso-3">
+          <div class="paso-num"><span>3</span></div>
+          <div class="paso-info">
+            <strong>Acceso al panel de ventas</strong>
+            <p class="paso-texto">Una vez aprobado, podrás publicar productos y gestionar pedidos.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="acciones-espera">
+        <a href="/login" class="btn-espera" id="btn-volver">Ir al login</a>
+        <button class="btn-espera" id="btn-logout">Cerrar sesión</button>
+      </div>
+
+      <p id="refresco-info">
+        Verificando estado automáticamente en <span id="cuenta-regresiva">30</span>s
+      </p>
+
+    </div>
+  </div>
+
+  <script src="js/scripts_Espera.js"></script>
+</body>
+</html>

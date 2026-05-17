@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mis Favoritos — Underwater</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700;800&family=Cormorant+Garamond:ital,wght@1,400;1,600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/estilos.css"/>
+  <link rel="stylesheet" href="css/estilos_Comprador.css"/>
+</head>
+<body>
+
+  <nav id="barra-navegacion">
+    <a href="/index" id="logo-nexoshop"><img src="logos/underwater-logo-v3.svg" width="50px" alt=""/></a>
+    <ul id="menu-categorias">
+      <li><a href="/catalogo?categoria=deportivos">Deportivos</a></li>
+      <li><a href="/catalogo?categoria=casual">Casual</a></li>
+      <li><a href="/marcas">Marcas</a></li>
+      <li><a href="/empresas">Empresas</a></li>
+      <li><a href="/catalogo?ofertas=true" id="menu-ofertas">Ofertas</a></li>
+    </ul>
+    <div id="contenedor-barra-busqueda">
+      <input type="text" id="input-busqueda" placeholder="Buscar zapatos, marcas, empresas..." autocomplete="off"/>
+      <button id="boton-ejecutar-busqueda"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="6" stroke="white" stroke-width="2"/><line x1="13" y1="13" x2="19" y2="19" stroke="white" stroke-width="2.5" stroke-linecap="square"/></svg></button>
+      <div id="panel-sugerencias-busqueda" style="display:none">
+        <p class="sugerencia-label">Busquedas populares</p>
+        <ul id="lista-sugerencias">
+          <li class="sugerencia-item">Nike Air Max</li>
+          <li class="sugerencia-item">Adidas Ultraboost</li>
+          <li class="sugerencia-item">Tacones mujer</li>
+          <li class="sugerencia-item">Botas cuero hombre</li>
+        </ul>
+      </div>
+    </div>
+    <div id="iconos-derecha">
+      <button class="boton-icono" id="boton-favoritos" onclick="window.location.href='/favoritos'" title="Favoritos"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 20 L3 9 L7 4 L12 8 L17 4 L21 9 Z" stroke="#f5f2ee" stroke-width="2" fill="none" stroke-linejoin="miter"/></svg></button>
+      <button class="boton-icono" id="boton-carrito" onclick="window.location.href='/carrito'">&#128722;<span id="contador-carrito">0</span></button>
+      <button id="boton-login" onclick="window.location.href='/login'">Ingresar</button>
+      <button id="boton-registro-vender" onclick="window.location.href='/login'">Vender aqui</button>
+    </div>
+  </nav>
+
+  <header id="cabecera-comprador">
+    <div id="cabecera-comprador-contenido">
+      <p id="ruta-navegacion-comprador">
+        <a href="/index">Inicio</a>
+        <span class="separador-ruta">&#8594;</span>
+        <span>Mis favoritos</span>
+      </p>
+      <h1 id="titulo-pagina-comprador">MIS <span class="titulo-rojo">FAVORITOS</span></h1>
+      <p id="subtitulo-pagina-comprador">Productos que guardaste para despues</p>
+    </div>
+    <nav id="subnav-comprador">
+      <a href="/pedidos"   class="subnav-enlace">Mis pedidos</a>
+      <a href="/favoritos" class="subnav-enlace activo">Favoritos</a>
+      <a href="/mi-cuenta" class="subnav-enlace">Mi cuenta</a>
+    </nav>
+  </header>
+
+  <main id="cuerpo-comprador">
+
+    <div id="fav-sin-sesion" style="display:none;text-align:center;padding:80px 20px">
+      <p style="font-size:3rem;margin-bottom:16px">&#128274;</p>
+      <h2 style="font-family:var(--fuente-titulos);font-size:2.5rem;letter-spacing:0.04em;color:#0F172A;margin-bottom:12px">INICIA SESION</h2>
+      <p style="color:#64748B;margin-bottom:28px">Debes iniciar sesion para ver tus favoritos.</p>
+      <a href="/login" class="boton-principal" style="text-decoration:none;display:inline-block;padding:14px 32px">Ingresar</a>
+    </div>
+
+    <div id="grilla-favoritos"></div>
+
+    <div id="favoritos-vacio" style="display:none">
+      <div id="favoritos-vacio-contenido">
+        <p id="favoritos-vacio-icono">&#9825;</p>
+        <h2>No tienes favoritos aun</h2>
+        <p>Guarda los productos que te gusten haciendo clic en el corazon.</p>
+        <a href="/catalogo" class="boton-principal">Explorar catalogo</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer id="pie-de-pagina">
+    <div id="grilla-footer">
+      <div id="footer-columna-principal">
+        <div id="footer-logo">UNDER<span id="footer-logo-shop">WATER</span></div>
+        <p id="footer-descripcion">El marketplace de zapatos de Colombia.</p>
+        <div id="footer-redes-sociales">
+          <a href="#" class="boton-red-social">f</a>
+          <a href="#" class="boton-red-social">in</a>
+          <a href="#" class="boton-red-social">ig</a>
+          <a href="#" class="boton-red-social">yt</a>
+        </div>
+      </div>
+      <div class="footer-columna-links">
+        <h4 class="footer-titulo-columna">Marketplace</h4>
+        <ul class="footer-lista-links">
+          <li><a href="/index">Inicio</a></li>
+          <li><a href="/catalogo">Catalogo</a></li>
+          <li><a href="/empresas">Empresas</a></li>
+        </ul>
+      </div>
+      <div class="footer-columna-links">
+        <h4 class="footer-titulo-columna">Mi cuenta</h4>
+        <ul class="footer-lista-links">
+          <li><a href="/pedidos">Mis pedidos</a></li>
+          <li><a href="/favoritos">Mis favoritos</a></li>
+          <li><a href="/mi-cuenta">Mi cuenta</a></li>
+        </ul>
+      </div>
+      <div class="footer-columna-links">
+        <h4 class="footer-titulo-columna">Ayuda</h4>
+        <ul class="footer-lista-links">
+          <li><a href="#">Devoluciones</a></li>
+          <li><a href="#">Envios</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="footer-parte-inferior">
+      <p>2025 Underwater - Marketplace de Zapatos - Todos los derechos reservados.</p>
+      <p>PSE - Nequi - Bancolombia - Efecty</p>
+    </div>
+  </footer>
+
+  <script src="js/scripts.js"></script>
+  <script src="js/scripts_Favoritos.js"></script>
+</body>
+</html>
