@@ -821,7 +821,7 @@
           <h2 class="seccion-panel-titulo">Mis Cupones</h2>
           <p class="seccion-panel-subtitulo">Crea y gestiona cupones de descuento para tus clientes</p>
         </div>
-        <button class="boton-secundario" style="font-size:0.75rem;padding:8px 16px" id="btn-nuevo-cupon">+ Crear cupón</button>
+        <button class="boton-accion-primario" id="btn-nuevo-cupon">+ Crear cupón</button>
       </div>
 
       <!-- Formulario nuevo cupón -->
@@ -861,8 +861,8 @@
           </div>
         </div>
         <div style="display:flex;gap:12px;margin-top:16px">
-          <button id="btn-guardar-cupon" class="boton-secundario" style="font-size:0.75rem;padding:8px 16px">Crear cupón</button>
-          <button id="btn-cancelar-cupon" class="boton-secundario" style="font-size:0.75rem;padding:8px 16px;color:#64748B">Cancelar</button>
+          <button id="btn-guardar-cupon" class="boton-accion-primario">Crear cupón</button>
+          <button id="btn-cancelar-cupon" style="background:none;border:1px solid #E2E8F0;color:#64748B;padding:10px 20px;font-family:var(--fuente-cuerpo);font-size:0.82rem;font-weight:700;cursor:pointer;border-radius:6px">Cancelar</button>
         </div>
         <p id="error-cupon" style="color:#e05252;font-size:0.78rem;margin-top:8px;display:none"></p>
         <p id="exito-cupon" style="color:#4caf50;font-size:0.78rem;margin-top:8px;display:none"></p>
@@ -895,7 +895,7 @@
           <h2 class="seccion-panel-titulo">Mis Reportes</h2>
           <p class="seccion-panel-subtitulo">Reportes enviados al administrador</p>
         </div>
-        <button class="boton-secundario" style="font-size:0.75rem;padding:8px 16px" onclick="abrirModalReporte('OTRO')">+ Nuevo reporte</button>
+        <button class="boton-accion-primario" onclick="abrirModalReporte('OTRO')">+ Nuevo reporte</button>
       </div>
       <div id="lista-mis-reportes-vendedor">
         <p style="text-align:center;padding:40px;color:#888">Cargando reportes...</p>

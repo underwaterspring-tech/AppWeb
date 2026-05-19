@@ -1,10 +1,3 @@
-// ── Guard: solo ADMIN ──────────────────────────────────────────
-(function() {
-  var rol = localStorage.getItem('uw-rol');
-  var id  = localStorage.getItem('uw-id');
-  if (!id || rol !== 'ADMIN') window.location.replace('/login');
-})();
-
 // ================================================================
 // MODAL ADMIN — reemplaza los alert() nativos
 // ================================================================
@@ -75,10 +68,10 @@ let DB = {
 async function cargarTodosLosDatos() {
   try {
     const [usuarios, empresas, productos, pedidos] = await Promise.all([
-      fetch("/api/admin/usuarios?rol=COMPRADOR&adminId=" + (localStorage.getItem("uw-id")||"")).then((r) => r.json()),
-      fetch("/api/admin/empresas?adminId=" + (localStorage.getItem("uw-id")||"")).then((r) => r.json()),
-      fetch("/api/admin/productos?adminId=" + (localStorage.getItem("uw-id")||"")).then((r) => r.json()),
-      fetch("/api/admin/pedidos?adminId=" + (localStorage.getItem("uw-id")||"")).then((r) => r.json()),
+      fetch("/api/admin/usuarios?rol=COMPRADOR").then((r) => r.json()),
+      fetch("/api/admin/empresas").then((r) => r.json()),
+      fetch("/api/admin/productos").then((r) => r.json()),
+      fetch("/api/admin/pedidos").then((r) => r.json()),
     ]);
 
     DB.usuarios = usuarios;
@@ -326,7 +319,7 @@ async function cambiarEstadoUsuario(id, accion) {
         ? `/api/admin/usuarios/${id}/activar`
         : `/api/admin/usuarios/${id}/suspender`;
 
-    const res = await fetch(endpoint + "?adminId=" + (localStorage.getItem("uw-id")||""), { method: "PUT" });
+    const res = await fetch(endpoint, { method: "PUT" });
 
     if (!res.ok) {
       console.error("❌ Error usuario:", res.status, await res.text());
@@ -579,7 +572,7 @@ async function cambiarEstadoEmpresa(id, nuevoEstado) {
     const res = await fetch(`/api/admin/empresas/${id}/estado`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ estado: nuevoEstado, adminId: localStorage.getItem("uw-id")||"" }),
+      body: JSON.stringify({ estado: nuevoEstado }),
     });
 
     if (!res.ok) {
@@ -768,7 +761,7 @@ async function cambiarEstadoProducto(id, nuevoEstado) {
     const res = await fetch(`/api/admin/productos/${id}/estado`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ estado: nuevoEstado, adminId: localStorage.getItem("uw-id")||"" }),
+      body: JSON.stringify({ estado: nuevoEstado }),
     });
 
     if (!res.ok) {
@@ -1037,10 +1030,8 @@ modalBotonConfirmar?.addEventListener("click", function () {
 // ================================================================
 //  CERRAR SESIÓN
 // ================================================================
-document
-  .getElementById("boton-cerrar-sesion-admin")
+document.getElementById("boton-cerrar-sesion-admin")
   ?.addEventListener("click", function () {
-    if (typeof confirmarAccion !== "undefined") return; // Vendedor lo maneja
     var modal = document.getElementById("modal-cerrar-sesion-adm");
     if (!modal) {
       modal = document.createElement("div");
@@ -1055,11 +1046,16 @@ document
         '<button id="adm-no" style="padding:11px 28px;background:none;border:1px solid #CBD5E1;color:#0F172A;font-family:var(--fuente-cuerpo);font-size:0.8rem;font-weight:700;letter-spacing:0.1em;cursor:pointer">Cancelar</button>' +
         "</div></div>";
       document.body.appendChild(modal);
+
       document.getElementById("adm-si").onclick = function () {
-        fetch("/api/auth/logout", { method: "POST" }).catch(function () {});
+        // Avisar al backend pero NO esperar — siempre limpiar y redirigir
+        const API = "https://api-eventhive.onrender.com"; // ← tu URL del backend
+        fetch(API + "/api/auth/logout", { method: "POST" }).catch(() => {});
         localStorage.clear();
+        sessionStorage.clear();
         window.location.href = "/login";
       };
+
       document.getElementById("adm-no").onclick = function () {
         modal.style.display = "none";
       };
@@ -1250,7 +1246,7 @@ async function cambiarEstadoEmpresaYRefrescar(id, nuevoEstado) {
     const res = await fetch(`/api/admin/empresas/${id}/estado`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ estado: nuevoEstado, adminId: localStorage.getItem("uw-id")||"" }),
+      body: JSON.stringify({ estado: nuevoEstado }),
     });
 
     if (!res.ok) {

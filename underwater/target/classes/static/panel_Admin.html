@@ -425,6 +425,13 @@
 
 
   <!-- GUARD: Solo ADMIN -->
+  <script>
+    (function() {
+      var rol = localStorage.getItem('uw-rol');
+      var id  = localStorage.getItem('uw-id');
+      if (!id || rol !== 'ADMIN') window.location.replace('/login');
+    })();
+  </script>
   <script src="js/scripts.js"></script>
   <script src="js/scripts_Admin.js"></script>
 

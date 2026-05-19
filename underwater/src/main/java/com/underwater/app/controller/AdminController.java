@@ -17,25 +17,13 @@ public class AdminController {
     @Autowired private UsuarioRepository usuarioRepo;
     @Autowired private EmpresaRepository empresaRepo;
     @Autowired private PedidoRepository  pedidoRepo;
-    @Autowired private AdminRepository   adminRepo;
     @Autowired private MongoTemplate     mongoTemplate;
-
-    // ── Helper: verificar que quien llama es ADMIN ───────────────
-    private boolean esAdmin(String adminId) {
-        if (adminId == null || adminId.isBlank()) return false;
-        return adminRepo.findById(adminId).isPresent();
-    }
-
-    private static final ResponseEntity<?> NO_AUTH =
-        ResponseEntity.status(403).body(Map.of("exito", false, "mensaje", "No autorizado."));
 
     // ═══════════════════════ USUARIOS ═══════════════════════════
 
     @GetMapping("/usuarios")
-    public ResponseEntity<?> listarUsuarios(
-            @RequestParam(defaultValue = "COMPRADOR") String rol,
-            @RequestParam(required = false) String adminId) {
-        if (!esAdmin(adminId)) return NO_AUTH;
+    public ResponseEntity<List<Map<String, Object>>> listarUsuarios(
+            @RequestParam(defaultValue = "COMPRADOR") String rol) {
         return ResponseEntity.ok(
             usuarioRepo.findAll().stream()
                 .filter(u -> "todos".equalsIgnoreCase(rol) || rol.equalsIgnoreCase(u.getRol()))
@@ -45,10 +33,7 @@ public class AdminController {
     }
 
     @PutMapping("/usuarios/{id}/suspender")
-    public ResponseEntity<?> suspender(
-            @PathVariable String id,
-            @RequestParam(required = false) String adminId) {
-        if (!esAdmin(adminId)) return NO_AUTH;
+    public ResponseEntity<?> suspender(@PathVariable String id) {
         return usuarioRepo.findById(id).map(u -> {
             u.setActivo(false);
             usuarioRepo.save(u);
@@ -57,10 +42,7 @@ public class AdminController {
     }
 
     @PutMapping("/usuarios/{id}/activar")
-    public ResponseEntity<?> activar(
-            @PathVariable String id,
-            @RequestParam(required = false) String adminId) {
-        if (!esAdmin(adminId)) return NO_AUTH;
+    public ResponseEntity<?> activar(@PathVariable String id) {
         return usuarioRepo.findById(id).map(u -> {
             u.setActivo(true);
             usuarioRepo.save(u);
@@ -70,22 +52,9 @@ public class AdminController {
 
     // ═══════════════════════ EMPRESAS ════════════════════════════
 
-    // Endpoint PÚBLICO — para la página /empresas (sin autenticación)
-    @GetMapping("/empresas/publicas")
-    public ResponseEntity<?> empresasPublicas() {
-        return ResponseEntity.ok(
-            empresaRepo.findAll().stream()
-                .filter(e -> "APROBADA".equalsIgnoreCase(e.getEstado()))
-                .map(this::empresaAMapa)
-                .toList()
-        );
-    }
-
     @GetMapping("/empresas")
-    public ResponseEntity<?> listarEmpresas(
-            @RequestParam(required = false) String estado,
-            @RequestParam(required = false) String adminId) {
-        if (!esAdmin(adminId)) return NO_AUTH;
+    public ResponseEntity<List<Map<String, Object>>> listarEmpresas(
+            @RequestParam(required = false) String estado) {
         return ResponseEntity.ok(
             empresaRepo.findAll().stream()
                 .filter(e -> estado == null || estado.equalsIgnoreCase(e.getEstado()))
@@ -98,11 +67,12 @@ public class AdminController {
     public ResponseEntity<?> cambiarEstadoEmpresa(
             @PathVariable String id,
             @RequestBody Map<String, String> body) {
-        if (!esAdmin(body.get("adminId"))) return NO_AUTH;
         String nuevoEstado = body.get("estado").toUpperCase();
         return empresaRepo.findById(id).map(e -> {
             e.setEstado(nuevoEstado);
             e.setActivo("APROBADA".equals(nuevoEstado));
+
+            // Si se aprueba, activar también al usuario vendedor
             if ("APROBADA".equals(nuevoEstado) && e.getUsuarioId() != null) {
                 usuarioRepo.findById(e.getUsuarioId()).ifPresent(u -> {
                     u.setActivo(true);
@@ -117,9 +87,7 @@ public class AdminController {
     // ═══════════════════════ PRODUCTOS ═══════════════════════════
 
     @GetMapping("/productos")
-    public ResponseEntity<?> listarProductos(
-            @RequestParam(required = false) String adminId) {
-        if (!esAdmin(adminId)) return NO_AUTH;
+    public ResponseEntity<List<Map<String, Object>>> listarProductos() {
         List<Map> raw = mongoTemplate.findAll(Map.class, "productos");
         return ResponseEntity.ok(raw.stream().map(p -> {
             Map<String, Object> m = new LinkedHashMap<>();
@@ -142,21 +110,20 @@ public class AdminController {
     public ResponseEntity<?> cambiarEstadoProducto(
             @PathVariable String id,
             @RequestBody Map<String, String> body) {
-        if (!esAdmin(body.get("adminId"))) return NO_AUTH;
         String estado   = body.get("estado").toUpperCase();
         boolean publicado = "ACTIVO".equals(estado);
+
         Update update = new Update().set("estado", estado).set("publicado", publicado);
         Query  query  = new Query(Criteria.where("_id").is(id));
         mongoTemplate.updateFirst(query, update, "productos");
+
         return ResponseEntity.ok(Map.of("exito", true, "estado", estado));
     }
 
     // ═══════════════════════ PEDIDOS ═════════════════════════════
 
     @GetMapping("/pedidos")
-    public ResponseEntity<?> listarPedidos(
-            @RequestParam(required = false) String adminId) {
-        if (!esAdmin(adminId)) return NO_AUTH;
+    public ResponseEntity<List<Pedido>> listarPedidos() {
         List<Pedido> pedidos = pedidoRepo.findAll();
         pedidos.sort(Comparator.comparing(Pedido::getFechaPedido,
             Comparator.nullsLast(Comparator.reverseOrder())));
@@ -167,7 +134,6 @@ public class AdminController {
     public ResponseEntity<?> cambiarEstadoPedido(
             @PathVariable String id,
             @RequestBody Map<String, String> body) {
-        if (!esAdmin(body.get("adminId"))) return NO_AUTH;
         return pedidoRepo.findById(id).map(p -> {
             p.setEstado(body.get("estado").toUpperCase());
             pedidoRepo.save(p);
@@ -178,9 +144,7 @@ public class AdminController {
     // ═══════════════════════ STATS / DASHBOARD ═══════════════════
 
     @GetMapping("/stats")
-    public ResponseEntity<?> stats(
-            @RequestParam(required = false) String adminId) {
-        if (!esAdmin(adminId)) return NO_AUTH;
+    public ResponseEntity<Map<String, Object>> stats() {
         Map<String, Object> m = new LinkedHashMap<>();
         m.put("totalUsuarios",  usuarioRepo.count());
         m.put("totalEmpresas",  empresaRepo.count());
@@ -218,7 +182,7 @@ public class AdminController {
         m.put("correo",          nvl(e.getCorreo()));
         m.put("telefono",        nvl(e.getTelefono()));
         m.put("rol",             nvl(e.getRol()));
-        m.put("estado",          nvl(e.getEstado()).isEmpty() ? "PENDIENTE" : e.getEstado());
+        m.put("estado",          nvl(e.getEstado()) .isEmpty() ? "PENDIENTE" : e.getEstado());
         m.put("activo",          e.isActivo());
         m.put("fechaRegistro",   nvl(e.getFechaRegistro()));
         m.put("usuarioId",       nvl(e.getUsuarioId()));

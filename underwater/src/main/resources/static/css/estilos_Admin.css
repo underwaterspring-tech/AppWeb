@@ -202,7 +202,6 @@
   margin-left: 260px;
   padding: 0;
   min-height: 100vh;
-  background: #ffffff;
 }
 
 /* Topbar */
@@ -520,7 +519,7 @@
    TABLAS
 ================================================================ */
 .tabla-admin {
-  width: 500px;
+  width: 100%;
   border-collapse: collapse;
   font-size: 0.82rem;
 }
@@ -832,13 +831,4 @@
 }
 #modal-boton-confirmar.confirmar-verde:hover {
   background: #15803d;
-}
-
-/* ================================================================
-   FIX: #seccion-empresas en estilos.css global tiene background
-   crema porque ese id se usa también en el index. Lo sobreescribimos
-   aquí para que en el panel admin sea blanco limpio.
-================================================================ */
-#pagina-admin #seccion-empresas {
-  background: #ffffff;
 }

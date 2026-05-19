@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    container_name: mi-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb+srv://Gustavo:G1043978518g@underwater.geenwvy.mongodb.net/Datos?retryWrites=true&w=majority
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    restart: unless-stopped

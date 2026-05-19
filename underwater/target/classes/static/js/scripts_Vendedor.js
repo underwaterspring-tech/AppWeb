@@ -122,7 +122,7 @@ async function cargarDashboard() {
   try {
     const [productos, pedidos] = await Promise.all([
       fetch(`/api/vendedor/productos?vendedorId=${id}`).then(r => r.json()),
-      empresaId ? fetch(`/api/vendedor/pedidos?empresaId=${empresaId}&vendedorId=${id}`).then(r => r.json()) : Promise.resolve([])
+      empresaId ? fetch(`/api/vendedor/pedidos?empresaId=${empresaId}`).then(r => r.json()) : Promise.resolve([])
     ]);
     const activos    = productos.filter(p => p.estado === 'ACTIVO').length;
     const pendientes = pedidos.filter(p => p.estado === 'PROCESANDO').length;
@@ -224,7 +224,7 @@ function badgeEstadoV(estado) {
 async function toggleEstadoProducto(id, estadoActual) {
   const nuevo = estadoActual === 'ACTIVO' ? 'SUSPENDIDO' : 'ACTIVO';
   try {
-    const res = await fetch(`/api/vendedor/productos/${id}/estado`, { method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ estado: nuevo, vendedorId: id }) });
+    const res = await fetch(`/api/vendedor/productos/${id}/estado`, { method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ estado: nuevo }) });
     const data = await res.json();
     if (data.exito) { mostrarToastV(nuevo === 'ACTIVO' ? '✅ Producto activado' : 'Producto pausado'); cargarMisProductos(); }
   } catch { mostrarToastV('❌ Error'); }
@@ -233,13 +233,13 @@ async function toggleEstadoProducto(id, estadoActual) {
 async function eliminarProducto(id) {
   confirmarAccion('¿ELIMINAR PRODUCTO?', async function() {
   try {
-    await fetch(`/api/vendedor/productos/${id}?vendedorId=${id}`, { method: 'DELETE' });
+    await fetch(`/api/vendedor/productos/${id}`, { method: 'DELETE' });
     mostrarToastV('Producto eliminado'); cargarMisProductos();
   } catch(e) { mostrarToastV('❌ Error'); }
   });
   return;
   try {
-    await fetch(`/api/vendedor/productos/${id}?vendedorId=${id}`, { method: 'DELETE' });
+    await fetch(`/api/vendedor/productos/${id}`, { method: 'DELETE' });
     mostrarToastV('Producto eliminado'); cargarMisProductos();
   } catch { mostrarToastV('❌ Error'); }
 }
@@ -388,7 +388,7 @@ async function cargarMisPedidosVendedor() {
   }
 
   try {
-    const pedidos = await fetch(`/api/vendedor/pedidos?empresaId=${empresaId}&vendedorId=${id}`).then(r => r.json());
+    const pedidos = await fetch(`/api/vendedor/pedidos?empresaId=${empresaId}`).then(r => r.json());
 
     // Actualizar contador en sidebar
     const pendientes = pedidos.filter(p => p.estado === 'PROCESANDO').length;
@@ -532,14 +532,14 @@ function verDetallePedidoV(pedidoId) {
 async function marcarEnviado(id) {
   confirmarAccion('¿MARCAR COMO ENVIADO?', async function() {
   try {
-    const res = await fetch(`/api/vendedor/pedidos/${id}/enviar`, {method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ vendedorId: UW_V().id })});
+    const res = await fetch(`/api/vendedor/pedidos/${id}/enviar`, {method:'PUT'});
     const data = await res.json();
     if (data.exito) { mostrarToastV('✅ Enviado'); cargarMisPedidosVendedor(); }
   } catch(e) { mostrarToastV('❌ Error'); }
   });
   return;
   try {
-    const res  = await fetch(`/api/vendedor/pedidos/${id}/enviar`, { method: 'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ vendedorId: UW_V().id }) });
+    const res  = await fetch(`/api/vendedor/pedidos/${id}/enviar`, { method: 'PUT' });
     const data = await res.json();
     if (data.exito) { mostrarToastV('✅ Pedido marcado como enviado'); cargarMisPedidosVendedor(); cargarDashboard(); }
   } catch { mostrarToastV('❌ Error'); }

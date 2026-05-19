@@ -65,6 +65,75 @@
   </footer>
 
   <script src="js/scripts.js"></script>
+  <script>
+  var COLORES = ['var(--color-rojo)','#f0b429','#2d6e2d','#1a3a6e','#8b5cf6','#0891b2','#c05621','#b91c1c'];
+  var productosGlobal = [];
+
+  document.addEventListener('DOMContentLoaded', async function() {
+    var grilla = document.getElementById('grilla-empresas-pag');
+    try {
+      // Cargar empresas y productos en paralelo
+      var [resEmpresas, resProductos] = await Promise.all([
+        fetch('/api/admin/empresas?estado=APROBADA'),
+        fetch('/api/productos?tamano=1000&pagina=0')
+      ]);
+      var empresas  = await resEmpresas.json();
+      var dataProd  = await resProductos.json();
+      productosGlobal = Array.isArray(dataProd) ? dataProd : (dataProd.productos || []);
+
+      if (!empresas || !empresas.length) {
+        grilla.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px;color:#888">No hay empresas disponibles.</p>';
+        return;
+      }
+
+      renderEmpresas(empresas);
+    } catch(e) {
+      grilla.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px;color:#e05252">Error cargando empresas.</p>';
+    }
+  });
+
+  function renderEmpresas(empresas) {
+    var grilla = document.getElementById('grilla-empresas-pag');
+    grilla.innerHTML = empresas.map(function(e, i) {
+      var nombre   = e.nombreEmpresa || e.nombre || '—';
+      var iniciales = nombre.split(' ').map(function(w){return w[0]||'';}).join('').substring(0,2).toUpperCase();
+      var ciudad   = e.ciudad || '—';
+      var desc     = e.descripcion || 'Empresa vendedora en Underwater Marketplace.';
+      var color    = COLORES[i % COLORES.length];
+      var cant     = productosGlobal.filter(function(p){ return (p.vendedorNombre||'') === nombre; }).length;
+      var empNomEnc = encodeURIComponent(nombre);
+
+      return '<div class="tarjeta-empresa-pag" onclick="window.location.href=\'/catalogo?empresa='+empNomEnc+'\'">'
+        + '<div class="emp-cabecera">'
+          + '<div class="emp-logo" style="background:'+color+'">'+iniciales+'</div>'
+          + '<div class="emp-info">'
+            + '<p class="emp-nombre">'+nombre+'</p>'
+            + '<p class="emp-ciudad">📍 '+ciudad+'</p>'
+          + '</div>'
+          + '<span class="emp-verificado">✓ Verificada</span>'
+        + '</div>'
+        + '<div class="emp-body">'
+          + '<p class="emp-desc">'+desc+'</p>'
+          + '<div class="emp-stats">'
+            + '<div><span class="emp-stat-n">'+cant+'</span><span class="emp-stat-l">Productos</span></div>'
+            + '<div><span class="emp-stat-n">'+ciudad+'</span><span class="emp-stat-l">Ciudad</span></div>'
+          + '</div>'
+          + '<button class="emp-btn" onclick="event.stopPropagation();window.location.href=\'/catalogo?empresa='+empNomEnc+'\'">Ver productos →</button>'
+        + '</div>'
+      + '</div>';
+    }).join('');
+  }
+
+  // Búsqueda
+  var inp = document.getElementById('input-busqueda');
+  var btn = document.getElementById('boton-ejecutar-busqueda');
+  function buscar() {
+    var t = inp ? inp.value.trim() : '';
+    if (t) window.location.href = '/catalogo?buscar=' + encodeURIComponent(t);
+  }
+  if (inp) inp.addEventListener('keydown', function(e){ if(e.key==='Enter') buscar(); });
+  if (btn) btn.addEventListener('click', buscar);
+  </script>
 <script src="js/scripts_Empresas.js"></script>
   </body>
 </html>
