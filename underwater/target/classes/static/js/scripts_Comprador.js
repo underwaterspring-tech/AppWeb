@@ -204,8 +204,8 @@ async function cargarMisPedidos() {
     // Eventos cancelar
     contenedor.querySelectorAll('.btn-pedido-cancelar').forEach(btn => {
       btn.addEventListener('click', async function() {
-        if (!confirm('¿Cancelar este pedido?')) return;
         const pedidoId = this.dataset.id;
+        if (typeof abrirModalCancelar === 'function') { abrirModalCancelar(pedidoId); return; }
         try {
           const res  = await fetch(`/api/pedidos/${pedidoId}/cancelar?usuarioId=${id}`, { method: 'PUT' });
           const data = await res.json();
@@ -400,17 +400,8 @@ if (btnEnviarResena) {
 }
 
 // ================================================================
-// CERRAR SESIÓN
+// CERRAR SESIÓN — manejado por scripts_MiCuenta.js
 // ================================================================
-const btnCerrarSesion = document.getElementById('btn-cerrar-sesion-cuenta');
-if (btnCerrarSesion) {
-  btnCerrarSesion.addEventListener('click', function() {
-    if (!confirm('¿Cerrar sesión?')) return;
-    fetch('/api/auth/logout', { method: 'POST' }).catch(() => {});
-    localStorage.clear();
-    window.location.href = '/index';
-  });
-}
 
 // ================================================================
 // PÁGINA DE ESPERA — verificar estado aprobación

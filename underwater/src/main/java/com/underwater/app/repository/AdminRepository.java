@@ -22,8 +22,13 @@ public class AdminRepository {
     }
 
     public Optional<Admin> findByCorreo(String correo) {
-        // El campo en MongoDB se llama "Correo" con C mayúscula
         Query query = new Query(Criteria.where("Correo").is(correo));
+        Admin admin = adminMongoTemplate.findOne(query, Admin.class, "admins");
+        return Optional.ofNullable(admin);
+    }
+
+    public Optional<Admin> findById(String id) {
+        Query query = new Query(Criteria.where("_id").is(id));
         Admin admin = adminMongoTemplate.findOne(query, Admin.class, "admins");
         return Optional.ofNullable(admin);
     }

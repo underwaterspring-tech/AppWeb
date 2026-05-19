@@ -1349,3 +1349,73 @@
 #espera-contacto a:hover {
   color: #0E6655;
 }
+
+/* ================================================================
+   MODAL CANCELAR PEDIDO
+================================================================ */
+#modal-cancelar {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(2px);
+}
+.modal-cancelar-caja {
+  background: #fff;
+  padding: 36px 32px;
+  max-width: 420px;
+  width: 90%;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+.modal-cancelar-titulo {
+  font-family: var(--fuente-titulos);
+  font-size: 1.6rem;
+  letter-spacing: 0.05em;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+.modal-cancelar-info {
+  color: #64748b;
+  font-size: 0.88rem;
+  margin-bottom: 6px;
+}
+.modal-cancelar-desc {
+  color: #64748b;
+  font-size: 0.85rem;
+  margin-bottom: 24px;
+}
+#modal-cancelar-error {
+  color: #e05252;
+  font-size: 0.82rem;
+  margin-bottom: 12px;
+  min-height: 18px;
+}
+.modal-cancelar-botones {
+  display: flex;
+  gap: 12px;
+}
+.modal-cancelar-botones button {
+  flex: 1;
+  padding: 13px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: opacity 0.2s;
+}
+.modal-cancelar-botones button:hover {
+  opacity: 0.85;
+}
+#btn-cancelar-no {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+#btn-cancelar-si {
+  background: #c8452d;
+  color: #fff;
+}

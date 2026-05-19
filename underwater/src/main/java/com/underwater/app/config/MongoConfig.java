@@ -13,14 +13,21 @@ import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
 @Configuration
 public class MongoConfig {
 
-    @Value("${spring.data.mongodb.uri}")
-    private String uri;
+    @Value("${spring.data.mongodb.host:localhost}")
+    private String host;
 
-    // ── BD principal: Datos ──
+    @Value("${spring.data.mongodb.port:27017}")
+    private int port;
+
+    private String uri() {
+        return "mongodb://" + host + ":" + port;
+    }
+
+    // ── BD principal: Datos (usuarios, empresas, productos, etc.) ──
     @Primary
     @Bean
     public MongoDatabaseFactory mongoDatabaseFactory() {
-        return new SimpleMongoClientDatabaseFactory(MongoClients.create(uri), "Datos");
+        return new SimpleMongoClientDatabaseFactory(MongoClients.create(uri()), "Datos");
     }
 
     @Primary
@@ -29,11 +36,12 @@ public class MongoConfig {
         return new MongoTemplate(mongoDatabaseFactory());
     }
 
-    // ── BD secundaria: admin ──
+    // ── BD secundaria: admin (admins) ──
     @Bean(name = "adminMongoTemplate")
     public MongoTemplate adminMongoTemplate() {
-        MongoDatabaseFactory adminFactory =
-            new SimpleMongoClientDatabaseFactory(MongoClients.create(uri), "Datos");
+        MongoDatabaseFactory adminFactory = new SimpleMongoClientDatabaseFactory(
+            MongoClients.create(uri()), "Datos"
+        );
         return new MongoTemplate(adminFactory);
     }
 }

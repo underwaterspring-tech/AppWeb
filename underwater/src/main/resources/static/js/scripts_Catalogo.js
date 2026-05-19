@@ -583,7 +583,7 @@ function irADetalle(id) {
 // ================================================================
 async function cargarFiltroEmpresas() {
   try {
-    var res = await fetch("/api/admin/empresas?estado=APROBADA");
+    var res = await fetch("/api/admin/empresas/publicas");
     if (!res.ok) return;
     var data = await res.json();
     if (!Array.isArray(data) || data.length === 0) return;

@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   try {
     const [resEmpresas, resProductos] = await Promise.all([
-      fetch('/api/admin/empresas?estado=APROBADA'),
+      fetch('/api/admin/empresas/publicas'),
       fetch('/api/productos?tamano=1000&pagina=0')
     ]);
 

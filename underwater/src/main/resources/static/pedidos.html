@@ -83,6 +83,20 @@
 
   </main>
 
+  <!-- MODAL CANCELAR PEDIDO -->
+  <div id="modal-cancelar">
+    <div class="modal-cancelar-caja">
+      <h3 class="modal-cancelar-titulo">¿Cancelar pedido?</h3>
+      <p class="modal-cancelar-info">Pedido <strong id="modal-cancelar-id"></strong></p>
+      <p class="modal-cancelar-desc">Esta acción no se puede deshacer. El pedido pasará a estado <strong>Cancelado</strong>.</p>
+      <p id="modal-cancelar-error"></p>
+      <div class="modal-cancelar-botones">
+        <button id="btn-cancelar-no">No, mantener</button>
+        <button id="btn-cancelar-si">Sí, cancelar</button>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL RESEÑA -->
   <div id="modal-resena" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:1000;align-items:center;justify-content:center">
     <div id="modal-resena-caja">
@@ -111,7 +125,7 @@
       <div id="campo-comentario-resena">
         <label class="etiqueta-modal" for="input-comentario-resena">Tu comentario *</label>
         <textarea id="input-comentario-resena" placeholder="Cuéntanos cómo te fue con el producto..." rows="4"></textarea>
-        <p id="error-resena" style="color:#e05252;font-size:0.78rem;margin-top:6px"></p>
+        <p id="error-resena"></p>
       </div>
       <button id="btn-enviar-resena">Publicar reseña</button>
     </div>
